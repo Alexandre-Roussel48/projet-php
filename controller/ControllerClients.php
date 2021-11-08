@@ -1,49 +1,49 @@
 <?php
-require_once File::build_path(array("model","ModelModeles.php"));
+require_once File::build_path(array("model","ModelClient.php"));
 
 class ControllerClients {
 	public static function readAll() {
-		$tab_mod = ModelClient::getAllModeles();
-		$controller='modeles';
+		$tab_mod = ModelClient::getAllClients();
+		$controller='clients';
 		$view='list';
 		$pagetitle='Liste des clients';
 		require File::build_path(array("view","view.php"));
 	}
 
 	public static function read() {
-		$modele = $_GET['modele'];
-		$m = ModelModeles::getModele($modele);
-		if ($m===false) {
-			$controller='modeles';
+		$client = $_GET['client'];
+		$c = Modelclients::getclient($client);
+		if ($c===false) {
+			$controller='clients';
 			$view='error';
 			$pagetitle='Erreur';
 			require File::build_path(array("view","view.php"));
 		} else {
-			$controller='modeles';
+			$controller='clients';
 			$view='detail';
-			$pagetitle='Détail de modèle';
+			$pagetitle='Détail de client';
 			require File::build_path(array("view","view.php"));
 		}
 		
 	}
 
 	public static function create() {
-		$controller='modeles';
+		$controller='clients';
 		$view='create';
-		$pagetitle='Créer un modèle';
+		$pagetitle='Créer un client';
 		require File::build_path(array("view","view.php"));
 	}
 
 	public static function created() {
-		$modele = $_GET['modele'];
+		$client = $_GET['client'];
 		$marque = $_GET['marque'];
 		$prix = $_GET['prix'];
-		$p_m = new ModelModeles($modele,$marque,$prix);
+		$p_m = new Modelclients($client,$marque,$prix);
 		$p_m->save();
-		$controller='modeles';
+		$controller='clients';
 		$view='created';
 		$pagetitle='Modèle créé';
-		$tab_v = ModelModeles::getAllModeles();
+		$tab_v = Modelclients::getAllclients();
 		require File::build_path(array("view","view.php"));
 	}
 }
