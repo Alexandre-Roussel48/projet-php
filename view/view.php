@@ -6,7 +6,7 @@
     </head>
     <body>
         <a href="index.php?controller=modeles&action=readAll">Tout les modèles</a>
-        <a href="index.php?controller=client&action=readAll">Page d'accueil utilisateur</a>
+        <a href="index.php?controller=clients&action=readAll">Page d'accueil utilisateur</a>
 <?php
 $filepath = File::build_path(array("view", $controller, "$view.php"));
 require $filepath;
