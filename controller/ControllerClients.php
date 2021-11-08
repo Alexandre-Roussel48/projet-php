@@ -3,10 +3,10 @@ require_once File::build_path(array("model","ModelModeles.php"));
 
 class ControllerClients {
 	public static function readAll() {
-		$tab_mod = ModelModeles::getAllModeles();
+		$tab_mod = ModelClient::getAllModeles();
 		$controller='modeles';
 		$view='list';
-		$pagetitle='Liste des modèles';
+		$pagetitle='Liste des clients';
 		require File::build_path(array("view","view.php"));
 	}
 

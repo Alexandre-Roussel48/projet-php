@@ -1,5 +1,6 @@
 <?php
 require_once File::build_path(array("controller","ControllerModeles.php"));
+require_once File::build_path(array("controller", "controllerClients.php"));
 
 if(isset($_GET['action'])&&isset($_GET['controller'])) {
 	$controller = $_GET['controller'];
