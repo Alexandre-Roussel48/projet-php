@@ -17,7 +17,7 @@ header nav > div {       /*S'occupe de l'apparence du header sans burger*/
 }
 
 header nav > div:hover{/*Augmente la taille de l'élement sur lequel la souris passe*/
-    flex-grow: 3;
+    flex-grow: 1;
     background-color: #CCCCFF;
     transition:600ms;/*Permet d'éviter que l'animation soit instantanée*/
 }
@@ -28,4 +28,13 @@ header nav div a{/*Taille des liens dans le header*/
 
 header nav div a:hover{/*Met en gras et en couleur la fiche métier sur laquelle passe la souris*/
     font-weight: bolder;
+}
+
+fieldset{ /*Met le fond en gris et arrondit les coins*/
+    background-color: #4b4f5377 ;
+    border:2px solid ;
+    border-radius:8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
