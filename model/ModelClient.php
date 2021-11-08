@@ -1,16 +1,16 @@
 <?php
 require_once File::build_path(array("model","Model.php"));
 class ModelClient {
-    private $nom, $prenom, $mail, $mdp, $adresse;
+    private $nom, $prenom, $email, $mdp, $adresse;
 
 
-    public function __construct($codeClient, $nom, $prenom, $mail, $mdp, $adresse=NULL){
+    public function __construct($codeClient, $nom, $prenom, $email, $mdp, $adresse=NULL){
         if(!is_null($adresse)){
             $this->adresse = $adresse;
         }
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->mail = $mail;
+        $this->email = $email;
         $this->mdp = $mdp;
     }
 

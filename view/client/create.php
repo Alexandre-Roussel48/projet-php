@@ -8,13 +8,13 @@
         </p>
 
         <p>
-            <label for="prenom">Prenom</label> :
-            <input type="text" placeholder="Lagafe" name="Prenom" id="Prenom" required/>
+            <label for="prenom">Prénom</label> :
+            <input type="text" placeholder="Lagaffe" name="prenom" id="prenom" required/>
         </p>
 
         <p>
-            <label for="mail">Adresse mail</label> :
-            <input type="text" placeholder="gaston.lagafe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            <label for="mail">Adresse email</label> :
+            <input type="text" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
              name="mail" id="mail" required/>
         </p>
         <p>
