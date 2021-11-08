@@ -1,0 +1,31 @@
+footer p { border: 1px solid black;
+    text-align:right;
+    padding-right:1em; }
+
+header nav {     /*Positionne le header sans burger*/
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+header nav > div {       /*S'occupe de l'apparence du header sans burger*/
+    text-align: center;
+    border-radius: 15px;
+    flex-grow: 1;
+    left: 60%;
+    margin: 5px 5px 5px 5px;
+}
+
+header nav > div:hover{/*Augmente la taille de l'élement sur lequel la souris passe*/
+    flex-grow: 3;
+    background-color: #CCCCFF;
+    transition:600ms;/*Permet d'éviter que l'animation soit instantanée*/
+}
+
+header nav div a{/*Taille des liens dans le header*/
+    font-size: 25px;
+}
+
+header nav div a:hover{/*Met en gras et en couleur la fiche métier sur laquelle passe la souris*/
+    font-weight: bolder;
+}
