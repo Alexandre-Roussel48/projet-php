@@ -1,30 +1,30 @@
 <?php
 require_once File::build_path(array("model","Model.php"));
 class ModelClient {
-    private $nom, $prenom, $email, $mdp, $adresse;
+    private $codeClient, $nomClient, $prenomClient, $mail, $telephone, $mdp, $adresse;
 
 
-    public function __construct($codeClient, $nom, $prenom, $email, $mdp, $adresse=NULL){
-        if(!is_null($adresse)){
+    public function __construct($codeClient = NULL, $nomClient = NULL, $prenomClient = NULL, $mail = NULL, $telephone = NULL, $mdp = NULL, $adresse = NULL){
+        if(!is_null($adresse) && !is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($telephone) && !is_null($mdp)){
             $this->adresse = $adresse;
+            $this->nom = $nom;
+            $this->prenom = $prenom;
+            $this->email = $email;
+            $this->mdp = $mdp;
         }
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->email = $email;
-        $this->mdp = $mdp;
     }
 
     public static function getAllClients() {
         $pdo = Model::getPDO();
         $rep = $pdo->query('SELECT * FROM p_client');
-        $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelClients');
+        $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelClient');
         $tab_mod = $rep->fetchAll();
         return $tab_mod;
     }
 
     public static function getclient($client){
-        echo("</br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</br>");
-        $sql = "SELECT * from p_clients WHERE modele=:id_client";
+
+        $sql = "SELECT * from p_clients WHERE codeClient=:id_client";
         $req_prep = Model::getPDO()->prepare($sql);
 
         $values = array("id_client" => $client);
@@ -32,9 +32,7 @@ class ModelClient {
 
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelClient');
         $tab_cli = $req_prep->fetchAll();
-        var_dump($tab_cli);
 
-        echo("</br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</br>");
         if (empty($tab_cli))
             return false;
 
@@ -47,9 +45,7 @@ class ModelClient {
 
 
     public function set($nomChamp, $valeur){
-        if($valeur!=="codeClient"){
-            $this->$nomChamp = $valeur;
-        }
+        $this->$nomChamp = $valeur;
     }
 
 }
