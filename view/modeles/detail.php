@@ -1,7 +1,9 @@
 
 <?php
-    $modele = $m->get('modele'); $modeleHtml = htmlspecialchars($modele);
-    $marque = $m->get('marque'); $marqueHTML = htmlspecialchars($marque);
-    $prix = $m->get('prix'); $prixHTML = htmlspecialchars($prix);
-    echo "Modèle : {$modeleHtml}, {$marqueHTML}, {$prixHTML}";
+    $vModele = $m->get("modele");
+    $vMarque = $m->get("marque");
+    $vPrix = $m->get("prix");
+    echo "Velo :\n".htmlspecialchars($vModele).", ".htmlspecialchars($vMarque).", ".htmlspecialchars($vPrix);
+
+    echo '<p><a href="index.php?action=delete&immat='.rawurlencode($vModele).'">supprimer</a> ce velo</p>';
 ?>
