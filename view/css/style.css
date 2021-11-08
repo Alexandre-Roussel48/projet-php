@@ -1,6 +1,4 @@
-footer p { border: 1px solid black;
-    text-align:right;
-    padding-right:1em; }
+
 
 header nav {     /*Positionne le header sans burger*/
     display: flex;
@@ -16,7 +14,7 @@ header nav > div {       /*S'occupe de l'apparence du header sans burger*/
     margin: 5px 5px 5px 5px;
 }
 
-header nav > div:hover{/*Augmente la taille de l'élement sur lequel la souris passe*/
+header nav > div:hover {/*Augmente la taille de l'élement sur lequel la souris passe*/
     flex-grow: 1;
     background-color: #CCCCFF;
     transition:600ms;/*Permet d'éviter que l'animation soit instantanée*/
@@ -30,11 +28,19 @@ header nav div a:hover{/*Met en gras et en couleur la fiche métier sur laquelle
     font-weight: bolder;
 }
 
+body {
+    background-color: #F5F5F5;
+}
+
 fieldset{ /*Met le fond en gris et arrondit les coins*/
     background-color: #4b4f5377 ;
     border:2px solid ;
     border-radius:8px;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: space-evenly;
+}
+
+footer p {
+    border: 1px solid black;
+    text-align:right;
+    padding-right:1em;
 }
