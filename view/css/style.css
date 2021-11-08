@@ -29,8 +29,3 @@ header nav div a{/*Taille des liens dans le header*/
 header nav div a:hover{/*Met en gras et en couleur la fiche métier sur laquelle passe la souris*/
     font-weight: bolder;
 }
-
-header nav>div.conteneur:hover {/*Rétablit les angles de "Nous Rejoindre" afin de ne pas avoir d'espace avec ses sous-menus*/
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
