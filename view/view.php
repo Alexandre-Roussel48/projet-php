@@ -3,18 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <title><?php echo $pagetitle; ?></title>
+        <link rel="stylesheet" type="text/css" href="./view/css/style.css">
     </head>
     <body>
-        <a href="index.php?controller=modeles&action=readAll">Tout les modèles</a>
-        <a href="index.php?controller=clients&action=readAll">Page d'accueil utilisateur</a>
-<?php
-$filepath = File::build_path(array("view", $controller, "$view.php"));
-require $filepath;
-?>
+        <header>
+            <nav>
+                <div><a href="index.php?controller=modeles&action=readAll">Tout les modèles</a></div>
+                <div><a href="index.php?controller=clients&action=readAll">Page d'accueil clients</a></div>
+                <div><a href="#">Se connecter</a></div>
+                <div><a href="#">S'inscrire</a></div>
+            </nav>
+        </header>
+
+        <main>
+            <?php
+            $filepath = File::build_path(array("view", $controller, "$view.php"));
+            require $filepath;
+            ?>
+        </main>
+
     </body>
     <footer>
-        <p style="border: 1px solid black;text-align:right;padding-right:1em;">
-        Site d' e-commerce de Gatien, Mélanie, Bastien et Alexandre !
+        <p>
+            Site d' e-commerce de Gatien, Mélanie, Bastien et Alexandre !
         </p>
     </footer>
 </html>
