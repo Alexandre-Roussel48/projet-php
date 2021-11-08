@@ -1,5 +1,6 @@
 <?php
 require_once File::build_path(array("model","ModelModeles.php"));
+require_once File::build_path(array("model","ModelProduits.php"));
 
 class ControllerModeles {
 	public static function readAll() {
@@ -13,6 +14,7 @@ class ControllerModeles {
 	public static function read() {
 		$modele = $_GET['modele'];
 		$m = ModelModeles::getModele($modele);
+		$tab_p = ModelProduits::getProduit($modele);
 		if ($m===false) {
 			$controller='modeles';
 			$view='error';
