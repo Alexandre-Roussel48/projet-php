@@ -1,6 +1,6 @@
 <?php
 require_once File::build_path(array("model","Model.php"));
-class ModelP_modeles {
+class ModelModeles {
    
     private $modele;
     private $marque;
@@ -22,15 +22,15 @@ class ModelP_modeles {
         }
     }
 
-    public static function getAllP_modeles() {
+    public static function getAllModeles() {
         $pdo = Model::getPDO();
         $rep = $pdo->query('SELECT * FROM p_modeles');
-        $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelP_modeles');
+        $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelModeles');
         $tab_mod = $rep->fetchAll();
         return $tab_mod;
     }
 
-    public static function getP_modele($modele) {
+    public static function getModele($modele) {
 
         $sql = "SELECT * from p_modeles WHERE modele=:nom_tag";
         $req_prep = Model::getPDO()->prepare($sql);
@@ -38,7 +38,7 @@ class ModelP_modeles {
         $values = array("nom_tag" => $modele);     
         $req_prep->execute($values);
 
-        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelP_modeles');
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModeles');
         $tab_mod = $req_prep->fetchAll();
 
         if (empty($tab_mod))
