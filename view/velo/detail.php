@@ -1,8 +1,8 @@
 <?php
-   /* $vImmatriculation = $v->getImmatriculation();
-    $vMarque = $v->getMarque();
-    $vCouleur = $v->getCouleur();
-    echo "Voiture :\n".htmlspecialchars($vMarque).", ".htmlspecialchars($vCouleur).", ".htmlspecialchars($vImmatriculation);
+   $vModele = $m->get("modele");
+    $vMarque = $m->get("marque");
+    $vPrix = $m->get("prix");
+    echo "Velo :\n".htmlspecialchars($vModele).", ".htmlspecialchars($vMarque).", ".htmlspecialchars($vPrix);
 
-    echo '<p><a href="index.php?action=delete&immat='.rawurlencode($vImmatriculation).'">supprimer</a> cette voiture</p>';*/
+    echo '<p><a href="index.php?action=delete&immat='.rawurlencode($vModele).'">supprimer</a> cette voiture</p>';
 ?>
