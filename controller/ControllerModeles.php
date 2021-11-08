@@ -12,8 +12,8 @@ class ControllerModeles {
 
 	public static function read() {
 		$modele = $_GET['modele'];
-		$p_m = ModelModeles::getModele($modele);
-		if ($p_m===false) {
+		$m = ModelModeles::getModele($modele);
+		if ($m===false) {
 			$controller='modeles';
 			$view='error';
 			$pagetitle='Erreur';
