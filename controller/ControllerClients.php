@@ -1,9 +1,9 @@
 <?php
-require_once File::build_path(array("model","ModelClient.php"));
+require_once File::build_path(array("model","ModelClients.php"));
 
 class ControllerClients {
 	public static function readAll() {
-		$tab_mod = ModelClient::getAllClients();
+		$tab_cli = ModelClients::getAllClients();
 		$controller='clients';
 		$view='list';
 		$pagetitle='Liste des clients';
@@ -12,7 +12,7 @@ class ControllerClients {
 
 	public static function read() {
 		$client = $_GET['client'];
-		$c = Modelclients::getclient($client);
+		$c = Modelclients::getClient($client);
 		if ($c===false) {
 			$controller='clients';
 			$view='error';
@@ -38,12 +38,12 @@ class ControllerClients {
 		$client = $_GET['client'];
 		$marque = $_GET['marque'];
 		$prix = $_GET['prix'];
-		$p_m = new Modelclients($client,$marque,$prix);
-		$p_m->save();
+		$c = new ModelClients($client,$marque,$prix);
+		$c->save();
 		$controller='clients';
 		$view='created';
-		$pagetitle='Modèle créé';
-		$tab_v = Modelclients::getAllclients();
+		$pagetitle='Client créé';
+		$tab_cli = ModelClients::getAllClients();
 		require File::build_path(array("view","view.php"));
 	}
 }

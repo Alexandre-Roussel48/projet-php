@@ -1,11 +1,13 @@
 <?php
+foreach ($tab_cli as $c) {
 
-var_dump($tab_mod);
-foreach ($tab_mod as $c) {
-    $client = $c->get('client');
-    $clientHtml = htmlspecialchars($client);
-    $clientUrl = rawurlencode($client);
-    echo '<p>Client : <a href="?controller=clients&action=read&modele='.$clientUrl.'">'.$clientHtml.'</a></p>';
+    $codeClient = $c->get('codeClient');
+    $codeClientUrl = rawurlencode($codeClient);
+
+    $nomClient = $c->get('nomClient');
+    $prenomClient = $c->get('prenomClient');
+
+    echo "<p>Client : {$nomClient} {$prenomClient} <a href=\"?controller=clients&action=read&client={$codeClientUrl}\">Détail du client</a></p>";
 }
 ?>
 
