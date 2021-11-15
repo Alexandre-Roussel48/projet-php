@@ -29,6 +29,10 @@
                 <label for="adresse">Adresse</label> :
                 <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse" id="adresse"/>
             </p>
+            <p>
+                <label for="telephone">Numéro de téléphone</label> :
+                <input type="text" placeholder="0123456789" name="telephone" id="telephone"/>
+            </p>
         </fieldset>
 
         <p>
