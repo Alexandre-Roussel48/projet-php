@@ -16,7 +16,7 @@
                 <div><a href="index.php?controller=modeles&action=readAll">Tout les modèles</a></div>
                 <div><a href="index.php?controller=clients&action=readAll">Page d'accueil clients</a></div>
                 <div><a href="#">Se connecter</a></div>
-                <div><a href="#">S'inscrire</a></div>
+                <div><a href="index.php?controller=clients&action=create">S'inscrire</a></div>
             </nav>
         </header>
 
