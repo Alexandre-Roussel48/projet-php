@@ -46,6 +46,15 @@ class ControllerClients {
 		$tab_cli = ModelClients::getAllClients();
 		require File::build_path(array("view","view.php"));
 	}
+
+	
+	public static function login(){
+		//Faire tout un tas de verification 
+		$controller='clients';
+		$view='login';
+		$pagetitle='Connexion réussi';
+		require File::build_path(array("view", "view.php"));
+	}
 }
 	
 ?>
