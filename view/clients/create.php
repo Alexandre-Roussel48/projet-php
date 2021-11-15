@@ -27,7 +27,7 @@
             <legend>Informations complémentaires :</legend>
             <p>
                 <label for="adresse">Adresse</label> :
-                <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse" id="adresse" required/>
+                <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse" id="adresse"/>
             </p>
         </fieldset>
 
