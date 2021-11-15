@@ -49,11 +49,30 @@ class ControllerClients {
 
 	
 	public static function login(){
-		//Faire tout un tas de verification 
-		$controller='clients';
-		$view='login';
-		$pagetitle='Connexion réussi';
-		require File::build_path(array("view", "view.php"));
+		
+		if(isset($_GET['mail']) && isset($_GET['mdp'])){
+			//Si l'id et le mdp ont été remplis
+			$c = Modelclients::clientLogin($_GET['mail'], $_GET['mdp']);
+			if(c===false){
+				$controller='clients';
+				$view='error';
+				$pagetitle='Erreur';
+				require File::build_path(array("view","view.php"));
+			}
+			else{
+				$controller='clients';
+				$view='detail';
+				$pagetitle='Connexion réussie';
+				require File::build_path(array("view","view.php"));
+			}
+		}
+		else{
+			//Si l'id et le mdp n'ont pas été remplis
+			$controller='clients';
+			$view='login';
+			$pagetitle="S'enregistrer";
+			require File::build_path(array("view","view.php"));
+		}
 	}
 }
 	

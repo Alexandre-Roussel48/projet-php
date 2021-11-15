@@ -32,10 +32,27 @@ class ModelClients {
 
     public static function getClient($codeClient){
 
-        $sql = "SELECT * from p_clients WHERE codeClient=:id_client";
+        $sql = "SELECT * FROM p_clients WHERE codeClient=:id_client";
         $req_prep = Model::getPDO()->prepare($sql);
 
         $values = array("id_client" => $codeClient);
+        $req_prep->execute($values);
+
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelClients');
+        $tab_cli = $req_prep->fetchAll();
+
+        if (empty($tab_cli))
+            return false;
+
+        return $tab_cli[0];
+    }
+
+
+    public static function clientLogin($mail, $mdp){
+        $sql = "SELECT * FROM p_clients WHERE mail=:mail AND mdp:mdp";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array("mail" => $mail, "mdp" => $mdp);
         $req_prep->execute($values);
 
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelClients');
