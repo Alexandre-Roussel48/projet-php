@@ -64,5 +64,22 @@ class ModelClients {
         return $tab_cli[0];
     }
 
+    public function save() {
+
+        $sql = "INSERT INTO p_clients (nomClient,prenomClient,mail,telephone,mdp,adresse) VALUES (:nomClient,:prenomClient,:mail,:telephone,:mdp,:adresse);";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "nomClient" => $this->nomClient,
+            "prenomClient" => $this->prenomClient,
+            "mail" => $this->mail,
+            "telephone" => $this->telephone,
+            "mdp" => $this->mdp,
+            "adresse" => $this->adresse
+        );
+
+        $req_prep->execute($values);
+    }
+
 }
 ?>

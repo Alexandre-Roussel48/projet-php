@@ -35,10 +35,17 @@ class ControllerClients {
 	}
 
 	public static function created() {
-		$client = $_GET['client'];
-		$marque = $_GET['marque'];
-		$prix = $_GET['prix'];
-		$c = new ModelClients($client,$marque,$prix);
+
+
+
+
+		$nomClient = $_GET['nomClient'];
+		$prenomClient = $_GET['prenomClient'];
+		$mail = $_GET['mail'];
+		$telephone = $_GET['telephone'];
+		$mdp = $_GET['mdp'];
+		$adresse = $_GET['adresse'];
+		$c = new ModelClients($nomClient,$prenomClient,$mail,$telephone,$mdp,$adresse);
 		$c->save();
 		$controller='clients';
 		$view='created';
