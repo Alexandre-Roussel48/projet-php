@@ -4,14 +4,18 @@ class ModelClients {
     private $codeClient, $nomClient, $prenomClient, $mail, $telephone, $mdp, $adresse;
 
     public function __construct($codeClient = NULL, $nomClient = NULL, $prenomClient = NULL, $mail = NULL, $telephone = NULL, $mdp = NULL, $adresse = NULL) {
-        if (!is_null($codeClient) && !is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($telephone) && !is_null($mdp) && !is_null($adresse)) {
+        $this->codeClient = $codeClient; //codeClient est forcement NULL à l'inscription de l'utilisateur
+        
+        if (!is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($telephone) && !is_null($mdp) && !is_null($adresse)) {
             $this->codeClient = $codeClient;
             $this->nomClient = $nomClient;
             $this->prenomClient = $prenomClient;
             $this->mail = $mail;
+            $this->mdp = $mdp;
             $this->telephone = $telephone;
             $this->adresse = $adresse;
         }
+
     }
 
     public function get($nom) {
@@ -77,7 +81,6 @@ class ModelClients {
             "mdp" => $this->mdp,
             "adresse" => $this->adresse
         );
-
         $req_prep->execute($values);
     }
 
