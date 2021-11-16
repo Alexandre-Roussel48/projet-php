@@ -35,10 +35,6 @@ class ControllerClients {
 	}
 
 	public static function created() {
-
-
-
-
 		$nomClient = $_GET['nomClient'];
 		$prenomClient = $_GET['prenomClient'];
 		$mail = $_GET['mail'];
@@ -54,12 +50,33 @@ class ControllerClients {
 		require File::build_path(array("view","view.php"));
 	}
 
+	public static function login() {
+		$controller='clients';
+		$view='login';
+		$pagetitle='Se connecter';
+		require File::build_path(array("view","view.php"));
+	}
+
+	public static function verification() {
+		$c = ModelClients::clientExiste($_POST['mail'],$_POST['mdp']);
+		if ($c===false) {
+			$controller = 'clients';
+			$view = 'error';
+			$pagetitle = 'Erreur';
+			require File::build_path(array("view","view.php"));
+		} else {
+			$controller = 'clients';
+			$view = 'error';
+			$pagetitle = 'Erreur';
+		}
+	}
+
 	
-	public static function login(){
+	/*public static function login(){
 		
 		if(isset($_GET['mail']) && isset($_GET['mdp'])){
 			//Si l'id et le mdp ont été remplis
-			$c = Modelclients::clientLogin($_GET['mail'], $_GET['mdp']);
+			$c = ModelClients::clientLogin($_GET['mail'], $_GET['mdp']);
 			if(c===false){
 				$controller='clients';
 				$view='error';
@@ -80,7 +97,7 @@ class ControllerClients {
 			$pagetitle="S'enregistrer";
 			require File::build_path(array("view","view.php"));
 		}
-	}
+	}*/
 }
 	
 ?>

@@ -47,12 +47,12 @@ class ModelClients {
         return $tab_cli[0];
     }
 
+    public static function clientExiste($mail, $mdp) {
 
-    public static function clientLogin($mail, $mdp){
-        $sql = "SELECT * FROM p_clients WHERE mail=:mail AND mdp:mdp";
+        $sql = "SELECT * FROM p_clients WHERE mail=:mail_client AND mdp=:mdp_client";
         $req_prep = Model::getPDO()->prepare($sql);
 
-        $values = array("mail" => $mail, "mdp" => $mdp);
+        $values = array("mail_client" => $mail, "mdp_client" => $mdp);
         $req_prep->execute($values);
 
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelClients');
