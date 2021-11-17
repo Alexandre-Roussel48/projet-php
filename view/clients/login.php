@@ -1,4 +1,4 @@
-<form method="post" action="index.php">
+<form method="get" action="index.php">
     <fieldset>
         <legend>Se connecter : </legend>
         <input type="hidden" name="controller" value="clients">

@@ -58,7 +58,7 @@ class ControllerClients {
 	}
 
 	public static function verification() {
-		$c = ModelClients::clientExiste($_POST['mail'],$_POST['mdp']);
+		$c = ModelClients::clientExiste($_GET['mail'],$_GET['mdp']);
 		if ($c===false) {
 			$controller = 'clients';
 			$view = 'error';
