@@ -1,4 +1,3 @@
-
 <?php
-    echo '<p>Erreur : <a href="?action=readAll">Retour</a></p>';
+    echo '<p>Erreur : <a href="?controller=modeles&action=readAll">Retour</a></p>';
 ?>
