@@ -86,5 +86,15 @@ class ModelClients {
         $req_prep->execute($values);
     }
 
+    public function mailDisponible(){
+        $sql = "SELECT COUNT(*) FROM p_clients WHERE mail=:nouvMail";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array("nouvMail" => $this->mail);
+        $req_prep->execute($values);
+        $tab_int = $req_prep->fetchAll();
+        
+    }
+
 }
 ?>

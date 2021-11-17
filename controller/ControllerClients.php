@@ -43,14 +43,21 @@ class ControllerClients {
 		$mdp = $_GET['mdp'];
 		$adresse = $_GET['adresse'];
 		$c = new ModelClients(NULL, $nomClient,$prenomClient,$mail,$telephone,$mdp,$adresse);
-		$c->save();
-		$controller='clients';
-		$view='created';
-		$pagetitle='Client créé';
-		$tab_cli = ModelClients::getAllClients();
-		require File::build_path(array("view","view.php"));
+		if($c->mailDisponible()){
+			$c->save();
+			$controller='clients';
+			$view='created';
+			$pagetitle='Client créé';
+			$tab_cli = ModelClients::getAllClients();
+			require File::build_path(array("view","view.php"));
+		}
+		else{
+			$controller='clients';
+			$view='error';
+			$pagetitle='Mail deja existant';
+			require File::build_path(array("view","view.php"));
+		}
 	}
-
 
 	public static function login() {
 		$controller='clients';
