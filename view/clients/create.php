@@ -2,12 +2,13 @@
     <fieldset>
         <legend>S'inscrire : </legend>
         <input type='hidden' name='action' value='created'>
+        <input type='hidden' name='controller' value='clients'>
 
         <fieldset>
             <legend>Informations obligatoires : </legend>
             <p>
                 <label for="nom">Nom</label> :
-                <input type="text" placeholder="Gaston" id="nom" required/>
+                <input type="text" placeholder="Gaston" name = "nom" id="nom" required/>
             </p>
             <p>
                 <label for="prenom">Prénom</label> :
