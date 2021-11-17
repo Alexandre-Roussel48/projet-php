@@ -34,14 +34,27 @@ class ControllerClients {
 		require File::build_path(array("view","view.php"));
 	}
 
+
 	public static function created() {
-		$nomClient = $_GET['nomClient'];
-		$prenomClient = $_GET['prenomClient'];
+		/*
+https://webinfo.iutmontp.univ-montp2.fr/~depeyreg/index.php?
+action=created
+&controller=clients&
+nom=roub_humain&
+prenom=Gatien&
+mail=test%40pandore.dnd&
+mdp=test&
+adresse=1+rue+jdr&
+telephone=0123456789
+		*/
+		$nomClient = $_GET['nom'];
+		$prenomClient = $_GET['prenom'];
 		$mail = $_GET['mail'];
 		$telephone = $_GET['telephone'];
 		$mdp = $_GET['mdp'];
 		$adresse = $_GET['adresse'];
-		$c = new ModelClients($nomClient,$prenomClient,$mail,$telephone,$mdp,$adresse);
+		echo("</br></br>adresse=".$adresse."</br></br></br></br></br>");
+		$c = new ModelClients(NULL, $nomClient,$prenomClient,$mail,$telephone,$mdp,$adresse);
 		$c->save();
 		$controller='clients';
 		$view='created';
@@ -49,6 +62,7 @@ class ControllerClients {
 		$tab_cli = ModelClients::getAllClients();
 		require File::build_path(array("view","view.php"));
 	}
+
 
 	public static function login() {
 		$controller='clients';
