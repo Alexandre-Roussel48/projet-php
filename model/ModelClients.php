@@ -5,20 +5,8 @@ class ModelClients {
 
     public function __construct($codeClient = NULL, $nomClient = NULL, $prenomClient = NULL,
      $mail = NULL, $telephone = NULL, $mdp = NULL, $adresse = NULL) {
-        //$this->codeClient = $codeClient; //codeClient est forcement NULL à l'inscription de l'utilisateur 
         
-        echo("adresse = ".$adresse." </br></br></br>");
-        var_dump($this);
-
-        echo("</br>code=".$codeClient);
-        echo("</br>nom=".$nomClient); 
-        echo("</br>prenom=".$prenomClient); 
-        echo("</br>mail=".$mail); 
-        echo("</br>telephone=".$telephone); 
-        echo("</br>mdp=".$mdp); 
-        echo("</br>adresse=".$adresse."</br>");
         if(!is_null($codeClient)){
-            echo("</br>oooooooooooooooooooo</br>");
             $this->codeClient = $codeClient;
         }
 
@@ -30,9 +18,6 @@ class ModelClients {
             $this->telephone = $telephone;
             $this->adresse = $adresse;
         }
-        echo('aaaaaaaaaaaaaaaaa</br></br></br>');
-        var_dump($this);
-
     }
 
     public function get($nom) {
