@@ -60,14 +60,11 @@ class ControllerClients {
 	public static function verification() {
 		$c = ModelClients::clientExiste($_GET['mail'],$_GET['mdp']);
 		if ($c===false) {
-			$controller = 'clients';
-			$view = 'error';
-			$pagetitle = 'Erreur';
-			require File::build_path(array("view","view.php"));
+			ControllerClients::login();
 		} else {
-			$controller = 'clients';
-			$view = 'error';
-			$pagetitle = 'Erreur';
+			$controller = '';
+			$view = '';
+			$pagetitle = '';
 		}
 	}
 
