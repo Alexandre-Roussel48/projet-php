@@ -3,11 +3,26 @@ require_once File::build_path(array("model","Model.php"));
 class ModelClients {
     private $codeClient, $nomClient, $prenomClient, $mail, $telephone, $mdp, $adresse;
 
-    public function __construct($codeClient = NULL, $nomClient = NULL, $prenomClient = NULL, $mail = NULL, $telephone = NULL, $mdp = NULL, $adresse = NULL) {
-        $this->codeClient = $codeClient; //codeClient est forcement NULL à l'inscription de l'utilisateur
+    public function __construct($codeClient = NULL, $nomClient = NULL, $prenomClient = NULL,
+     $mail = NULL, $telephone = NULL, $mdp = NULL, $adresse = NULL) {
+        //$this->codeClient = $codeClient; //codeClient est forcement NULL à l'inscription de l'utilisateur 
         
-        if (!is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($telephone) && !is_null($mdp) && !is_null($adresse)) {
+        echo("adresse = ".$adresse." </br></br></br>");
+        var_dump($this);
+
+        echo("</br>code=".$codeClient);
+        echo("</br>nom=".$nomClient); 
+        echo("</br>prenom=".$prenomClient); 
+        echo("</br>mail=".$mail); 
+        echo("</br>telephone=".$telephone); 
+        echo("</br>mdp=".$mdp); 
+        echo("</br>adresse=".$adresse."</br>");
+        if(!is_null($codeClient)){
+            echo("</br>oooooooooooooooooooo</br>");
             $this->codeClient = $codeClient;
+        }
+
+        if (!is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($telephone) && !is_null($mdp) && !is_null($adresse)) {             
             $this->nomClient = $nomClient;
             $this->prenomClient = $prenomClient;
             $this->mail = $mail;
@@ -15,6 +30,8 @@ class ModelClients {
             $this->telephone = $telephone;
             $this->adresse = $adresse;
         }
+        echo('aaaaaaaaaaaaaaaaa</br></br></br>');
+        var_dump($this);
 
     }
 
