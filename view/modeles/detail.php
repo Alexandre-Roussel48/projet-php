@@ -4,7 +4,7 @@
     $marque = $m->get('marque'); $marqueHtml = htmlspecialchars($marque);
     $prix = $m->get('prix'); $prixHtml = htmlspecialchars($prix);
 ?>
-<div style="text-align: center;">
+<div style="margin-top: 20px; text-align: center;">
     <span style="margin-bottom: auto; font-weight: bold; text-transform: uppercase; font-size: 24px;"><?php echo "$marqueHtml"?></span>
         <span style="margin: auto;  font-size: 24px;"> - <em><?php echo "$modeleHtml"?></em></span>
         <p style="margin: auto; font-size: 28px;">Prix : <?php echo "$prixHtml"?></p>
