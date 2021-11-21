@@ -4,8 +4,6 @@
         <input type="hidden" name="controller" value="clients">
         <input type='hidden' name='action' value='verification'>
 
-        <fieldset>
-            <legend>Informations obligatoires : </legend>
             <p>
                 <label for="mail">Adresse email</label> :
                 <input type="text" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -15,7 +13,6 @@
                 <label for="mdp">Mot de passe</label> :
                 <input type="password" name="mdp" id="mdp" required/>
             </p>
-        </fieldset>
         <p>
             <input type="submit" value="Envoyer" />
         </p>
