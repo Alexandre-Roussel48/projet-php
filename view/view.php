@@ -27,15 +27,11 @@
             ?>
         </main>
 
+        <footer>
+            <p>Site d'e-commerce de Gatien, Mélanie, Bastien et Alexandre !</p>
+        </footer>
+
     </body>
-
-    <footer>
-
-        <p>
-            Site d'e-commerce de Gatien, Mélanie, Bastien et Alexandre !
-        </p>
-
-    </footer>
-
+    
 </html>
 
