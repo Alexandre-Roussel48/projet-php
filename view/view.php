@@ -14,7 +14,7 @@
         <header>
             <nav>
                 <div><a href="index.php?controller=modeles&action=readAll">Tous les modèles</a></div>
-                <div><a href="index.php?controller=clients&action=readAll">Page d'accueil clients</a></div>
+                <div><a href="index.php?controller=clients&action=readAll">Tous les clients</a></div>
                 <div><a href="index.php?controller=clients&action=login">Se connecter</a></div>
                 <div><a href="index.php?controller=clients&action=create">S'inscrire</a></div>
             </nav>

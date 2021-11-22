@@ -1,8 +1,9 @@
 header{/*Positionne le header dans le coin parfaitement en haut à gauche*/
-
+    position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
+    z-index: 2;
 }
 
 header nav {     /*Positionne le header sans burger*/
@@ -28,21 +29,23 @@ header nav > div:hover {/*Augmente la taille de l'élement sur lequel la souris 
 
 header nav div a{
     font-size: 25px; /*Taille des liens dans le header*/
-    color: #7070ff;
+    color: #CCCCFF;
+    text-decoration: none;
 }
 
 header nav div:hover a{/*Met en gras le texte sur laquelle passe la souris dans le menu*/
     font-weight: bolder;
-    transition:400ms;
+    color: #373737;
+    transition:500ms;
 }
 
 body {
     background-color: #CECECE;
 }
 
-main, footer {
+main, footer{
     position: relative;
-    top: 30px;
+    top: 50px;
 }
 
 fieldset{ /*Met le fond en gris et arrondit les coins*/
