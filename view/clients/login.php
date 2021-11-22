@@ -17,8 +17,9 @@
             <input type="submit" value="Envoyer" />
         </p>
         <?php
-            var_dump($c);
-            echo '<p style="color:red;">Votre mail ou votre mot de passe est incorrect.</p>';
+            if($_GET['action']=="verification") {
+                echo '<p style="color:red;">Votre mail ou votre mot de passe est incorrect.</p>';
+            }
         ?>
     </fieldset>
 </form>
