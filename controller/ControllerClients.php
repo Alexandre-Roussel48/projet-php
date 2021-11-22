@@ -1,5 +1,6 @@
 <?php
 require_once File::build_path(array("model","ModelClients.php"));
+require_once File::build_path(array("controller","ControllerModeles.php"));
 
 class ControllerClients {
 	public static function readAll() {
@@ -71,9 +72,7 @@ class ControllerClients {
 		if ($c===false) {
 			ControllerClients::login();
 		} else {
-			$controller = '';
-			$view = '';
-			$pagetitle = '';
+			ControllerModeles::readAll();
 		}
 	}
 
