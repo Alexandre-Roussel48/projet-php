@@ -72,6 +72,8 @@ class ControllerClients {
 		if ($c===false) {
 			ControllerClients::login();
 		} else {
+			$_SESSION['nom'] = $c->get('nomClient');
+			$_SESSION['prenom'] = $c->get('prenomClient');
 			ControllerModeles::readAll();
 		}
 	}
