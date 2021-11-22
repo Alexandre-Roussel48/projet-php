@@ -23,6 +23,10 @@
                 <label for="mdp">Mot de passe</label> :
                 <input type="password" name="mdp" id="mdp" required/>
             </p>
+            <p>
+                <label for="mdpVerif">Confirmation du mot de passe</label> :
+                <input type="password" name="mdpVerif" id="mdpVerif" required/>
+            </p>
         </fieldset>
         <fieldset>
             <legend>Informations complémentaires :</legend>
