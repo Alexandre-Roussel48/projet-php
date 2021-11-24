@@ -4,6 +4,21 @@
         <input type='hidden' name='action' value='created'>
         <input type='hidden' name='controller' value='clients'>
 
+        <?php
+            if (isset($_SESSION['mdpVerif'])) {
+                if ($_SESSION['mdpVerif']==0) {
+                    echo "<p>Le mot de passe n'est pas identique !</p>";
+                }
+                unset($_SESSION['mdpVerif']);
+            }
+            if (isset($_SESSION['mailVerif'])) {
+                if ($_SESSION['mailVerif']==0) {
+                    echo "<p>Le mail est déjà utilisé !</p>";
+                }
+                unset($_SESSION['mailVerif']);
+            }
+        ?>
+
         <fieldset>
             <legend>Informations obligatoires : </legend>
             <p>

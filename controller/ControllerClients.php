@@ -29,42 +29,77 @@ class ControllerClients {
 	}
 
 	public static function create() {
-		$controller='clients';
-		$view='create';
-		$pagetitle='Créer un client';
-		require File::build_path(array("view","view.php"));
-	}
 
-
-	public static function created() {
-		$nomClient = $_GET['nom'];
-		$prenomClient = $_GET['prenom'];
-		$mail = $_GET['mail'];
-		$telephone = $_GET['telephone'];
-		$mdp = $_GET['mdp'];
-		$adresse = $_GET['adresse'];
-		$c = new ModelClients(NULL, $nomClient,$prenomClient,$mail,$telephone,$mdp,$adresse);
-		if($c->mailDisponible()){
-			$c->save();
+		if (isset($_SESSION['nom'])) {
 			$controller='clients';
-			$view='created';
-			$pagetitle='Client créé';
-			$tab_cli = ModelClients::getAllClients();
+			$view='deconnect';
+			$pagetitle='Se déconnecter';
+			require File::build_path(array("view","view.php"));
+		} else {
+			$controller='clients';
+			$view='create';
+			$pagetitle='Créer un client';
 			require File::build_path(array("view","view.php"));
 		}
-		else{
-			$controller='clients';
-			$view='error';
-			$pagetitle='Mail deja existant';
-			require File::build_path(array("view","view.php"));
+
+
+	}
+
+	public static function created() {
+		if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['mail']) && isset($_GET['mdp']) && isset($_GET['mdpVerif'])) {
+
+			$nom = $_GET['nom'];
+			$prenom = $_GET['prenom'];
+			$mail = $_GET['mail'];
+			$mdp = $_GET['mdp'];
+			$mdpVerif = $_GET['mdpVerif'];
+
+			if (isset($_GET['telephone'])) {
+				$telephone = $_GET['telephone'];
+			} else {
+				$telephone = NULL;
+			}
+
+			if (isset($_GET['adresse'])) {
+				$adresse = $_GET['adresse'];
+			} else {
+				$adresse = NULL;
+			}
+
+
+			if ($mdp!=$mdpVerif) {
+				$_SESSION['mdpVerif'] = 0;
+			} else {
+				$_SESSION['mdpVerif'] = 1;
+			}
+			$_SESSION['mailVerif'] = Modelclients::mailDispo($mail);
+
+			if ($_SESSION['mdpVerif']==0 || $_SESSION['mailVerif']==0) {
+				ControllerClients::create();
+			} else {
+				$c = new Modelclients(NULL,$nom,$prenom,$mail,$telephone,$mdp,$adresse);
+				$c->save();
+				ControllerClients::login();
+			}
+
+		} else {
+			ControllerClients::create();
 		}
 	}
 
 	public static function login() {
-		$controller='clients';
-		$view='login';
-		$pagetitle='Se connecter';
-		require File::build_path(array("view","view.php"));
+		if (isset($_SESSION['nom'])) {
+			$controller='clients';
+			$view='deconnect';
+			$pagetitle='Se déconnecter';
+			require File::build_path(array("view","view.php"));
+		} else {
+			$controller='clients';
+			$view='login';
+			$pagetitle='Se connecter';
+			require File::build_path(array("view","view.php"));
+		}
+		
 	}
 
 	public static function verification() {
@@ -78,33 +113,13 @@ class ControllerClients {
 		}
 	}
 
-	
-	/*public static function login(){
-		
-		if(isset($_GET['mail']) && isset($_GET['mdp'])){
-			//Si l'id et le mdp ont été remplis
-			$c = ModelClients::clientLogin($_GET['mail'], $_GET['mdp']);
-			if(c===false){
-				$controller='clients';
-				$view='error';
-				$pagetitle='Erreur';
-				require File::build_path(array("view","view.php"));
-			}
-			else{
-				$controller='clients';
-				$view='detail';
-				$pagetitle='Connexion réussie';
-				require File::build_path(array("view","view.php"));
-			}
+	public static function deconnect() {
+		if ($_GET['deconnect']=="yes") {
+			session_unset();
+
 		}
-		else{
-			//Si l'id et le mdp n'ont pas été remplis
-			$controller='clients';
-			$view='login';
-			$pagetitle="S'enregistrer";
-			require File::build_path(array("view","view.php"));
-		}
-	}*/
+		ControllerModeles::readAll();
+	}
 }
 	
 ?>

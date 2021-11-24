@@ -73,26 +73,39 @@ class ModelClients {
     }
 
     public function save() {
-        $mdp1 = $_GET['mdp'];
-        $mdp2 = $_GET['mdpVerif'];
-        if($mdp1 === $mdp2) {
-            $sql = "INSERT INTO p_clients (nomClient,prenomClient,mail,telephone,mdp,adresse) VALUES (:nomClient,:prenomClient,:mail,:telephone,:mdp,:adresse);";
-            $req_prep = Model::getPDO()->prepare($sql);
+        $sql = "INSERT INTO p_clients (nomClient, prenomClient, mail, telephone, mdp, adresse) VALUES
+        (:nomClient, :prenomClient, :mail, :telephone, :mdp, :adresse);";
+        $req_prep = Model::getPDO()->prepare($sql);
 
-            $values = array(
-                "nomClient" => $this->nomClient,
-                "prenomClient" => $this->prenomClient,
-                "mail" => $this->mail,
-                "telephone" => $this->telephone,
-                "mdp" => Security::hacher($this->mdp),
-                "adresse" => $this->adresse
-            );
-            $req_prep->execute($values);
-        }
-        else{
-            echo "Vous n'avez pas pu vous inscrire";
+        $values = array(
+            "nomClient" => $this->nomClient,
+            "prenomClient" => $this->prenomClient,
+            "mail" => $this->mail,
+            "telephone" => $this->telephone,
+            "mdp" => $this->mdp,
+            "adresse" => $this->adresse
+        );
+
+        $req_prep->execute($values);
+    }
+
+    public static function mailDispo($mail) {
+        $sql = "SELECT COUNT(*) FROM p_clients WHERE mail=:mail;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array("mail" => $mail);
+        $req_prep->execute($values);
+
+        $tab_int = $req_prep->fetchAll();
+
+        if ($tab_int[0]['COUNT(*)']==0) {
+            return 1;
+        } else {
+            return 0;
         }
     }
+
+    /*
 
     public function mailDisponible(){
         $sql = "SELECT COUNT(*) FROM p_clients WHERE mail=:nouvMail";
@@ -102,7 +115,11 @@ class ModelClients {
         $req_prep->execute($values);
         $tab_int = $req_prep->fetchAll();
         
-    }
-
+        if($tab_int[0]==0) {
+            echo "0";
+        } else {
+            echo "1";
+        }
+    }*/
 }
 ?>

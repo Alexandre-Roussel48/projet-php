@@ -19,16 +19,19 @@
                 <div><a href="index.php?controller=clients&action=create">S'inscrire</a></div>
             </nav>
             <?php
-                if(isset($_SESSION['nom'])) {
-                    echo '<p>Bonjour '.$_SESSION['prenom'].' '.$_SESSION['nom'].'</p>';
-                }
+
             ?>
         </header>
 
         <main>
             <?php
+
+            if(isset($_SESSION['nom'])) {
+                echo '<p>Bonjour '.$_SESSION['prenom'].' '.$_SESSION['nom'].'</p>';
+            }
+
             $filepath = File::build_path(array("view", $controller, "$view.php"));
-            require $filepath;
+            require_once $filepath;
             ?>
         </main>
 
