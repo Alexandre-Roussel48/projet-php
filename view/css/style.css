@@ -81,6 +81,16 @@ fieldset > * {
     color: white;
 }
 
+fieldset > legend{
+    font-size: 18px;
+    text-align: center;
+}
+
+fieldset > p {
+    font-size: 20px;
+    text-align: center;
+}
+
 footer p{
     border: 1px solid black;
     text-align: right;

@@ -6,8 +6,6 @@
             <h1 style="text-align: center;">Voulez-vous vraiment vous déconnecter ?</h1>
             <p style="text-align: center;">
                 <input type="submit" name="deconnect" value="Oui" />
-            </p>
-            <p style="text-align: center;">
                 <input type="submit" name="deconnect" value="Non" />
             </p>
     </fieldset>

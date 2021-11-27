@@ -17,9 +17,9 @@
                 unset($_SESSION['mailVerif']);
             }
         ?>
-        <h1>S'inscrire : </h1>
+        <h1>S'inscrire</h1>
         <fieldset>
-            <legend>Informations obligatoires : </legend>
+            <legend>Informations obligatoires</legend>
             <p>
                 <label for="nom">Nom</label> :
                 <input type="text" placeholder="Gaston" name = "nom" id="nom" required/>
@@ -43,7 +43,7 @@
             </p>
         </fieldset>
         <fieldset>
-            <legend>Informations complémentaires :</legend>
+            <legend>Informations complémentaires</legend>
             <p>
                 <label for="adresse">Adresse</label> :
                 <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse" id="adresse"/>
@@ -55,7 +55,7 @@
         </fieldset>
 
         <p>
-            <input type="submit" value="Envoyer" />
+            <input type="submit" value="S'inscrire" />
         </p>
     </fieldset>
 </form>
