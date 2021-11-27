@@ -54,6 +54,10 @@ main, footer{
     top: 50px;
 }
 
+h1{
+    text-align: center;
+}
+
 table{
     margin: auto;
     border-collapse: collapse;
@@ -67,14 +71,18 @@ th, td{
 
 /*Met le fond en gris et arrondit les coins*/
 fieldset{ 
-    background-color: #4b4f5377 ;
-    border:2px solid ;
+    background-color: #373737;
+    border: 2px solid ;
     border-radius:8px;
     margin-bottom: 20px;
 }
 
+fieldset > * {
+    color: white;
+}
+
 footer p{
     border: 1px solid black;
-    text-align:right;
-    padding-right:1em;
+    text-align: right;
+    padding-right: 1em;
 }

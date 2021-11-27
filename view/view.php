@@ -15,8 +15,15 @@
             <nav>
                 <div><a href="index.php?controller=modeles&action=readAll">Tous les modèles</a></div>
                 <div><a href="index.php?controller=clients&action=readAll">Tous les clients</a></div>
-                <div><a href="index.php?controller=clients&action=login">Se connecter</a></div>
-                <div><a href="index.php?controller=clients&action=create">S'inscrire</a></div>
+                <?php
+                if(isset($_SESSION['nom'])) {
+                    echo '<div><a href="index.php?controller=clients&action=login">Se déconnecter</a></div>';
+                    echo '<div><a href="#">Mon profil</a></div>';
+                } else {
+                    echo '<div><a href="index.php?controller=clients&action=login">Se connecter</a></div>';
+                    echo '<div><a href="index.php?controller=clients&action=create">S\'inscrire</a></div>';
+                }
+                ?>
             </nav>
             <?php
 
