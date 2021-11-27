@@ -18,7 +18,7 @@
                 <?php
                 if(isset($_SESSION['nom'])) {
                     echo '<div><a href="index.php?controller=clients&action=login">Se déconnecter</a></div>';
-                    echo '<div><a href="#'.$_SESSION['code'].'">Mon profil</a></div>';
+                    echo '<div><a href="#">Mon profil</a></div>';
                 } else {
                     echo '<div><a href="index.php?controller=clients&action=login">Se connecter</a></div>';
                     echo '<div><a href="index.php?controller=clients&action=create">S\'inscrire</a></div>';
