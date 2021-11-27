@@ -114,7 +114,7 @@ class ControllerClients {
 	}
 
 	public static function deconnect() {
-		if ($_GET['deconnect']=="yes") {
+		if ($_GET['deconnect']=="Oui") {
 			session_unset();
 
 		}

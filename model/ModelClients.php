@@ -105,6 +105,21 @@ class ModelClients {
         }
     }
 
+    
+
+    public function isAdmin(){
+        $sql = "SELECT admin FROM p_clients WHERE codeClient=:codeClient;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array("codeClient" => $this->codeClient);
+        $req_prep->execute($values);
+        $tab_int = $req_prep->fetchAll();
+        
+        if (isset($tab_int[0][0]) && $tab_int[0][0]=='1'){
+            return true;
+        }
+        return false;
+    }
     /*
 
     public function mailDisponible(){
