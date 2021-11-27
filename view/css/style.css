@@ -1,4 +1,5 @@
-header{/*Positionne le header dans le coin parfaitement en haut à gauche*/
+/*Positionne le header dans le coin parfaitement en haut à gauche*/
+header{
     position: fixed;
     top: 0px;
     left: 0px;
@@ -6,14 +7,16 @@ header{/*Positionne le header dans le coin parfaitement en haut à gauche*/
     z-index: 2;
 }
 
-header nav {     /*Positionne le header sans burger*/
+/*Positionne le header sans burger*/
+header nav {     
     display: flex;
     flex-direction: row;
     align-items: stretch;
     background-color: #373737;
 }
 
-header nav > div {       /*S'occupe de l'apparence du header sans burger*/
+/*S'occupe de l'apparence du header sans burger*/
+header nav > div {
     text-align: center;
     border-radius: 15px;
     flex-grow: 1;
@@ -21,19 +24,22 @@ header nav > div {       /*S'occupe de l'apparence du header sans burger*/
     margin: 5px 5px 5px 5px;
 }
 
-header nav > div:hover {/*Augmente la taille de l'élement sur lequel la souris passe*/
+/*Augmente la taille de l'élement sur lequel la souris passe*/
+header nav > div:hover {
     flex-grow: 1;
     background-color: #CCCCFF;
     transition:400ms;/*Permet d'éviter que l'animation soit instantanée*/
 }
 
+/*Taille des liens dans le header*/
 header nav div a{
-    font-size: 25px; /*Taille des liens dans le header*/
+    font-size: 25px; 
     color: #CCCCFF;
     text-decoration: none;
 }
 
-header nav div:hover a{/*Met en gras le texte sur laquelle passe la souris dans le menu*/
+/*Met en gras le texte sur laquelle passe la souris dans le menu*/
+header nav div:hover a{
     font-weight: bolder;
     color: #373737;
     transition:500ms;
@@ -48,14 +54,26 @@ main, footer{
     top: 50px;
 }
 
-fieldset{ /*Met le fond en gris et arrondit les coins*/
+table{
+    margin: auto;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 2px solid black;
+    padding: 20px 80px;
+}
+
+
+/*Met le fond en gris et arrondit les coins*/
+fieldset{ 
     background-color: #4b4f5377 ;
     border:2px solid ;
     border-radius:8px;
     margin-bottom: 20px;
 }
 
-footer p {
+footer p{
     border: 1px solid black;
     text-align:right;
     padding-right:1em;
