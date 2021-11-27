@@ -66,6 +66,7 @@ table{
 th, td{
     border: 2px solid black;
     padding: 20px 80px;
+    text-align: center;
 }
 
 

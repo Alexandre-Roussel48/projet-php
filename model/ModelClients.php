@@ -105,8 +105,6 @@ class ModelClients {
         }
     }
 
-    
-
     public function isAdmin(){
         $sql = "SELECT admin FROM p_clients WHERE codeClient=:codeClient;";
         $req_prep = Model::getPDO()->prepare($sql);
