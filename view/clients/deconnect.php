@@ -1,15 +1,14 @@
 <form method="get" action="index.php">
     <fieldset>
-        <legend>Se déconnecter ?</legend>
         <input type='hidden' name='action' value='deconnect'>
         <input type='hidden' name='controller' value='clients'>
 
-        <fieldset>
-            <p>
-                <input type="submit" name = "deconnect" value="yes" />
+            <h1 style="text-align: center;">Voulez-vous vous déconnecter ?</h1>
+            <p style="text-align: center;">
+                <input type="submit" name="deconnect" value="Oui" />
             </p>
-            <p>
-                <input type="submit" name = "deconnect" value="no" />
+            <p style="text-align: center;">
+                <input type="submit" name="deconnect" value="Non" />
             </p>
     </fieldset>
 </form>

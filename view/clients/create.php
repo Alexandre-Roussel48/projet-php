@@ -1,6 +1,5 @@
 <form method="get" action="index.php">
     <fieldset>
-        <legend>S'inscrire : </legend>
         <input type='hidden' name='action' value='created'>
         <input type='hidden' name='controller' value='clients'>
 
@@ -18,7 +17,7 @@
                 unset($_SESSION['mailVerif']);
             }
         ?>
-
+        <h1>S'inscrire : </h1>
         <fieldset>
             <legend>Informations obligatoires : </legend>
             <p>
