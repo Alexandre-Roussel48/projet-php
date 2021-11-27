@@ -12,7 +12,7 @@ header nav {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    background-color: #3F3F3F;
+    background-color: #373737;
 }
 
 /*S'occupe de l'apparence du header sans burger*/
@@ -46,7 +46,7 @@ header nav div:hover a{
 }
 
 body {
-    background-color: #303030;
+    background-color: white;
 }
 
 main, footer{
@@ -56,11 +56,6 @@ main, footer{
 
 h1{
     text-align: center;
-    color: #CCCCFF;
-}
-
-p{
-    color: #CECECE;
 }
 
 table{
@@ -69,7 +64,7 @@ table{
 }
 
 th, td{
-    border: 2px solid #CECECE;
+    border: 2px solid black;
     padding: 20px 80px;
     text-align: center;
 }
@@ -77,14 +72,14 @@ th, td{
 
 /*Met le fond en gris et arrondit les coins*/
 fieldset{ 
-    background-color: #373737;
+    background-color: white;
     border: 2px solid ;
     border-radius:8px;
     margin-bottom: 20px;
 }
 
 fieldset > * {
-    color: white;
+    color: black;
 }
 
 fieldset > legend{
@@ -98,7 +93,7 @@ fieldset > p {
 }
 
 footer p{
-    border: 1px solid #CECECE;
+    border: 2px solid black;
     text-align: right;
     padding-right: 1em;
 }

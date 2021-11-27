@@ -2,11 +2,20 @@
 <html>
 
     <head>
-
         <meta charset="UTF-8">
         <title><?php echo $pagetitle; ?></title>
-        <link rel="stylesheet" type="text/css" href="./view/css/style.css">
-
+        <!--Gestion du thème-->
+        <?php
+        if(isset($_COOKIE['theme']) && $_COOKIE['theme']=="1")
+            echo '<link rel="stylesheet" type="text/css" href="./view/css/style.css">';
+        else if(isset($_GET['theme']) && $_GET['theme']=='1'){
+            setcookie("theme", "1", time()+0);
+            echo '<link rel="stylesheet" type="text/css" href="./view/css/style.css">';
+        } else {
+            setcookie("theme", "0", time()+0);
+            echo '<link rel="stylesheet" type="text/css" href="./view/css/white_style.css">';
+        }
+        ?>
     </head>
 
     <body>
