@@ -43,7 +43,12 @@
         </main>
 
         <footer>
-            <p>Site d'e-commerce de Gatien, Mélanie, Bastien et Alexandre !</p>
+            <p>Site d'e-commerce réalisé par 
+                <a href="https://github.com/Gatien-Depeyre">Gatien</a>, 
+                <a href="https://github.com/melanie-fressard">Mélanie</a>, 
+                <a href="https://github.com/BastienGavioli">Bastien</a> et 
+                <a href="https://github.com/Alexandre-Roussel48">Alexandre</a> !
+            </p>
         </footer>
 
     </body>
