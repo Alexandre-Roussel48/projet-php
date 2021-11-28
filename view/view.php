@@ -10,15 +10,14 @@
         if(isset($_GET['theme'])){
             echo("<!--changement de thème-->\n");
             setcookie("theme", $_GET['theme'], time()+3600);
+            echo "<link rel='stylesheet' type='text/css' href='./view/css/".$_GET['theme']."_style.css'>";
         }
 
         //Appel du thème
-        if(isset($_COOKIE['theme']) && ($_COOKIE['theme']=="white" || $_COOKIE['theme']=='white')){
-            //setcookie("theme", "1", time()+3600);
+        else if(isset($_COOKIE['theme']) && $_COOKIE['theme']=='white'){
             echo '<link rel="stylesheet" type="text/css" href="./view/css/white_style.css">';
         }
         else{
-            //setcookie("theme", "0", time()+3600);
             echo '<link rel="stylesheet" type="text/css" href="./view/css/black_style.css">';
         }
         ?>
