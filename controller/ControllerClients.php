@@ -103,7 +103,7 @@ class ControllerClients {
 	}
 
 	public static function verification() {
-		$c = ModelClients::clientExiste($_GET['mail'],$_GET['mdp']);
+		$c = ModelClients::checkLogin($_GET['mail'],$_GET['mdp']);
 		if ($c===false) {
 			ControllerClients::login();
 		} else {
