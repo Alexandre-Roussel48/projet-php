@@ -17,15 +17,4 @@
         if($c->isAdmin()==1)
             echo '<p style="text-decoration: underline red;">Possède le rôle Administateur</p>';
     ?>
-    <fieldset>
-        <form method="get" action="index.php">
-    <fieldset>
-            <legend>Choix du thème</legend>
-            <p>
-                <input type="submit" name="theme" id="theme" value="0" />
-                <input type="submit" name="theme" id="theme" value="1" />
-            </p>
-    </fieldset>
-</form>
-    </fieldset>
 </fieldset>

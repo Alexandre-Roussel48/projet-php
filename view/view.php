@@ -6,12 +6,19 @@
         <title><?php echo $pagetitle; ?></title>
         <!--Gestion du thème-->
         <?php
-        if(isset($_COOKIE['theme']) && ($_COOKIE['theme']=="1" || $_COOKIE['theme']=='1')){
-            setcookie("theme", "1", time()+3600);
+        //Verification changement de thème
+        if(isset($_GET['theme'])){
+            echo("<!--changement de thème-->\n");
+            setcookie("theme", $_GET['theme'], time()+3600);
+        }
+
+        //Appel du thème
+        if(isset($_COOKIE['theme']) && ($_COOKIE['theme']=="white" || $_COOKIE['theme']=='white')){
+            //setcookie("theme", "1", time()+3600);
             echo '<link rel="stylesheet" type="text/css" href="./view/css/white_style.css">';
         }
-        else{// if(isset($_GET['theme']) && $_GET['theme']=='0'){
-            setcookie("theme", "0", time()+3600);
+        else{
+            //setcookie("theme", "0", time()+3600);
             echo '<link rel="stylesheet" type="text/css" href="./view/css/black_style.css">';
         }
         ?>
@@ -51,12 +58,22 @@
         </main>
 
         <footer>
-            <p>Site d'e-commerce réalisé par 
-                <a href="https://github.com/Gatien-Depeyre">Gatien</a>, 
-                <a href="https://github.com/melanie-fressard">Mélanie</a>, 
-                <a href="https://github.com/BastienGavioli">Bastien</a> et 
-                <a href="https://github.com/Alexandre-Roussel48">Alexandre</a> !
-            </p>
+
+
+                <div>
+                    <form method="get" action="index.php">
+                        Choix du thème :
+                        <input type="submit" name="theme" id="theme" value="black" />
+                        <input type="submit" name="theme" id="theme" value="white" />
+                    </form>  
+                </div>
+                <div>  
+                    Site d'e-commerce réalisé par 
+                    <a href="https://github.com/Gatien-Depeyre">Gatien</a>, 
+                    <a href="https://github.com/melanie-fressard">Mélanie</a>, 
+                    <a href="https://github.com/BastienGavioli">Bastien</a> et 
+                    <a href="https://github.com/Alexandre-Roussel48">Alexandre</a> !
+                </div>
         </footer>
 
     </body>

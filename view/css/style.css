@@ -102,8 +102,13 @@ fieldset > p {
     text-align: center;
 }
 
-footer p{
+footer{
+    color: var(--text-color);
     border: 1px solid black;
     text-align: right;
     padding-right: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
 }
