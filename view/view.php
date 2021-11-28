@@ -6,16 +6,16 @@
         <title><?php echo $pagetitle; ?></title>
         <!--Gestion du thème-->
         <?php
-        if(isset($_COOKIE['theme']) && $_COOKIE['theme']=="1")
-            echo '<link rel="stylesheet" type="text/css" href="./view/css/style.css">';
-        else if(isset($_GET['theme']) && $_GET['theme']=='1'){
-            setcookie("theme", "1", time()+0);
-            echo '<link rel="stylesheet" type="text/css" href="./view/css/style.css">';
-        } else {
-            setcookie("theme", "0", time()+0);
+        if(isset($_COOKIE['theme']) && ($_COOKIE['theme']=="1" || $_COOKIE['theme']=='1')){
+            setcookie("theme", "1", time()+3600);
             echo '<link rel="stylesheet" type="text/css" href="./view/css/white_style.css">';
         }
+        else{// if(isset($_GET['theme']) && $_GET['theme']=='0'){
+            setcookie("theme", "0", time()+3600);
+            echo '<link rel="stylesheet" type="text/css" href="./view/css/black_style.css">';
+        }
         ?>
+        <link rel="stylesheet" type="text/css" href="./view/css/style.css">
     </head>
 
     <body>

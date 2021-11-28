@@ -12,7 +12,7 @@ header nav {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    background-color: #3F3F3F;
+    background-color: var(--header-color-bg);
 }
 
 /*S'occupe de l'apparence du header sans burger*/
@@ -27,26 +27,26 @@ header nav > div {
 /*Augmente la taille de l'élement sur lequel la souris passe*/
 header nav > div:hover {
     flex-grow: 1;
-    background-color: #CCCCFF;
+    background-color: var(--header-link-color);
     transition:400ms;/*Permet d'éviter que l'animation soit instantanée*/
 }
 
 /*Taille des liens dans le header*/
 header nav div a{
     font-size: 25px; 
-    color: #CCCCFF;
+    color: var(--header-link-color);
     text-decoration: none;
 }
 
 /*Met en gras le texte sur laquelle passe la souris dans le menu*/
 header nav div:hover a{
     font-weight: bolder;
-    color: #373737;
+    color: var(--header-color-bg);
     transition:500ms;
 }
 
 body {
-    background-color: #303030;
+    background-color: var(--body-color-bg);
 }
 
 main, footer{
@@ -56,11 +56,11 @@ main, footer{
 
 h1{
     text-align: center;
-    color: #CCCCFF;
+    color: var(--link-color);
 }
 
 p{
-    color: #CECECE;
+    color: var(--text-color);
 }
 
 table{
@@ -69,22 +69,27 @@ table{
 }
 
 th, td{
-    border: 2px solid #CECECE;
+    border: 2px solid black;
     padding: 20px 80px;
     text-align: center;
+    color: var(--text-color);
+}
+
+a{
+    color: var(--link-color);
 }
 
 
 /*Met le fond en gris et arrondit les coins*/
 fieldset{ 
-    background-color: #373737;
+    background-color: var(--fieldset-color-bg);
     border: 2px solid ;
     border-radius:8px;
     margin-bottom: 20px;
 }
 
 fieldset > * {
-    color: white;
+    color: var(--text-color);
 }
 
 fieldset > legend{
@@ -98,7 +103,7 @@ fieldset > p {
 }
 
 footer p{
-    border: 1px solid #CECECE;
+    border: 1px solid black;
     text-align: right;
     padding-right: 1em;
 }
