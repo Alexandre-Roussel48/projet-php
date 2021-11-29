@@ -27,13 +27,13 @@
                 <?php
                 if(isset($_SESSION['nom'])) {
                     echo '<div><a href="index.php?controller=clients&action=login">Se déconnecter</a></div>';
-                    echo '<div><a href="#">Mon profil</a></div>';
+                    echo '<div><a href="index.php?controller=clients&action=read&client='.$_SESSION['client']->get('codeClient').'">Mon profil</a></div>';
                 } else {
                     echo '<div><a href="index.php?controller=clients&action=login">Se connecter</a></div>';
                     echo '<div><a href="index.php?controller=clients&action=create">S\'inscrire</a></div>';
                 }
                 if (isset($_SESSION['admin'])) {
-                    echo "<div><a href=\"index.php?controller=clients&action=admin\">Page admin</a></div>";
+                    echo '<div><a href="index.php?controller=clients&action=admin">Page admin</a></div>';
                 }
                 ?>
             </nav>
