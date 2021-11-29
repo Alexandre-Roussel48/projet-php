@@ -121,5 +121,25 @@ class ModelClients {
         return $tab_int[0]['admin']==1;
     }
 
+
+    public static function getNonce($mail){
+        $sql = "SELECT nonce FROM p_clients WHERE mail=:mail;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array("mail" => $mail);
+        $req_prep->execute($values);
+
+        $tab_cli = $req_prep->fetchAll();
+        return $tab_cli[0]['nonce'];
+    }
+
+    public static function supprimeNonce($mail){
+        $sql = "UPDATE p_clients SET nonce = '' WHERE mail=:mail;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array("mail" => $mail);
+        $req_prep->execute($values);
+    }
 }
 ?>
+

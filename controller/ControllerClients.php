@@ -110,18 +110,39 @@ class ControllerClients {
 		
 	}
 
-	public static function verification() { //demande une verif email et mdp pour la connexion 
-		$c = ModelClients::checkLogin($_GET['mail'],$_GET['mdp']);
-		if ($c===false) {
-			ControllerClients::login();
-		} else {
-			$_SESSION['client'] = $c;
-			$_SESSION['nom'] = $c->get('nomClient');
-			$_SESSION['prenom'] = $c->get('prenomClient');
-			if (Modelclients::isAdmin($_GET['mail'])) {
-				$_SESSION['admin'] = 1;
+	public static function verification() { //demande une verif email et mdp pour la connexion
+		if(isset($_GET['mail']) && isset($_GET['mdp'])){
+			$c = ModelClients::checkLogin($_GET['mail'],$_GET['mdp']);
+			if ($c===false) {
+				ControllerClients::login();
+			} else {
+				$_SESSION['client'] = $c;
+				$_SESSION['nom'] = $c->get('nomClient');
+				$_SESSION['prenom'] = $c->get('prenomClient');
+				if (Modelclients::isAdmin($_GET['mail'])) {
+					$_SESSION['admin'] = 1;
+				}
+				ControllerModeles::readAll();
 			}
-			ControllerModeles::readAll();
+		}
+	}
+
+
+	public static function verifNonce(){
+		if(isset($_GET["nonce"]) && isset($_GET["mail"])){
+			$nonce = ModelClients::getNonce($_GET["mail"]);
+			if($nonce === $_GET["nonce"]){
+				ModelClients::supprimeNonce($_GET["mail"]);
+				$controller='clients';
+				$view='login';
+				$pagetitle='Se connecter';
+				require File::build_path(array("view","view.php"));
+			}
+		} else{
+			$controller='clients';
+			$view='created';
+			$pagetitle='Code incorrect';
+			require File::build_path(array("view","view.php"));
 		}
 	}
 
