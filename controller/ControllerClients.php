@@ -87,12 +87,39 @@ class ControllerClients {
 			} else {
 				$c = new Modelclients(NULL,$nom,$prenom,$mail,$telephone,$mdp,$adresse);
 				$c->save();
+
+				//Envoi le mail de verification
+				
+				$to = $_GET['mail']; //Destinataire
+				$subject = "Confirmation de votre addresse mail"; //sujet
+				$message = ControllerClients::createMail(ModelClients::getNonce($to)); //body du message
+				
+				mail($to, $subject, $message);
+
+				//Demande la verification du mail 
 				ControllerClients::verifNonce();
 			}
 
 		} else {
 			ControllerClients::create();
 		}
+	}
+
+
+	public static function createMail($nonce){
+
+		$text = "Bonjour, \n 
+		vous avez créé un compte sur notre site _nomdusite_ ! \n
+		Afin de valider votre compte et pour garantir votre sécurité suivez les instructions suivantes :\n
+		1 - Asseyez vous devant votre écran; \n
+		2 - Cliquez sur le lien suivant : https://webinfo.iutmontp.univ-montp2.fr/~fressardm/index.php?controller=clients&action=created \n
+		3 - Rentrez le code suivant : ".$nonce." \n
+		4 - Profitez d'une pleine expérience de notre site ! \n
+		
+		A bientot sur _nomdusite_ \n 
+		_slogan_";
+
+		return $text;
 	}
 
 	public static function login() {
