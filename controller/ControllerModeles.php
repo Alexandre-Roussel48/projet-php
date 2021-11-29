@@ -48,25 +48,40 @@ class ControllerModeles {
 		ControllerModeles::readAll();
 	}
 
+	public static function creationPanier() { //tous les noms peuvent etre remplacer par des id ou on peut ajt l'id si besoin
+        if (!isset($_SESSION['panier'])) {
+            $_SESSION['panier'] = array(
+            							"produit" => array(),
+            							"quantité" => array()
+            						);
+        }
+        return true; //return true pour rendre les test de l'existant plus facile
+    }
+
 	public static function ajouterArticle() {
         //Si le panier existe
-        if (ControllerProduits::creationPanier()) {
-            $nomProduit = $_GET['modele'];
-            $prixProduit = $_GET['prix'];
-            //Si le produit existe déjà on ajoute seulement la quantité
-            $positionProduit = array_search($nomProduit, $_SESSION['panier']['nomProduit']);
+        if (ControllerModeles::creationPanier()) {
 
-            if (!$positionProduit) {//Sinon on ajoute le produit
-            	array_push($_SESSION['panier']['nomProduit'], $nomProduit);
-                array_push($_SESSION['panier']['qteProduit'], 1);
-                array_push($_SESSION['panier']['prixProduit'], $prixProduit);
-            } else {
-                $_SESSION['panier']['qteProduit'][$positionProduit] += 1;
-            }
-        } else
-            echo "Pb ajtArticle.";
+        	$modele = $_GET['modele'];
+        	$marque = $_GET['marque'];
+        	$prix = $_GET['prix'];
+        	$couleur = $_GET['couleur'];
+        	$taille = $_GET['taille'];
+        	$p = new ModelModeles($modele,$marque,$prix,$couleur,$taille);
+
+        	$count = array_search($p, $_SESSION['panier']['produit']);
+
+        	if($count===false) {
+        		array_push($_SESSION['panier']['produit'], $p);
+        		array_push($_SESSION['panier']['quantité'], 1);
+        	} else {
+        		$_SESSION['panier']['quantité'][$count] += 1;
+        	}
+        } else {
+        	echo "Pb ajtArticle.";
+        }
+        var_dump($_SESSION['panier']);
     }
 }
 	
 ?>
-

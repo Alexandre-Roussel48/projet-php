@@ -17,7 +17,7 @@ class ModelModeles {
         $this->$nom = $valeur;
     }
 
-    public function __construct($mo = NULL, $ma = NULL, $p = NULL, $c = NULL, $t= NULL, $st = NULL ) {
+    public function __construct($mo = NULL, $ma = NULL, $p = NULL, $c = NULL, $t= NULL, $st = NULL) {
         if (!is_null($mo) && !is_null($ma) && !is_null($p)) {
             $this->modele = $mo;
             $this->marque = $ma;

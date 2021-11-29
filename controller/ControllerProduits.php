@@ -4,18 +4,8 @@ require_once File::build_path(array("controller","ControllerModeles.php"));
 
 class ControllerProduits {
 
+
 //gestion du panier :
-
-
-    public static function creationPanier() { //tous les noms peuvent etre remplacer par des id ou on peut ajt l'id si besoin
-        if (!isset($_SESSION['panier'])) {
-            $_SESSION['panier'] = array();
-            $_SESSION['panier']['nomProduit'] = array();
-            $_SESSION['panier']['qteProduit'] = array();
-            $_SESSION['panier']['prixProduit'] = array();
-        }
-        return true; //return true pour rendre les test de l'existant plus facile
-    }
 
     /*public static function ajouterArticle() {
         //Si le panier existe
