@@ -17,8 +17,7 @@ foreach ($tab_cli as $c) {
     echo "<tr>";
     echo "<td> {$nomClient} </td>";
     echo "<td>{$prenomClient} </td>";
-    $a = $c->isAdmin();
-    if ($c->isAdmin()===true) echo "<td>Oui</td>";
+    if (ModelClients::isAdmin($c->get('mail'))===true) echo "<td>Oui</td>";
     else echo "<td>Non</td>";
     echo "<td><a href=\"?controller=clients&action=read&client={$codeClientUrl}\">Détail du client</a></td>";
     echo "</tr>";
