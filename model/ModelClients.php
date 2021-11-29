@@ -3,13 +3,16 @@ require_once File::build_path(array("model","Model.php"));
 require_once File::build_path(array("lib", "Security.php"));
 
 class ModelClients {
-    private $codeClient, $nomClient, $prenomClient, $mail, $telephone, $mdp, $adresse;
+    private $codeClient, $nomClient, $prenomClient, $mail, $telephone, $mdp, $adresse, $nonce;
 
     public function __construct($codeClient = NULL, $nomClient = NULL, $prenomClient = NULL,
-     $mail = NULL, $telephone = NULL, $mdp = NULL, $adresse = NULL) {
+     $mail = NULL, $telephone = NULL, $mdp = NULL, $adresse = NULL, $nonce = NULL) {
         
         if(!is_null($codeClient)){
             $this->codeClient = $codeClient;
+        }
+        if(!is_null($nonce)){
+            $this->nonce = $nonce;
         }
 
         if (!is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($telephone) && !is_null($mdp) && !is_null($adresse)) {             
@@ -55,7 +58,7 @@ class ModelClients {
         return $tab_cli[0];
     }
 
-    public static function checkLogin($mail, $mdp) {
+    public static function checkLogin($mail, $mdp) { //Verifie qu'il existe un client avec le bon mdp le bon mail et le mail valide
 
         $sql = "SELECT * FROM p_clients WHERE mail=:mail_client AND mdp=:mdp_client";
         $req_prep = Model::getPDO()->prepare($sql);
@@ -65,16 +68,16 @@ class ModelClients {
 
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelClients');
         $tab_cli = $req_prep->fetchAll();
-
-        if (empty($tab_cli))
+        
+        if (empty($tab_cli) || $tab_cli[0]->nonce !== "")
             return false;
 
         return $tab_cli[0];
     }
 
     public function save() {
-        $sql = "INSERT INTO p_clients (nomClient, prenomClient, mail, telephone, mdp, adresse) VALUES
-        (:nomClient, :prenomClient, :mail, :telephone, :mdp, :adresse);";
+        $sql = "INSERT INTO p_clients (nomClient, prenomClient, mail, telephone, mdp, adresse, nonce) VALUES
+        (:nomClient, :prenomClient, :mail, :telephone, :mdp, :adresse, :nonce);";
         $req_prep = Model::getPDO()->prepare($sql);
 
         $values = array(
@@ -83,7 +86,8 @@ class ModelClients {
             "mail" => $this->mail,
             "telephone" => $this->telephone,
             "mdp" => Security::hacher($this->mdp),
-            "adresse" => $this->adresse
+            "adresse" => $this->adresse,
+            "nonce" => Security::generateRandomHex()
         );
 
         $req_prep->execute($values);

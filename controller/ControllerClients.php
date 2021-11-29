@@ -53,7 +53,8 @@ class ControllerClients {
 	}
 
 	public static function created() {
-		if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['mail']) && isset($_GET['mdp']) && isset($_GET['mdpVerif'])) {
+		if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['mail']) && isset($_GET['mdp']) && 
+		isset($_GET['mdpVerif']) && filter_var($_GET['mail'], FILTER_VALIDATE_EMAIL)) {
 
 			$nom = $_GET['nom'];
 			$prenom = $_GET['prenom'];
@@ -109,11 +110,12 @@ class ControllerClients {
 		
 	}
 
-	public static function verification() {
+	public static function verification() { //demande une verif email et mdp pour la connexion 
 		$c = ModelClients::checkLogin($_GET['mail'],$_GET['mdp']);
 		if ($c===false) {
 			ControllerClients::login();
 		} else {
+			$_SESSION['client'] = $c;
 			$_SESSION['nom'] = $c->get('nomClient');
 			$_SESSION['prenom'] = $c->get('prenomClient');
 			if (Modelclients::isAdmin($_GET['mail'])) {
