@@ -44,9 +44,7 @@
             if(isset($_SESSION['nom'])) {
                 echo '<p>Bonjour '.$_SESSION['prenom'].' '.$_SESSION['nom'].'</p>';
             }
-
-            $filepath = File::build_path(array("view", $controller, "$view.php"));
-            require_once $filepath;
+            require_once File::build_path(array("view", $controller, "$view.php"));
             ?>
         </main>
 

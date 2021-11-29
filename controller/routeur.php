@@ -1,6 +1,7 @@
 <?php
 require_once File::build_path(array("controller","ControllerModeles.php"));
 require_once File::build_path(array("controller", "ControllerClients.php"));
+require_once File::build_path(array("controller", "ControllerProduits.php"));
 
 session_start();
 

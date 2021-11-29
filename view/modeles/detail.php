@@ -17,7 +17,7 @@
         $taille = $p->get('taille');    $tailleHtml = htmlspecialchars($taille);
         $couleur = $p->get('couleur');  $couleurHtml = htmlspecialchars($couleur);
         echo "<li> Quantité restante : {$stockHtml}. Taille : {$tailleHtml} pouces. Couleur : {$couleurHtml}. ";
-        echo "<p><a>Ajouter au panier</a></li></p>";
+        echo "<p><a href=\"index.php?controller=modeles&action=ajouterArticle&modele=$modeleHtml&prix=$prixHtml\">Ajouter au panier</a></li></p>";
     }
     ?>
 </ul>
