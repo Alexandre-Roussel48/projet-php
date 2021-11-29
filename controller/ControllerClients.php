@@ -87,7 +87,7 @@ class ControllerClients {
 			} else {
 				$c = new Modelclients(NULL,$nom,$prenom,$mail,$telephone,$mdp,$adresse);
 				$c->save();
-				ControllerClients::login();
+				ControllerClients::verifNonce();
 			}
 
 		} else {
@@ -138,12 +138,25 @@ class ControllerClients {
 				$pagetitle='Se connecter';
 				require File::build_path(array("view","view.php"));
 			}
+			else{
+				$controller='clients';
+				$view='created';
+				$pagetitle='Code incorrect';
+				require File::build_path(array("view","view.php"));
+			}
 		} else{
 			$controller='clients';
 			$view='created';
 			$pagetitle='Code incorrect';
 			require File::build_path(array("view","view.php"));
 		}
+	}
+
+	public static function pageVerifNonce(){
+		$controller='clients';
+		$view='created';
+		$pagetitle='Verification de votre code';	
+		require File::build_path(array("view","view.php"));
 	}
 
 	public static function deconnect() {

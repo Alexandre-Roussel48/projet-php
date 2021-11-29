@@ -11,4 +11,6 @@
     <p><label for="nonce">Code</label></p>
     <p><input type="text" placeholder="180975c06c2bfea3cbe42f1141d59a13" name="nonce">
       
+
+    <p><input type="submit" text="envoyer"></p>
 </form>
