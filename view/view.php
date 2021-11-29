@@ -6,18 +6,13 @@
         <title><?php echo $pagetitle; ?></title>
         <!--Gestion du thème-->
         <?php
-        //Verification changement de thème
-        if(isset($_GET['theme'])){
-            echo("<!--changement de thème-->\n");
-            setcookie("theme", $_GET['theme'], time()+3600);
-            echo "<link rel='stylesheet' type='text/css' href='./view/css/".$_GET['theme']."_style.css'>";
-        }
 
-        //Appel du thème
-        else if(isset($_COOKIE['theme']) && $_COOKIE['theme']=='white'){
-            echo '<link rel="stylesheet" type="text/css" href="./view/css/white_style.css">';
-        }
-        else{
+        if (isset($_POST['theme'])) {
+            setcookie("theme", $_POST['theme'], time()+3600);
+            echo "<link rel='stylesheet' type='text/css' href='./view/css/".$_POST['theme']."_style.css'>";
+        } else if (isset($_COOKIE['theme'])) {
+            echo "<link rel='stylesheet' type='text/css' href='./view/css/".$_COOKIE['theme']."_style.css'>";
+        } else {
             echo '<link rel="stylesheet" type="text/css" href="./view/css/black_style.css">';
         }
         ?>
@@ -59,7 +54,7 @@
 
 
                 <div>
-                    <form method="get" action="index.php">
+                    <form method="post" action="#">
                         Choix du thème :
                         <input type="submit" name="theme" id="theme" value="black" />
                         <input type="submit" name="theme" id="theme" value="white" />
