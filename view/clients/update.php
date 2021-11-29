@@ -22,14 +22,12 @@
             <p>
                 <label for="adresse">Adresse</label> :
                 <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse" 
-                    value="<?php echo($_SESSION['client']->get('adresse'));?>"
-/>
+                    value="<?php echo($_SESSION['client']->get('adresse'));?>"/>
             </p>
             <p>
                 <label for="telephone">Numéro de téléphone</label> :
                 <input type="text" placeholder="0123456789" name="telephone" 
-                    value="<?php echo($_SESSION['client']->get('telephone'));?>"
-/>
+                    value="<?php echo($_SESSION['client']->get('telephone'));?>"/>
             </p>
         </fieldset>
 
