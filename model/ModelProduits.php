@@ -17,8 +17,7 @@ class ModelProduits {
     }
 
     public function __construct($cp = NULL, $mo = NULL, $c = NULL, $t = NULL, $st = NULL) {
-        if (!is_null($cp) && !is_null($mo) && !is_null($c) && !is_null($t) && !is_null($st)) {
-            $this->codeProduit = $cp;
+        if (!is_null($mo) && !is_null($c) && !is_null($t) && !is_null($st)) {
             $this->modele = $mo;
             $this->couleur = $c;
             $this->taille = $t;

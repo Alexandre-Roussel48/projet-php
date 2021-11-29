@@ -4,27 +4,6 @@ require_once File::build_path(array("controller","ControllerModeles.php"));
 
 class ControllerProduits {
 
-    /*public static function read() {
-        $modele = $_GET['modele'];
-        $m = ModelModeles::getModele($modele);
-        if ($m === false) {
-            $controller = 'modeles';
-            $view = 'error';
-            $pagetitle = 'Erreur';
-            require File::build_path(array("view", "view.php"));
-        } else {
-            $controller = 'modeles';
-            $view = 'detail';
-            $pagetitle = 'Détail de modèle';
-            require File::build_path(array("view", "view.php"));
-        }
-
-    }
-
-    public static function create() {
-        ControllerModeles::create();
-    }*/
-
 //gestion du panier :
 
 
