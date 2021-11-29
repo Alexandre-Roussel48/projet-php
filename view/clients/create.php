@@ -1,7 +1,7 @@
 <form method="get" action="index.php">
     <fieldset>
-        <input type='hidden' name='action' value='created'>
         <input type='hidden' name='controller' value='clients'>
+        <input type='hidden' name='action' value='created'>
 
         <?php
             if(isset($_GET['nom'])){

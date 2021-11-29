@@ -30,23 +30,23 @@ class ControllerModeles {
 	}
 
 	public static function create() {
-		$controller='modeles';
-		$view='create';
-		$pagetitle='Créer un modèle';
-		require File::build_path(array("view","view.php"));
+		if (isset($_SESSION['admin'])) {
+			$controller='modeles';
+			$view='create';
+			$pagetitle='Créer un modèle';
+			require File::build_path(array("view","view.php"));	
+		} else {
+			ControllerModeles::readAll();
+		}
 	}
 
 	public static function created() {
 		$modele = $_GET['modele'];
 		$marque = $_GET['marque'];
 		$prix = $_GET['prix'];
-		$p_m = new ModelModeles($modele,$marque,$prix);
-		$p_m->save();
-		$controller='modeles';
-		$view='created';
-		$pagetitle='Modèle créé';
-		$tab_v = ModelModeles::getAllModeles();
-		require File::build_path(array("view","view.php"));
+		$m = new ModelModeles($modele,$marque,$prix);
+		$m->save();
+		ControllerModeles::readAll();
 	}
 }
 	

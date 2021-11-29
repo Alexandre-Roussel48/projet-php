@@ -16,9 +16,9 @@ class ModelModeles {
 
     public function __construct($mo = NULL, $ma = NULL, $p = NULL) {
         if (!is_null($mo) && !is_null($ma) && !is_null($p)) {
-            $this->marque = $mo;
-            $this->couleur = $ma;
-            $this->immatriculation = $p;
+            $this->modele = $mo;
+            $this->marque = $ma;
+            $this->prix = $p;
         }
     }
 

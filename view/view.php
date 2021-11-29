@@ -38,11 +38,11 @@
                     echo '<div><a href="index.php?controller=clients&action=login">Se connecter</a></div>';
                     echo '<div><a href="index.php?controller=clients&action=create">S\'inscrire</a></div>';
                 }
+                if (isset($_SESSION['admin'])) {
+                    echo "<div><a href=\"index.php?controller=clients&action=admin\">Page admin</a></div>";
+                }
                 ?>
             </nav>
-            <?php
-
-            ?>
         </header>
 
         <main>

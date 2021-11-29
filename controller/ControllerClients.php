@@ -3,14 +3,21 @@ require_once File::build_path(array("model","ModelClients.php"));
 require_once File::build_path(array("controller","ControllerModeles.php"));
 
 class ControllerClients {
+
+	//utilisée
 	public static function readAll() {
-		$tab_cli = ModelClients::getAllClients();
-		$controller='clients';
-		$view='list';
-		$pagetitle='Liste des clients';
-		require File::build_path(array("view","view.php"));
+		if (isset($_SESSION['admin'])) {
+			$tab_cli = ModelClients::getAllClients();
+			$controller='clients';
+			$view='list';
+			$pagetitle='Liste des clients';	
+			require File::build_path(array("view","view.php"));
+		} else {
+			ControllerModeles::readAll();
+		}
 	}
 
+	//utilisée
 	public static function read() {
 		$client = $_GET['client'];
 		$c = Modelclients::getClient($client);
@@ -109,6 +116,9 @@ class ControllerClients {
 		} else {
 			$_SESSION['nom'] = $c->get('nomClient');
 			$_SESSION['prenom'] = $c->get('prenomClient');
+			if (Modelclients::isAdmin($_GET['mail'])) {
+				$_SESSION['admin'] = 1;
+			}
 			ControllerModeles::readAll();
 		}
 	}
@@ -119,6 +129,17 @@ class ControllerClients {
 
 		}
 		ControllerModeles::readAll();
+	}
+
+	public static function admin() {
+		if (isset($_SESSION['admin'])) {
+			$controller='clients';
+			$view='admin';
+			$pagetitle='Page admin';
+			require File::build_path(array("view","view.php"));
+		} else {
+			ControllerModeles::readAll();
+		}
 	}
 }
 	

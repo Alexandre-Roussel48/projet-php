@@ -105,34 +105,17 @@ class ModelClients {
         }
     }
 
-    public function isAdmin(){
-        $sql = "SELECT admin FROM p_clients WHERE codeClient=:codeClient;";
+    public static function isAdmin($mail) {
+        $sql = "SELECT admin FROM p_clients WHERE mail=:mail;";
         $req_prep = Model::getPDO()->prepare($sql);
 
-        $values = array("codeClient" => $this->codeClient);
+        $values = array("mail" => $mail);
         $req_prep->execute($values);
+
         $tab_int = $req_prep->fetchAll();
-        
-        if (isset($tab_int[0][0]) && $tab_int[0][0]=='1'){
-            return true;
-        }
-        return false;
+
+        return $tab_int[0]['admin']==1;
     }
-    /*
 
-    public function mailDisponible(){
-        $sql = "SELECT COUNT(*) FROM p_clients WHERE mail=:nouvMail";
-        $req_prep = Model::getPDO()->prepare($sql);
-
-        $values = array("nouvMail" => $this->mail);
-        $req_prep->execute($values);
-        $tab_int = $req_prep->fetchAll();
-        
-        if($tab_int[0]==0) {
-            echo "0";
-        } else {
-            echo "1";
-        }
-    }*/
 }
 ?>
