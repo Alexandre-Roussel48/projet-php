@@ -59,6 +59,11 @@ h1{
     color: var(--link-color);
 }
 
+h3{
+    text-align: center;
+    font-weight: normal;
+}
+
 p{
     color: var(--text-color);
 }
@@ -69,7 +74,7 @@ table{
 }
 
 th, td{
-    border: 2px solid black;
+    border: 2px solid var(--border-color);
     padding: 20px 80px;
     text-align: center;
     color: var(--text-color);
@@ -83,7 +88,7 @@ a{
 /*Met le fond en gris et arrondit les coins*/
 fieldset{ 
     background-color: var(--fieldset-color-bg);
-    border: 2px solid ;
+    border: 2px solid var(--border-color);
     border-radius:8px;
     margin-bottom: 20px;
 }
@@ -102,9 +107,17 @@ fieldset > p {
     text-align: center;
 }
 
+ #createAccount{
+    border: 1px solid var(--header-color-bg);
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: var(--button-color-bg);
+    color: var(--button-color);
+ }
+
 footer{
     color: var(--text-color);
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
     text-align: right;
     padding-right: 1em;
     display: flex;

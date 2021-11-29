@@ -20,6 +20,7 @@
         if($c->get('telephone')!=="")
             echo "<p>Téléphone : {$telephone}</p></fieldset>";
         else echo "<p>Téléphone : <em>non renseignée</em></p></fieldset>";
+        
         if(ModelClients::isAdmin($c->get('mail')))
             echo '<p style="color: red;">Possède le rôle Administateur</p>';
     ?>

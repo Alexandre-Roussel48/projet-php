@@ -2,8 +2,11 @@
     --header-color-bg: #373737;   
     --header-link-color: #CCCCFF;            
     --link-color: #3333a0;                   
-    --body-color-bg:white;
+    --body-color-bg: white;
     --text-color: black;
     --fieldset-text-color: black;
     --fieldset-color-bg: white;
+    --border-color: black;
+    --button-color: black;
+    --button-color-bg: white;
 }
