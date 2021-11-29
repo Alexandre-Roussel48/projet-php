@@ -113,7 +113,6 @@ class ControllerClients {
 		Afin de valider votre compte et pour garantir votre sécurité suivez les instructions suivantes :\n
 		1 - Asseyez vous devant votre écran; \n
 		2 - Cliquez sur le lien suivant : \n
-		".File::build_path(array())."controller=clients&action=created \n
 		3 - Rentrez le code suivant : ".$nonce." \n
 		4 - Profitez d'une pleine expérience de notre site ! \n
 		
@@ -204,6 +203,29 @@ class ControllerClients {
 		} else {
 			ControllerModeles::readAll();
 		}
+	}
+
+	public static function update(){
+		$controller='clients';
+		$view='update';
+		$pagetitle='Modifier profil';
+		require File::build_path(array("view","view.php"));
+	}
+
+	public static function updated(){
+		if(isset($_GET['nom']) && isset($_GET['prenom'])
+			&& isset($_GET['adresse']) && isset($_GET['telephone'])){
+			
+			ModelClients::update($_GET['nom'], $_GET['prenom'], $_GET['adresse'], $_GET['telephone']);
+			$controller='clients';
+			$view='detail';
+			$pagetitle='Détail de client';
+			$c = $_SESSION['client'];
+			require File::build_path(array("view","view.php"));
+		} else {
+			ControllerClients::update();
+		}
+
 	}
 }
 	

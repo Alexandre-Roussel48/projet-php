@@ -140,6 +140,24 @@ class ModelClients {
         $values = array("mail" => $mail);
         $req_prep->execute($values);
     }
+
+    public static function update($nomClient, $prenomClient, $adresse, $telephone){
+        $sql = "UPDATE p_clients SET nomClient =:nom, prenomClient=:prenom, adresse=:adresse, telephone=:telephone WHERE mail=:mail;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "nom" => $nomClient,
+            "prenom" => $prenomClient,
+            "adresse" => $adresse,
+            "telephone" => $telephone,
+            "mail" => $_SESSION['client']->get('mail'));
+        $req_prep->execute($values);
+
+        $_SESSION['client']->set("nomClient", $nomClient);
+        $_SESSION['client']->set("prenomClient", $prenomClient);
+        $_SESSION['client']->set("adresse", $adresse);
+        $_SESSION['client']->set("telephone", $telephone);
+    }
 }
 ?>
 
