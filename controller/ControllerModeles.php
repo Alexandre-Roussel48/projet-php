@@ -48,6 +48,25 @@ class ControllerModeles {
 		$m->save();
 		ControllerModeles::readAll();
 	}
+
+	public static function ajouterArticle() {
+        //Si le panier existe
+        if (ControllerProduits::creationPanier()) {
+            $nomProduit = $_GET['modele'];
+            $prixProduit = $_GET['prix'];
+            //Si le produit existe déjà on ajoute seulement la quantité
+            $positionProduit = array_search($nomProduit, $_SESSION['panier']['nomProduit']);
+
+            if (!$positionProduit) {//Sinon on ajoute le produit
+            	array_push($_SESSION['panier']['nomProduit'], $nomProduit);
+                array_push($_SESSION['panier']['qteProduit'], 1);
+                array_push($_SESSION['panier']['prixProduit'], $prixProduit);
+            } else {
+                $_SESSION['panier']['qteProduit'][$positionProduit] += 1;
+            }
+        } else
+            echo "Pb ajtArticle.";
+    }
 }
 	
 ?>
