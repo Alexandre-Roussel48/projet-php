@@ -14,7 +14,7 @@
         echo "<p>Adresse email utilisée : {$mail}</p></fieldset>";
         echo "<fieldset><p>Adresse : </p><p>{$adresse}</p>";
         echo "<p>Téléphone : {$telephone}</p></fieldset>";
-        if($c->isAdmin()==1)
+        if(ModelClients::isAdmin($c->get('mail')))
             echo '<p style="text-decoration: underline red;">Possède le rôle Administateur</p>';
     ?>
 </fieldset>
