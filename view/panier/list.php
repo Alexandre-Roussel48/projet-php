@@ -10,7 +10,10 @@ else{
         $modeleHtml = htmlspecialchars($modele);
         $modeleUrl = rawurlencode($modele);
         echo '<p>Modèle : <a href="?controller=modeles&action=read&modele='.$modeleUrl.'">'.$modeleHtml.'</a></p>';
+
     }
+        echo("<p>Prix total : $prixTotal</p>");
+    
     echo('<h3><a href="?controller=modeles&action=validerCommande">Valider la commande</a></h3>');
 }
 ?>

@@ -75,7 +75,7 @@ class ControllerModeles {
 	public static function ajouterArticle() {
         //Si le panier existe
         if (!ControllerModeles::panierExiste()) {
-			ControllerModele::creerPanier();
+			ControllerModeles::creerPanier();
 		}
 		//Ajout de l'objet dans le panier
 		$modele = $_GET['modele'];
@@ -106,6 +106,12 @@ class ControllerModeles {
 		} else{
 			$panierVide = false;
 			$tab_mod = $_SESSION['panier']['produit'];
+
+			$prixTotal = 0;
+		
+			foreach ($_SESSION['panier']['produit'] as $m) {
+				$prixTotal += ($m->get("prix")); //IL MANQUE LE NOMBRE DE PRODUIT ACHETES
+			}
 		}
 
 		$controller='panier';
@@ -118,7 +124,7 @@ class ControllerModeles {
 		$prixTotal = 0;
 		
 		foreach ($_SESSION['panier']['produit'] as $m) {
-			$prixTotal += $m->get("prix");
+			$prixTotal += ($m->get("prix")); //IL MANQUE LE NOMBRE DE PRODUIT ACHETES
 		}
 
 		$controller='panier';
