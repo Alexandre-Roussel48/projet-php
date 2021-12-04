@@ -93,7 +93,6 @@ class ControllerModeles {
 		} else { //Si le produit existe dans le panier, on incrémente sa quantité
 			$_SESSION['panier']['quantité'][$count] += 1;
 		}
-        var_dump($_SESSION['panier']);
 		//Redirection vers la bonne page
 		ControllerModeles::readAll();
 		
@@ -101,10 +100,14 @@ class ControllerModeles {
     }
 
 	public static function voirPanier(){
-		//Si panier vide dire panier vide
+		//Si panier vide le signale
+		if(!isset($_SESSION["panier"])){
+			$panierVide = true;
+		} else{
+			$panierVide = false;
+			$tab_mod = $_SESSION['panier']['produit'];
+		}
 
-		//Si panier plein
-		$tab_mod = $_SESSION['panier']['produit'];
 		$controller='panier';
 		$view='list';
 		$pagetitle='Liste des modèles';
@@ -130,6 +133,7 @@ class ControllerModeles {
 		//Decrementer les compeurs des produits achetes
 		//Mettre la commande dans la table p_commander
 		//Dire au client que l'achat a ete effectue
+		//Vider le panier
 	}
 
 }
