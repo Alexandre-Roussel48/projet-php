@@ -5,6 +5,7 @@ class ModelModeles {
     private $modele;
     private $marque;
     private $prix;
+    private $image;
     private $couleur;
     private $taille;
     private $stock;
@@ -17,11 +18,12 @@ class ModelModeles {
         $this->$nom = $valeur;
     }
 
-    public function __construct($mo = NULL, $ma = NULL, $p = NULL, $c = NULL, $t= NULL, $st = NULL) {
-        if (!is_null($mo) && !is_null($ma) && !is_null($p)) {
+    public function __construct($mo=NULL, $ma=NULL, $p=NULL, $c=NULL, $t=NULL, $st=NULL, $img=NULL) {
+        if (!is_null($mo) && !is_null($ma) && !is_null($p) && !is_null($img)) {
             $this->modele = $mo;
             $this->marque = $ma;
             $this->prix = $p;
+            $this->image = $img;
         }
         if (!is_null($c) && !is_null($t) && !is_null($st)) {
             $this->couleur = $c;
