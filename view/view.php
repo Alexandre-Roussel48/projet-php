@@ -9,11 +9,11 @@
 
         if (isset($_POST['theme'])) {
             setcookie("theme", $_POST['theme'], time()+3600);
-            echo "<link rel='stylesheet' type='text/css' href='./view/css/".$_POST['theme']."_style.css'>";
+            echo "<link rel='stylesheet' type='text/css' href='./view/css/style".$_POST['theme'].".css'>";
         } else if (isset($_COOKIE['theme'])) {
-            echo "<link rel='stylesheet' type='text/css' href='./view/css/".$_COOKIE['theme']."_style.css'>";
+            echo "<link rel='stylesheet' type='text/css' href='./view/css/style".$_COOKIE['theme'].".css'>";
         } else {
-            echo '<link rel="stylesheet" type="text/css" href="./view/css/black_style.css">';
+            echo '<link rel="stylesheet" type="text/css" href="./view/css/styleClair.css">';
         }
         ?>
         <link rel="stylesheet" type="text/css" href="./view/css/style.css">
@@ -54,8 +54,8 @@
                 <div>
                     <form method="post" action="#">
                         Choix du thème :
-                        <input type="submit" name="theme" id="theme" value="black" />
-                        <input type="submit" name="theme" id="theme" value="white" />
+                        <input type="submit" name="theme" id="theme" value="Sombre" />
+                        <input type="submit" name="theme" id="theme" value="Clair" />
                     </form>  
                 </div>
                 <div>  
