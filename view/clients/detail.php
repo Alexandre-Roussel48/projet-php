@@ -1,6 +1,10 @@
 <fieldset>
-    <h1>MON PROFIL</h1>
     <?php
+        if($_SESSION['client']->get('codeClient')===$_GET['client'])
+            echo "<h1>MON PROFIL</h1>";
+        else
+            echo "<h1>PROFIL DU CLIENT</h1>";
+        
         $nom = htmlspecialchars($c->get('nomClient'));
         $prenom = htmlspecialchars($c->get('prenomClient')); 
         $mail = htmlspecialchars($c->get('mail'));
@@ -9,7 +13,11 @@
 
         echo "<p>Nom : {$nom}</p>";
         echo "<p>Prénom : {$prenom}</p>";
-        echo "<p>Adresse email utilisée : {$mail}</p></fieldset>";
+        echo "<p>Adresse email utilisée : {$mail}</p>";
+
+        if(ModelClients::isAdmin($c->get('mail')))
+            echo '<p style="color: #DB4437;">Possède le rôle Administateur</p>';
+        echo "</fieldset>";
         echo "<fieldset><p>Adresse ";
         if($c->get('adresse')!=="") 
             echo "</p><p>{$adresse}</p>";
@@ -17,14 +25,15 @@
             echo "<em>: non renseignée</em></p>";
         if($c->get('telephone')!=="")
             echo "<p>Téléphone : {$telephone}</p></fieldset>";
-        else echo "<p>Téléphone : <em>non renseignée</em></p></fieldset>";
-        
-        if(ModelClients::isAdmin($c->get('mail')))
-            echo '<p style="color: red;">Possède le rôle Administateur</p>';
+        else
+            echo "<p>Téléphone : <em>non renseignée</em></p></fieldset>";
+    
+        if($_SESSION['client']->get('codeClient')===$_GET['client']){
+            echo '<form method="get" style="text-align: center; "action="index.php">';
+            echo '<input type="hidden" name="controller" value="clients">';
+            echo '<input type="hidden" name="action" value="update">';
+            echo '<input type="submit" name="update" id="update" value="Modifier profil">';
+            echo '</form>';
+        }
     ?>
-    <form method="get" action="index.php">
-        <input type='hidden' name='controller' value='clients'>
-        <input type='hidden' name='action' value='update'>
-        <input type="submit" name="update" id="update" value="Modifier profil">
-    </form>
 </fieldset>

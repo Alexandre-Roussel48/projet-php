@@ -111,12 +111,12 @@ class ControllerClients {
 		$text = "Bonjour, \n 
 		vous avez créé un compte sur notre site _nomdusite_ ! \n
 		Afin de valider votre compte et pour garantir votre sécurité suivez les instructions suivantes :\n
-		1 - Asseyez vous devant votre écran; \n
+		1 - Asseyez-vous devant votre écran; \n
 		2 - Cliquez sur le lien suivant : \n
 		3 - Rentrez le code suivant : ".$nonce." \n
 		4 - Profitez d'une pleine expérience de notre site ! \n
 		
-		A bientot sur _nomdusite_ \n 
+		À bientot sur _nomdusite_ \n 
 		_slogan_";
 
 		return $text;
@@ -225,7 +225,6 @@ class ControllerClients {
 		} else {
 			ControllerClients::update();
 		}
-
 	}
 }
 	
