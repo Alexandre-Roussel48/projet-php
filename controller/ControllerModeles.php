@@ -51,9 +51,9 @@ class ControllerModeles {
 	public static function creationPanier() { //tous les noms peuvent etre remplacer par des id ou on peut ajt l'id si besoin
         if (!isset($_SESSION['panier'])) {
             $_SESSION['panier'] = array(
-            							"produit" => array(),
-            							"quantité" => array()
-            						);
+				"produit" => array(),
+				"quantité" => array()
+			);
         }
         return true; //return true pour rendre les test de l'existant plus facile
     }
@@ -69,12 +69,12 @@ class ControllerModeles {
         	$taille = $_GET['taille'];
         	$p = new ModelModeles($modele,$marque,$prix,$couleur,$taille);
 
-        	$count = array_search($p, $_SESSION['panier']['produit']);
+        	$count = array_search($p, $_SESSION['panier']['produit']); //Recherche dans $_SESSION['panier']['produit'] la premiere clé égale à $p
 
-        	if($count===false) {
+        	if($count===false) { //Si le produit n'existe pas, on le met dans le panier
         		array_push($_SESSION['panier']['produit'], $p);
         		array_push($_SESSION['panier']['quantité'], 1);
-        	} else {
+        	} else { //Si le produit existe dans le panier, on incrémente sa quantité
         		$_SESSION['panier']['quantité'][$count] += 1;
         	}
         } else {
