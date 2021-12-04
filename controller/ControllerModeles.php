@@ -94,15 +94,13 @@ class ControllerModeles {
 			$_SESSION['panier']['quantité'][$count] += 1;
 		}
         //Redirection vers la bonne page
-        var_dump($_SESSION['panier']);
-		$controller=$_GET["controller"]; //Renvoie sur la page du model
-		$view='read';
-		$pagetitle='page du model';
-		require File::build_path(array("view","view.php"));	
+		ControllerModeles::readAll();
+		//var_dump($_SESSION['panier']);
+		
     }
 
-	public static voirPanier(){
-
+	public static function voirPanier(){
+		echo "voici le panier";
 	}
 }
 	
