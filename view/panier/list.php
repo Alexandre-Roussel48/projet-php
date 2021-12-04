@@ -11,7 +11,7 @@ else{
         $modeleUrl = rawurlencode($modele);
         echo '<p>Modèle : <a href="?controller=modeles&action=read&modele='.$modeleUrl.'">'.$modeleHtml.'</a></p>';
     }
+    echo('<h3><a href="?controller=modeles&action=validerCommande">Valider la commande</a></h3>');
 }
 ?>
 
-<h3><a href="?controller=modeles&action=validerCommande">Valider la commande</a></h3>
