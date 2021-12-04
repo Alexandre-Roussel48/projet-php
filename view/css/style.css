@@ -109,16 +109,23 @@ fieldset > p {
 }
 
 #createAccount {
-    border: 1px solid var(--header-color-bg);
+    border: 1px solid var(--border-color);
     padding: 10px 20px;
     text-decoration: none;
-    background-color: var(--header-link-color);
+    background-color: var(--button-color-bg);
     color: var(--button-color);
+}
+
+input[type=text], input[type=password] {
+  background-color: var(--button-color-bg);
+  border: 1px solid var(--border-color);
+  padding: 10px 200px;
+  font-size: 15px;
 }
 
 input[type=submit] {
   background-color: var(--button-color-bg);
-  border: 1px solid var(--header-color-bg);
+  border: 1px solid var(--border-color);
   color: var(--button-color);
   padding: 10px 20px;
   cursor: pointer;
@@ -128,7 +135,7 @@ footer{
     color: var(--text-color);
     border: 1px solid var(--border-color);
     text-align: right;
-    padding-right: 1em;
+    padding: 9px 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

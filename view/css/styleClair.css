@@ -1,6 +1,6 @@
 :root{      /*Définit les couleurs du css*/
-    --header-color-bg: #373737;   
-    --header-link-color: #CCCCFF;            
+    --header-color-bg: #CCCCFF;   
+    --header-link-color: #373737;            
     --link-color: #3333a0;                   
     --body-color-bg: white;
     --text-color: black;

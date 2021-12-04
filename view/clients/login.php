@@ -24,6 +24,8 @@
         ?>
         required/></p>
         <p><input type="submit" value="Connexion" /></p>
+    </fieldset>
+    <fieldset>
         <h3>Vous n'avez pas de compte ?</h3>
         <p><a href="index.php?controller=clients&action=create" id="createAccount">Créer un compte</a></p>
         <?php
