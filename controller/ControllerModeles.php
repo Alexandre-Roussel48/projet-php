@@ -93,14 +93,22 @@ class ControllerModeles {
 		} else { //Si le produit existe dans le panier, on incrémente sa quantité
 			$_SESSION['panier']['quantité'][$count] += 1;
 		}
-        //Redirection vers la bonne page
+        var_dump($_SESSION['panier']);
+		//Redirection vers la bonne page
 		ControllerModeles::readAll();
-		//var_dump($_SESSION['panier']);
+		
 		
     }
 
 	public static function voirPanier(){
-		echo "voici le panier";
+		//Si panier vide dire panier vide
+
+		//Si panier plein
+		$tab_mod = $_SESSION['panier']['produit'];
+		$controller='panier';
+		$view='list';
+		$pagetitle='Liste des modèles';
+		require File::build_path(array("view","view.php"));
 	}
 }
 	
