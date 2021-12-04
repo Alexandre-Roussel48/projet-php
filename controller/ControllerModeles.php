@@ -110,6 +110,28 @@ class ControllerModeles {
 		$pagetitle='Liste des modèles';
 		require File::build_path(array("view","view.php"));
 	}
+
+	public static function validerCommande(){
+		$prixTotal = 0;
+		
+		foreach ($_SESSION['panier']['produit'] as $m) {
+			$prixTotal += $m->get("prix");
+		}
+
+		$controller='panier';
+		$view='payement';
+		$pagetitle='Liste des modèles';
+		require File::build_path(array("view","view.php"));
+		
+	}
+
+	public static function paye(){
+		//Verifier que les produits sont toujours en stock
+		//Decrementer les compeurs des produits achetes
+		//Mettre la commande dans la table p_commander
+		//Dire au client que l'achat a ete effectue
+	}
+
 }
 	
 ?>
