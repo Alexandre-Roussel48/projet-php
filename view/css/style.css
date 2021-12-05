@@ -50,7 +50,6 @@ body {
 }
 
 main, footer{
-    display: flex;
     position: relative;
     top: 50px;
 }
@@ -83,6 +82,10 @@ th, td{
 
 a{
     color: var(--link-color);
+}
+
+.modelesMain{
+    display: flex;
 }
 
 .modelesWrapper {

@@ -1,5 +1,6 @@
 
 <?php
+echo '<div class="modelesMain">';
 echo '<div class="modelesWrapper">';
 foreach ($tab_mod as $m) {
     $modele = $m->get('modele');
