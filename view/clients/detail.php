@@ -1,6 +1,6 @@
 <fieldset>
     <?php
-        if($_SESSION['client']->get('codeClient')===$_GET['client'])
+        if(isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client'])
             echo "<h1>MON PROFIL</h1>";
         else
             echo "<h1>PROFIL DU CLIENT</h1>";
@@ -26,14 +26,14 @@
         if($c->get('telephone')!=="")
             echo "<p>Téléphone : {$telephone}</p></fieldset>";
         else
-            echo "<p>Téléphone : <em>non renseignée</em></p></fieldset>";
-    
-        if($_SESSION['client']->get('codeClient')===$_GET['client']){
-            echo '<form method="get" style="text-align: center; "action="index.php">';
-            echo '<input type="hidden" name="controller" value="clients">';
-            echo '<input type="hidden" name="action" value="update">';
-            echo '<input type="submit" name="update" id="update" value="Modifier profil">';
-            echo '</form>';
+            echo "<p>Téléphone : <em>non renseigné</em></p></fieldset>";
+        
+        if(isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client']){
+                echo '<form method="get" style="text-align: center; "action="index.php">';
+                echo '<input type="hidden" name="controller" value="clients">';
+                echo '<input type="hidden" name="action" value="update">';
+                echo '<input type="submit" name="update" id="update" value="Modifier profil">';
+                echo '</form>';
         }
     ?>
 </fieldset>

@@ -1,3 +1,13 @@
+@font-face{
+    font-family: "ubuntu";
+    src:  url(../../annexes/font/Ubuntu-Regular.ttf);
+}
+
+body{
+    font-family: "ubuntu", arial;
+}
+
+
 /*Positionne le header dans le coin parfaitement en haut à gauche*/
 header{
     position: fixed;
