@@ -13,5 +13,6 @@ foreach ($tab_mod as $m) {
     echo '" alt="Le '.$m->get('marque').' '.$m->get('modele').'" width="200" height="120" />';
     echo "<p>{$marqueHtml} - {$modeleHtml}</p></a></div>";
 }
-echo '</div>'
+echo '</div>';
+echo '</div>';
 ?>

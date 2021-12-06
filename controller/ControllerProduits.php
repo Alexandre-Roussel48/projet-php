@@ -90,6 +90,31 @@ class ControllerProduits {
         unset($_SESSION['panier']);
     }
 
+    public static function history(){
+        $jointures = ModelProduits::history(4);
+        if($jointures!==false){
+            echo '<br><br><br><br><br><br>';
+            var_dump($jointures);
+            $tab_commande = array();
+            for ($i = 0; $i < count($jointures); ++$i){
+                $tab_commande[$i] = array(
+                        "marque" => [$i]->get("marque"),
+                        "modele" => [$i]->get("modele"),
+                        "prix" => [$i]->get("prix"),
+                        "couleur" => [$i]->get("couleur"),
+                        "taille" => [$i]->get("taille"),
+                        "quantite" => [$i]->get("quantite"),
+                        "date" => [$i]->get("date")
+                );
+            }
+            $controller='produit';
+            $view='history';
+            $pagetitle='Historique';
+            require File::build_path(array("view","view.php"));
+        } else {
+            echo "faire une page d'erreur";
+        }
+    }
+
 }
 ?>
-

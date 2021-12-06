@@ -40,6 +40,21 @@ class ModelProduits {
             return false;
         return $tab_pro;
     }
+
+    public static function history($codeClient){
+        $sql = "SELECT * FROM p_modeles m JOIN p_produits p ON m.modele=p.modele JOIN p_commander c ON p.codeProduit=c.codeProduit WHERE codeClient=:code_client";
+        $req_prep = Model::getPDO()->prepare($sql);
+        
+        $values = array('code_client' => $codeClient);
+        $req_prep->execute($values);
+
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModeles');
+        $tab_jointures = $req_prep->fetchAll();
+
+        if (empty($tab_jointures))
+            return false;
+        return $tab_jointures;
+    }
 }
 ?>
 
