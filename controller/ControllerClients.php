@@ -152,6 +152,8 @@ class ControllerClients {
 				}
 				ControllerModeles::readAll();
 			}
+		} else {
+			ControllerClients::login();
 		}
 	}
 
@@ -229,8 +231,8 @@ class ControllerClients {
 	}
 
 	public static function deleteUser(){
-		if (isset($_SESSION['admin'])) {
-			ModelClients::deleteClient($_GET['mail']);
+		if (isset($_SESSION['client'])) {
+			ModelClients::deleteClient($_GET['client']);
 		}
 		ControllerClients::readAll();
 	}
