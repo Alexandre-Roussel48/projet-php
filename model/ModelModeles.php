@@ -9,6 +9,7 @@ class ModelModeles {
     private $couleur;
     private $taille;
     private $stock;
+    private $codeProduit;
    
     public function get($nom) {
         return $this->$nom;
@@ -18,17 +19,20 @@ class ModelModeles {
         $this->$nom = $valeur;
     }
 
-    public function __construct($mo=NULL, $ma=NULL, $p=NULL, $c=NULL, $t=NULL, $st=NULL, $img=NULL) {
-        if (!is_null($mo) && !is_null($ma) && !is_null($p) && !is_null($img)) {
-            $this->modele = $mo;
+    public function __construct($mo=NULL, $ma=NULL, $p=NULL, $c=NULL, $t=NULL, $st=NULL, $img=NULL, $co=NULL) {
+        if (!is_null($ma) && !is_null($p) && !is_null($img)) {
             $this->marque = $ma;
             $this->prix = $p;
             $this->image = $img;
         }
-        if (!is_null($c) && !is_null($t) && !is_null($st)) {
+        if (!is_null($c) && !is_null($t) && !is_null($st) && !is_null($co)) {
             $this->couleur = $c;
             $this->taille = $t;
             $this->stock = $st;
+            $this->codeProduit = $co;
+        }
+        if (!is_null($mo)) {
+            $this->modele = $mo;
         }
     }
 
@@ -42,7 +46,7 @@ class ModelModeles {
 
     public static function getModele($modele) {
 
-        $sql = "SELECT * from p_modeles WHERE modele=:modele";
+        $sql = "SELECT * FROM p_modeles WHERE modele=:modele";
         $req_prep = Model::getPDO()->prepare($sql);
 
         $values = array("modele" => $modele);     
@@ -58,10 +62,10 @@ class ModelModeles {
 
     public static function getProduit($modele) {
 
-        $sql = "SELECT * from p_produits WHERE modele=:nom_tag";
+        $sql = "SELECT * FROM p_produits WHERE modele=:modele_tag";
         $req_prep = Model::getPDO()->prepare($sql);
 
-        $values = array("nom_tag" => $modele);     
+        $values = array("modele_tag" => $modele);     
         $req_prep->execute($values);
 
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModeles');
@@ -70,6 +74,25 @@ class ModelModeles {
         if (empty($tab_pro))
             return false;
         return $tab_pro;
+    }
+
+    public static function getProduitCode($codeProduit) {
+
+        $sql = "SELECT * FROM p_produits p
+        JOIN p_modeles m ON m.modele = p.modele 
+        WHERE codeProduit=:code_tag";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array("code_tag" => $codeProduit);     
+        $req_prep->execute($values);
+
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelModeles');
+        $tab_pro = $req_prep->fetchAll();
+
+        if (empty($tab_pro))
+            return false;
+        return $tab_pro[0];
+
     }
 
     public function save() {

@@ -48,28 +48,12 @@ class ControllerModeles {
 		ControllerModeles::readAll();
 	}
 
-	/*
-	public static function creationPanier() { //tous les noms peuvent etre remplacer par des id ou on peut ajt l'id si besoin
-        
-		
-		if (!isset($_SESSION['panier'])) {
-            $_SESSION['panier'] = array(
-				"produit" => array(),
-				"quantité" => array()
-			);
-        }
-        return true; //return true pour rendre les test de l'existant plus facile
-    }*/
-
 	public static function panierExiste(){
 		return isset($_SESSION['panier']);
 	}
 
 	public static function creerPanier(){
-		$_SESSION['panier'] = array(
-			"produit" => array(), //Contient les produits du panier indexé par ordre d'arrivé
-			"quantité" => array() //Contient les quantité du panier indexé par ordre d'arrivé
-		);
+		$_SESSION['panier'] = array();
 	}
 
 	public static function ajouterArticle() {
@@ -78,34 +62,27 @@ class ControllerModeles {
 			ControllerModeles::creerPanier();
 		}
 		//Ajout de l'objet dans le panier
-		$modele = $_GET['modele'];
-		$marque = $_GET['marque'];
-		$prix = $_GET['prix'];
-		$couleur = $_GET['couleur'];
-		$taille = $_GET['taille'];
-		$p = new ModelModeles($modele,$marque,$prix,$couleur,$taille);
+		$code = $_GET['codeProduit'];
 
-		$count = array_search($p, $_SESSION['panier']['produit']); //Recherche dans $_SESSION['panier']['produit'] la premiere clé égale à $p
+		$count = array_search($code, $_SESSION['panier']);
 
 		if($count===false) { //Si le produit n'existe pas, on le met dans le panier
-			array_push($_SESSION['panier']['produit'], $p);
-			array_push($_SESSION['panier']['quantité'], 1);
-		} else { //Si le produit existe dans le panier, on incrémente sa quantité
-			$_SESSION['panier']['quantité'][$count] += 1;
+			$_SESSION['panier'][$code] = 1;
+		} else {
+			$_SESSION['panier'][$code] = $_SESSION['panier'][$code]+1;
 		}
-		//Redirection vers la bonne page
+
 		ControllerModeles::readAll();
-		
 		
     }
 
-	public static function voirPanier(){
+	/*public static function voirPanier(){
 		//Si panier vide le signale
 		if(!isset($_SESSION["panier"])){
 			$panierVide = true;
 		} else{
 			$panierVide = false;
-			$tab_mod = $_SESSION['panier']['produit'];
+			$tab_mod = $_SESSION['panier'];
 
 			$prixTotal = 0;
 		
@@ -114,8 +91,26 @@ class ControllerModeles {
 			}
 		}
 
-		$controller='panier';
-		$view='list';
+		$controller='produit';
+		$view='panier';
+		$pagetitle='Liste des modèles';
+		require File::build_path(array("view","view.php"));
+	}*/
+
+	public static function voirPanier() {
+		if (!isset($_SESSION['panier'])) {
+			$panierVide = true;
+		} else {
+			$panierVide = false;
+			$tab = array();
+
+			foreach ($_SESSION['panier'] as $code => $quantité) {
+				$tab[$code] = ModelModeles::getProduitCode($code);
+			}
+		}
+
+		$controller='produit';
+		$view='panier1';
 		$pagetitle='Liste des modèles';
 		require File::build_path(array("view","view.php"));
 	}
