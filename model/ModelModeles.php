@@ -20,10 +20,9 @@ class ModelModeles {
     }
 
     public function __construct($mo=NULL, $ma=NULL, $p=NULL, $c=NULL, $t=NULL, $st=NULL, $img=NULL, $co=NULL) {
-        if (!is_null($ma) && !is_null($p) && !is_null($img)) {
+        if (!is_null($ma) && !is_null($p)) {
             $this->marque = $ma;
             $this->prix = $p;
-            $this->image = $img;
         }
         if (!is_null($c) && !is_null($t) && !is_null($st) && !is_null($co)) {
             $this->couleur = $c;
@@ -33,6 +32,9 @@ class ModelModeles {
         }
         if (!is_null($mo)) {
             $this->modele = $mo;
+        }
+        if(!is_null($img)){
+            $this->image = $img;
         }
     }
 
@@ -96,17 +98,24 @@ class ModelModeles {
     }
 
     public function save() {
+        //On vérifie que le model n'existe pas déjà dans la base de donnée
+        if(ModelModeles::getModele($this->modele)!==false){ //On peut recevoir soit false soit un objet
 
-        $sql = "INSERT INTO p_modeles (modele, marque, prix) VALUES (:modele, :marque, :prix);";
-        $req_prep = Model::getPDO()->prepare($sql);
+            $sql = "INSERT INTO p_modeles (modele, marque, prix) VALUES (:modele, :marque, :prix);";
+            $req_prep = Model::getPDO()->prepare($sql);
 
-        $values = array(
-            "modele" => $this->modele,
-            "marque" => $this->marque,
-            "prix" => $this->prix
-        );
+            $values = array(
+                "modele" => $this->modele,
+                "marque" => $this->marque,
+                "prix" => $this->prix
+            );
 
-        $req_prep->execute($values);
+            $req_prep->execute($values);
+            return true;
+        }
+        else{//Si le model n'a pas été créé return false
+            return false;
+        }
     }
 }
 ?>

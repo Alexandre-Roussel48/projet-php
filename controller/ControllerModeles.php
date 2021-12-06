@@ -40,12 +40,20 @@ class ControllerModeles {
 	}
 
 	public static function created() {
-		$modele = $_GET['modele'];
-		$marque = $_GET['marque'];
-		$prix = $_GET['prix'];
-		$m = new ModelModeles($modele,$marque,$prix);
-		$m->save();
-		ControllerModeles::readAll();
+		if(isset($_GET['modele']) && isset($_GET['marque']) && isset($_GET['prix']) && is_numeric($_GET['prix'])){
+			$modele = $_GET['modele'];
+			$marque = $_GET['marque'];
+			$prix = $_GET['prix'];
+			$m = new ModelModeles($modele,$marque,$prix);
+			if(!$m->save()){
+				ControllerModeles::create(); //Si le modele n'a pas pu etre enregistrer, renvoie sur le formulaire	
+			}else{
+				ControllerModeles::readAll(); //Si le modele est enregistrer, montre tout les modeles
+			}
+
+		} else{
+			ControllerModeles::create();
+		}
 	}
 
 	public static function panierExiste(){

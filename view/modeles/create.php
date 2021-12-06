@@ -1,6 +1,7 @@
 <form method="get" action="index.php">
   <fieldset>
     <legend>Mon formulaire :</legend>
+    <input type='hidden' name='controller' value='modeles'>
     <input type='hidden' name='action' value='created'>
     <p>
       <label for="modele">Modèle</label> :
