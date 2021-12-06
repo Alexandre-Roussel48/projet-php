@@ -91,16 +91,26 @@ class ControllerProduits {
     }
 
     public static function history(){
-        $jointures = ModelProduits::history($_SESSION['client']->get("codeClient"));
-        if($jointures!==false){
-            $controller='produit';
-            $view='history';
-            $pagetitle='Historique';
-            require File::build_path(array("view","view.php"));
-        } else {
-            echo "faire une page d'erreur";
+        if(isset($_SESSION['client'])){
+            $jointures = ModelProduits::history($_SESSION['client']->get("codeClient"));
+            if($jointures!==false){
+                $controller='produit';
+                $view='history';
+                $pagetitle='Historique';
+                require File::build_path(array("view","view.php"));
+            } else {
+                $controller='produit';
+                $view='historyError';
+                $pagetitle='Historique';
+                require File::build_path(array("view","view.php"));
+            }  
         }
+        else {
+                $controller='produit';
+                $view='historyError';
+                $pagetitle='Historique';
+                require File::build_path(array("view","view.php"));
+            }  
     }
-
 }
 ?>
