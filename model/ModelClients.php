@@ -158,6 +158,16 @@ class ModelClients {
         $_SESSION['client']->set("adresse", $adresse);
         $_SESSION['client']->set("telephone", $telephone);
     }
+
+    public static function deleteClient($mail){
+        $sql = "DELETE FROM p_clients WHERE mail=:mail;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $value = array(
+            "mail" => $mail
+        );
+        $req_prep->execute($value);
+    }
 }
 ?>
 
