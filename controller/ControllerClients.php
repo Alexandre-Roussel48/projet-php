@@ -30,6 +30,7 @@ class ControllerClients {
 			$controller='clients';
 			$view='detail';
 			$pagetitle='Détail de client';
+       		$peutModifier=isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client'];
 			require File::build_path(array("view","view.php"));
 		}
 		
@@ -215,16 +216,23 @@ class ControllerClients {
 	public static function updated(){
 		if(isset($_GET['nom']) && isset($_GET['prenom'])
 			&& isset($_GET['adresse']) && isset($_GET['telephone'])){
-			
 			ModelClients::update($_GET['nom'], $_GET['prenom'], $_GET['adresse'], $_GET['telephone']);
 			$controller='clients';
 			$view='detail';
 			$pagetitle='Détail de client';
 			$c = $_SESSION['client'];
+			$peutModifier = true;
 			require File::build_path(array("view","view.php"));
 		} else {
 			ControllerClients::update();
 		}
+	}
+
+	public static function deleteUser(){
+		if (isset($_SESSION['admin'])) {
+			ModelClients::deleteClient($_GET['mail']);
+		}
+		ControllerClients::readAll();
 	}
 }
 	
