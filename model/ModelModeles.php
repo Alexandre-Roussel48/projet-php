@@ -99,7 +99,7 @@ class ModelModeles {
 
     public function save() {
         //On vérifie que le model n'existe pas déjà dans la base de donnée
-        if(ModelModeles::getModele($this->modele)!==false){ //On peut recevoir soit false soit un objet
+        if(ModelModeles::getModele($this->modele)===false){ //On peut recevoir soit false soit un objet
 
             $sql = "INSERT INTO p_modeles (modele, marque, prix) VALUES (:modele, :marque, :prix);";
             $req_prep = Model::getPDO()->prepare($sql);
