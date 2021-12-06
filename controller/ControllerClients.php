@@ -152,6 +152,8 @@ class ControllerClients {
 				}
 				ControllerModeles::readAll();
 			}
+		} else {
+			ControllerClients::login();
 		}
 	}
 

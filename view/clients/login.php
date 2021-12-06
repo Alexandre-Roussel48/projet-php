@@ -4,7 +4,7 @@
         <input type='hidden' name='action' value='verification'>
 
         <?php
-            if($_GET['action']=="verification"){
+            if($_GET['action']=="verification" && isset($_GET['mail']) && isset($_GET['mdp'])){
                 $email = $_GET['mail'];
                 $mdp = $_GET['mdp'];
             }
