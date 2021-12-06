@@ -8,8 +8,10 @@
     </tr>
     <tr>
 <?php
-foreach ($tab_cli as $c) {
 
+
+foreach ($tab_cli as $c) {
+    echo '<tr>';
     $codeClient = $c->get('codeClient');
     $codeClientUrl = rawurlencode($codeClient);
 
@@ -22,9 +24,13 @@ foreach ($tab_cli as $c) {
     else echo "<td>Non</td>";
     echo '<td><a href="?controller=clients&action=read&client='.$codeClientUrl.'">Détail du client</a></td>';
     echo '<td><a href="?controller=clients&action=deleteUser&client='.$codeClientUrl.'">Supprimer le client</a></td>';
+    echo '</tr>';
+}
+
 ?>
     </tr>
 </table>
+
 
 
 
