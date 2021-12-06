@@ -62,40 +62,45 @@ class ControllerModeles {
 			ControllerModeles::creerPanier();
 		}
 		//Ajout de l'objet dans le panier
+		
 		$code = $_GET['codeProduit'];
 
-		$count = array_search($code, $_SESSION['panier']);
-
-		if($count===false) { //Si le produit n'existe pas, on le met dans le panier
+		if(!isset($_SESSION['panier'][$code])) { //Si le produit n'existe pas, on le met dans le panier
 			$_SESSION['panier'][$code] = 1;
 		} else {
-			$_SESSION['panier'][$code] = $_SESSION['panier'][$code]+1;
+			$_SESSION['panier'][$code] += 1;
 		}
 
 		ControllerModeles::readAll();
 		
     }
 
-	/*public static function voirPanier(){
-		//Si panier vide le signale
-		if(!isset($_SESSION["panier"])){
-			$panierVide = true;
-		} else{
-			$panierVide = false;
-			$tab_mod = $_SESSION['panier'];
+    public static function supprimerArticle() {
+        //Si le panier existe
+        if (ControllerModeles::panierExiste()) {
 
-			$prixTotal = 0;
-		
-			foreach ($_SESSION['panier']['produit'] as $m) {
-				$prixTotal += ($m->get("prix")); //IL MANQUE LE NOMBRE DE PRODUIT ACHETES
-			}
-		}
+        	$code = $_GET['codeProduit'];
 
-		$controller='produit';
-		$view='panier';
-		$pagetitle='Liste des modèles';
-		require File::build_path(array("view","view.php"));
-	}*/
+        	if (isset($_SESSION['panier'][$code])) {
+
+        		if ($_SESSION['panier'][$code]==1) {
+        			unset($_SESSION['panier'][$code]);
+        		} else {
+        			$_SESSION['panier'][$code] -= 1;
+        		}
+
+        		$controller='produit';
+				$view='panier1';
+				$pagetitle='Panier';
+				require File::build_path(array("view","view.php"));
+
+        	} else {
+        		echo "Pb suppArticle.";
+        	}
+
+        } else
+            echo "Pb suppArticle.";
+    }
 
 	public static function voirPanier() {
 		if (!isset($_SESSION['panier'])) {
@@ -111,7 +116,7 @@ class ControllerModeles {
 
 		$controller='produit';
 		$view='panier1';
-		$pagetitle='Liste des modèles';
+		$pagetitle='Panier';
 		require File::build_path(array("view","view.php"));
 	}
 
