@@ -57,6 +57,7 @@ header nav div:hover a{
 
 body {
     background-color: var(--body-color-bg);
+    color: var(--text-color);
 }
 
 main, footer{
@@ -169,6 +170,7 @@ input[type=submit] {
   color: var(--button-color);
   padding: 10px 20px;
   cursor: pointer;
+    border-radius: 10px;
 }
 
 footer{
