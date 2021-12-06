@@ -13,11 +13,12 @@
 <ul>
     <?php
     foreach ($tab_p as $p) {
-        $stock = $p->get('stock');  $stockHtml = htmlspecialchars($stock);
-        $taille = $p->get('taille');    $tailleHtml = htmlspecialchars($taille);
-        $couleur = $p->get('couleur');  $couleurHtml = htmlspecialchars($couleur);
-        echo "<li> Quantité restante : {$stockHtml}. Taille : {$tailleHtml} pouces. Couleur : {$couleurHtml}. ";
-        echo "<p><a href=\"index.php?controller=modeles&action=ajouterArticle&modele=$modele&marque=$marque&prix=$prix&couleur=$couleur&taille=$taille\">Ajouter au panier</a></li></p>";
+        $codeProduit = $p->get('codeProduit'); $codeProduitHtml = htmlspecialchars($codeProduit);
+        $stock = $p->get('stock');
+        $taille = $p->get('taille');
+        $couleur = $p->get('couleur');
+        echo "<li> Quantité restante : {$stock}. Taille : {$taille} pouces. Couleur : {$couleur}. ";
+        echo "<p><a href=\"index.php?controller=modeles&action=ajouterArticle&codeProduit=$codeProduitHtml\">Ajouter au panier</a></li></p>";
     }
     ?>
 </ul>
