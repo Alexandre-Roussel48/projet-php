@@ -91,7 +91,7 @@ class ControllerProduits {
     }
 
     public static function history(){
-        $jointures = ModelProduits::history(4);
+        $jointures = ModelProduits::history($_SESSION['client']->get("codeClient"));
         if($jointures!==false){
             $controller='produit';
             $view='history';
