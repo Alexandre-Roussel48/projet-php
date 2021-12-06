@@ -20,8 +20,8 @@ foreach ($tab_cli as $c) {
     echo "<td>{$prenomClient} </td>";
     if (ModelClients::isAdmin($c->get('mail'))) echo "<td>Oui</td>";
     else echo "<td>Non</td>";
-    echo '<td><a href=\"?controller=clients&action=read&client='.$codeClientUrl.'">Détail du client</a></td>';
-    echo '<td><a href=\"?controller=clients&action=deleteUser&client='.$codeClientUrl.'">Supprimer le client</a></td>';
+    echo '<td><a href="?controller=clients&action=read&client='.$codeClientUrl.'">Détail du client</a></td>';
+    echo '<td><a href="?controller=clients&action=deleteUser&client='.$codeClientUrl.'">Supprimer le client</a></td>';
     echo '</tr>';
 }
 ?>
