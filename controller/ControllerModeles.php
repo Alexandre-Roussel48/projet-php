@@ -111,6 +111,7 @@ class ControllerModeles {
     }
 
 	public static function voirPanier() {
+		$panierVide = true;
 		if (!isset($_SESSION['panier'])) {
 			$panierVide = true;
 		} else {
