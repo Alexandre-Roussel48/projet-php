@@ -13,12 +13,12 @@
 <ul>
     <?php
     foreach ($tab_p as $p) {
-        $codeProduit = $p->get('codeProduit'); $codeProduitHtml = htmlspecialchars($codeProduit);
+        $codeProduit = $p->get('codeProduit'); $codeProduitUrl = urlencode($codeProduit);
         $stock = $p->get('stock');
         $taille = $p->get('taille');
         $couleur = $p->get('couleur');
         echo "<li> Quantité restante : {$stock}. Taille : {$taille} pouces. Couleur : {$couleur}. ";
-        echo "<p><a href=\"index.php?controller=modeles&action=ajouterArticle&codeProduit=$codeProduitHtml\">Ajouter au panier</a></li></p>";
+        echo "<p><a href=\"index.php?controller=modeles&action=ajouterArticle&codeProduit=$codeProduitUrl\">Ajouter au panier</a></li></p>";
     }
     ?>
 </ul>
