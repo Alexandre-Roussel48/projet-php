@@ -18,7 +18,7 @@ header{
 }
 
 /*Positionne le header sans burger*/
-header nav {     
+header nav {
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -43,7 +43,7 @@ header nav > div:hover {
 
 /*Taille des liens dans le header*/
 header nav div a{
-    font-size: 25px; 
+    font-size: 25px;
     color: var(--header-link-color);
     text-decoration: none;
 }
@@ -128,7 +128,7 @@ a{
 /*============FORMULAIRE============*/
 
 /*Met le fond en gris et arrondit les coins*/
-fieldset{ 
+fieldset{
     background-color: var(--fieldset-color-bg);
     border: 2px solid var(--border-color);
     border-radius:8px;
@@ -136,7 +136,7 @@ fieldset{
 }
 
 fieldset > * {
-    color: var(--text-color);
+    color: var(--fieldset-text-color);
 }
 
 fieldset > legend{
@@ -158,18 +158,18 @@ fieldset > p {
 }
 
 input[type=text], input[type=password] {
-  background-color: var(--button-color-bg);
-  border: 1px solid var(--border-color);
-  padding: 10px 200px;
-  font-size: 15px;
+    background-color: var(--button-color-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px 200px;
+    font-size: 20px;
 }
 
 input[type=submit] {
-  background-color: var(--button-color-bg);
-  border: 1px solid var(--border-color);
-  color: var(--button-color);
-  padding: 10px 20px;
-  cursor: pointer;
+    background-color: var(--button-color-bg);
+    border: 1px solid var(--border-color);
+    color: var(--button-color);
+    padding: 10px 20px;
+    cursor: pointer;
     border-radius: 10px;
 }
 
