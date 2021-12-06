@@ -97,10 +97,7 @@ class ControllerModeles {
         			$_SESSION['panier'][$code] -= 1;
         		}
 
-        		$controller='produit';
-				$view='panier1';
-				$pagetitle='Panier';
-				require File::build_path(array("view","view.php"));
+        		ControllerModeles::voirPanier();
 
         	} else {
         		echo "Pb suppArticle.";
@@ -111,7 +108,6 @@ class ControllerModeles {
     }
 
 	public static function voirPanier() {
-		$panierVide = true;
 		if (!isset($_SESSION['panier'])) {
 			$panierVide = true;
 		} else {
