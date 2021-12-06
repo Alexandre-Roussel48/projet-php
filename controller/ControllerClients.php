@@ -226,6 +226,12 @@ class ControllerClients {
 			ControllerClients::update();
 		}
 	}
+
+	public static function deleteUser(){
+		if (isset($_SESSION['admin'])) {
+			ModelClients::deleteClient($_GET['mail'])
+		}	
+	}
 }
 	
 ?>
