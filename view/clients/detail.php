@@ -1,6 +1,6 @@
 <fieldset>
     <?php
-        if(isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client'])
+        if($peutModifier)
             echo "<h1>MON PROFIL</h1>";
         else
             echo "<h1>PROFIL DU CLIENT</h1>";
@@ -28,7 +28,7 @@
         else
             echo "<p>Téléphone : <em>non renseigné</em></p></fieldset>";
         
-        if(isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client']){
+        if($peutModifier){
                 echo '<form method="get" style="text-align: center; "action="index.php">';
                 echo '<input type="hidden" name="controller" value="clients">';
                 echo '<input type="hidden" name="action" value="update">';
