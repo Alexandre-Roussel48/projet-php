@@ -6,11 +6,17 @@
         <?php
             if(isset($_GET['nom'])){
                 $nom = $_GET['nom'];
+            } if(isset($_GET['prenom'])){
                 $prenom = $_GET['prenom'];
+            } if(isset($_GET['mail'])){
                 $mail = $_GET['mail'];
+            } if(isset($_GET['mdp'])){
                 $mdp = $_GET['mdp'];
+            } if(isset($_GET['mdpVerif'])){
                 $mdpVerif = $_GET['mdpVerif'];
+            } if(isset($_GET['adresse'])){
                 $adresse = $_GET['adresse'];
+            } if(isset($_GET['telephone'])){
                 $telephone = $_GET['telephone'];
             }
         ?>
