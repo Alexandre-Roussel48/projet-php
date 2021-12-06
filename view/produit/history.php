@@ -9,12 +9,17 @@
         <th>Quantité</th>
         <th>Date de la commande</th>
     </tr>
-    <tr>
 <?php
-echo '<br><br><br><br><br><br><br><br><br>';
-var_dump($tab_commande);
-for ($i = 0; $i < count($tab_commande); ++$i){
-	echo '<td>'.$key["marque"].'</td>';
+foreach ($jointures as $key => $value){
+    echo '<tr>';
+	echo '<td>'.$value->get("marque").'</td>';
+    echo '<td>'.$value->get("modele").'</td>';
+    echo '<td>'.$value->get("prix").'</td>';
+    echo '<td>'.$value->get("couleur").'</td>';
+    echo '<td>'.$value->get("taille").'</td>';
+    echo '<td>'.$value->get("quantite").'</td>';
+    echo '<td>'.$value->get("date").'</td>';
+    echo '</tr>';
 }
 ?>
 	</tr>

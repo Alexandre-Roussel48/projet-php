@@ -7,6 +7,6 @@
     --fieldset-text-color: black;
     --fieldset-color-bg: rgba(62, 62, 62, 0.22);
     --border-color: black;
-    --button-color: black;
-    --button-color-bg: white;
+    --button-color: white;
+    --button-color-bg: black;
 }
