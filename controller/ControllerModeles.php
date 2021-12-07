@@ -56,20 +56,13 @@ class ControllerModeles {
 		}
 	}
 
-	public static function panierExiste(){
-		return isset($_SESSION['panier']);
-	}
-
-	public static function creerPanier(){
-		$_SESSION['panier'] = array();
+	public static function panier() {
+		if (!isset($_SESSION['panier'])) {
+			$_SESSION['panier'] = array();
+		}
 	}
 
 	public static function ajouterArticle() {
-        //Si le panier existe
-        if (!ControllerModeles::panierExiste()) {
-			ControllerModeles::creerPanier();
-		}
-		//Ajout de l'objet dans le panier
 		
 		$code = $_GET['codeProduit'];
 
@@ -84,8 +77,6 @@ class ControllerModeles {
     }
 
     public static function supprimerArticle() {
-        //Si le panier existe
-        if (ControllerModeles::panierExiste()) {
 
         	$code = $_GET['codeProduit'];
 
@@ -100,23 +91,18 @@ class ControllerModeles {
         		ControllerModeles::voirPanier();
 
         	} else {
-        		echo "Pb suppArticle.";
+        		ControllerModeles::voirPanier();
         	}
-
-        } else
-            echo "Pb suppArticle.";
     }
 
 	public static function voirPanier() {
-		if (!isset($_SESSION['panier'])) {
-			$panierVide = true;
-		} else {
-			$panierVide = false;
-			$tab = array();
 
-			foreach ($_SESSION['panier'] as $code => $quantité) {
-				$tab[$code] = ModelModeles::getProduitCode($code);
-			}
+		ControllerModeles::panier();
+
+		$tab = array();
+
+		foreach ($_SESSION['panier'] as $code => $quantité) {
+			$tab[$code] = ModelModeles::getProduitCode($code);
 		}
 
 		$controller='produit';

@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 
 <body>
-    <table style="width: 400px">
-        <tr>
-            <td colspan="6">Panier</td>
-        </tr>
-        <tr>
-            <td>Marque</td>
-            <td>Modèle</td>
-            <td>Couleur</td>
-            <td>Taille</td>
-            <td>Prix unitaire</td>
-            <td>Quantité</td>
-            <td>Action</td>
-        </tr>
-
-
         <?php
-        if ($panierVide) {
+        if (empty($_SESSION['panier'])) {
             echo "<p>Votre panier est vide.</p>";
         } else {
+            echo "<table style=\"width: 400px\">
+            <tr>
+                <td colspan=\"6\">Panier</td>
+            </tr>
+            <tr>
+                <td>Marque</td>
+                <td>Modèle</td>
+                <td>Couleur</td>
+                <td>Taille</td>
+                <td>Prix unitaire</td>
+                <td>Quantité</td>
+                <td>Action</td>
+            </tr>
+            ";
             $MontantGlobal = 0;
             foreach ($_SESSION['panier'] as $code => $quantité) {
                 $p = $tab[$code];
@@ -44,8 +43,6 @@
             echo "<tr><td colspan=\"4\"></td>
                           <td colspan=\"2\">
                           Total : ".$MontantGlobal."</td></tr>";
-                
-
         }
         ?>
     </table>

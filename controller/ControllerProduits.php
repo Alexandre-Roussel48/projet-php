@@ -4,29 +4,6 @@ require_once File::build_path(array("controller","ControllerModeles.php"));
 
 class ControllerProduits {
 
-
-//gestion du panier :
-
-    /*public static function ajouterArticle() {
-        //Si le panier existe
-        if (ControllerProduits::creationPanier()) {
-            $nomProduit = $_GET['modele'];
-            $prixProduit = $_GET['prix'];
-            //Si le produit existe déjà on ajoute seulement la quantité
-            $positionProduit = array_search($nomProduit, $_SESSION['panier']['nomProduit']);
-
-            if ($positionProduit !== false) {
-                $_SESSION['panier']['qteProduit'][$positionProduit] += 1;
-            } else {
-                //Sinon on ajoute le produit
-                array_push($_SESSION['panier']['nomProduit'], $nomProduit);
-                array_push($_SESSION['panier']['qteProduit'], $qteProduit);
-                array_push($_SESSION['panier']['prixProduit'], $prixProduit);
-            }
-        } else
-            echo "Pb ajtArticle.";
-    }*/
-
     public static function supprimerArticle($nomProduit) {
         //Si le panier existe
         if (ControllerProduits::creationPanier()) {

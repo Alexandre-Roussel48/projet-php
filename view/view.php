@@ -35,9 +35,7 @@
                 if (isset($_SESSION['admin'])) {
                     echo '<div><a href="index.php?controller=clients&action=admin">Page admin</a></div>';
                 }
-                if(isset($_SESSION['panier'])){
-                    echo '<div><a href="index.php?controller=modeles&action=voirPanier">Mon panier</a></div>';
-                }
+                echo '<div><a href="index.php?controller=modeles&action=voirPanier">Mon panier</a></div>';
                 ?>
             </nav>
         </header>
