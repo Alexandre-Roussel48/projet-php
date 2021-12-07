@@ -57,22 +57,22 @@ class ControllerClients {
 		if (isset($_GET['nom']) && isset($_GET['prenom']) && isset($_GET['mail']) && isset($_GET['mdp']) && 
 		isset($_GET['mdpVerif']) && filter_var($_GET['mail'], FILTER_VALIDATE_EMAIL)) {
 
-			$nom = $_GET['nom'];
-			$prenom = $_GET['prenom'];
-			$mail = $_GET['mail'];
-			$mdp = $_GET['mdp'];
+			$nom = $_GET['nom']; $nomHtml = htmlspecialchars($nom);
+			$prenom = $_GET['prenom']; $prenomHtml = htmlspecialchars($prenom);
+			$mail = $_GET['mail']; $mailHtml = htmlspecialchars($mail);
+			$mdp = $_GET['mdp']; $mdpHtml = htmlspecialchars($mdp);
 			$mdpVerif = $_GET['mdpVerif'];
 
 			if (isset($_GET['telephone'])) {
-				$telephone = $_GET['telephone'];
+				$telephone = $_GET['telephone']; $telephoneHtml = htmlspecialchars($telephone);
 			} else {
-				$telephone = NULL;
+				$telephoneHtml = NULL;
 			}
 
 			if (isset($_GET['adresse'])) {
-				$adresse = $_GET['adresse'];
+				$adresse = $_GET['adresse']; $adresseHtml = htmlspecialchars($adresse);
 			} else {
-				$adresse = NULL;
+				$adresseHtml = NULL;
 			}
 
 
@@ -86,7 +86,7 @@ class ControllerClients {
 			if ($_SESSION['mdpVerif']==0 || $_SESSION['mailVerif']==0) {
 				ControllerClients::create();
 			} else {
-				$c = new Modelclients(NULL,$nom,$prenom,$mail,$telephone,$mdp,$adresse);
+				$c = new Modelclients(NULL,$nomHtml,$prenomHtml,$mailHtml,$telephoneHtml,$mdpHtml,$adresseHtml);
 				$c->save();
 
 				//Envoi le mail de verification

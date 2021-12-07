@@ -5,11 +5,11 @@
         else
             echo "<h1>PROFIL DU CLIENT</h1>";
         
-        $nom = htmlspecialchars($c->get('nomClient'));
-        $prenom = htmlspecialchars($c->get('prenomClient')); 
-        $mail = htmlspecialchars($c->get('mail'));
-        $adresse = htmlspecialchars($c->get('adresse')); 
-        $telephone = htmlspecialchars($c->get('telephone')); 
+        $nom = $c->get('nomClient');
+        $prenom = $c->get('prenomClient'); 
+        $mail = $c->get('mail');
+        $adresse = $c->get('adresse'); 
+        $telephone = $c->get('telephone'); 
 
         echo "<p>Nom : {$nom}</p>";
         echo "<p>Prénom : {$prenom}</p>";
