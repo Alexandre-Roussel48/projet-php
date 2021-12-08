@@ -39,6 +39,16 @@ class ControllerModeles {
 		}
 	}
 
+	public static function deleteModele(){
+		if (isset($_SESSION['admin']) && isset($_GET['codeModele'])) {
+			var_dump($_GET['codeModele']);
+			ModelModeles::deleteModele($_GET['codeModele']);
+		}
+		//Dans tout les cas, l'utilisateur est redirigé vers l'accueil
+		ControllerModeles::readAll();
+		
+	}
+
 	public static function created() {
 		if(isset($_GET['modele']) && isset($_GET['marque']) && isset($_GET['prix']) && is_numeric($_GET['prix'])){
 			$modele = $_GET['modele'];

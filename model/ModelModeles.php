@@ -117,6 +117,17 @@ class ModelModeles {
             return false;
         }
     }
+
+    public static function deleteModele($modele){
+        //Les produits associés sont supprimés en casquade
+        $sql = "DELETE FROM p_modeles WHERE modele = :modele;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "modele" => $modele
+        );
+        $req_prep->execute($values);
+    }
 }
 ?>
 

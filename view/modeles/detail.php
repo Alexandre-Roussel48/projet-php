@@ -30,3 +30,8 @@
     }
     ?>
 </ul>
+<?php
+    if(isset($_SESSION['admin'])){
+        echo("<p><a href='index.php?controller=modeles&action=deleteModele&codeModele=".$m->get('modele')."'>Supprimer le modele </a></p>");
+    }
+?>
