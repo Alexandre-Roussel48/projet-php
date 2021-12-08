@@ -111,7 +111,7 @@ class ControllerModeles {
 
 		$tab = array();
 
-		foreach ($_SESSION['panier'] as $code => $quantité) {
+		foreach ($_SESSION['panier'] as $code => $quantite) {
 			$tab[$code] = ModelModeles::getProduitCode($code);
 		}
 
@@ -124,8 +124,8 @@ class ControllerModeles {
 	public static function validerCommande(){
 		$prixTotal = 0;
 		
-		foreach ($_SESSION['panier']['produit'] as $m) {
-			$prixTotal += ($m->get("prix")); //IL MANQUE LE NOMBRE DE PRODUIT ACHETES
+		foreach ($_SESSION['panier'] as $code =>$quantite) {
+			$prixTotal += ModelModeles::getProduitCode($code)->get('prix')*$quantite; 
 		}
 
 		$controller='panier';

@@ -40,7 +40,7 @@
             }
             echo "<tr><td colspan=\"6\">
                             </td></tr>";
-            echo "<tr><td colspan=\"4\"></td>
+            echo "<tr><td colspan=\"4\"><a href='index.php?controller=modeles&action=validerCommande'>Valider le panier</a></td>
                           <td colspan=\"2\">
                           Total : ".$MontantGlobal."</td></tr>";
         }
