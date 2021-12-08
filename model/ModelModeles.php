@@ -140,7 +140,29 @@ class ModelModeles {
         $req_prep->execute($values);
         $tab_qtt = $req_prep->fetchAll();
         return (int)$tab_qtt[0][0]>$demande;
+    }
 
+    public static function decrementStocks($codeProduit, $quantite){
+        $sql = "UPDATE p_produits SET stock = stock-:quantite WHERE codeProduit=:codeProduit;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "codeProduit" => $codeProduit,
+            "quantite"=>$quantite
+        );
+        $req_prep->execute($values);
+    }
+
+    public static function sauverCommande($codeClient, $codeProduit, $quantite){
+        $sql = "INSERT INTO p_commander (codeClient, codeProduit, quantite) VALUES (:codeClient, :codeProduit, :quantite);";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "codeClient" => $codeClient,
+            "codeProduit" => $codeProduit,
+            "quantite"=>$quantite
+        );
+        $req_prep->execute($values);
     }
 }
 ?>

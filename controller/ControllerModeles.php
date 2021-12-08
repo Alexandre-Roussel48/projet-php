@@ -143,19 +143,27 @@ class ControllerModeles {
 				$codeErreur-=1;
 			}
 		}
-		var_dump($codeErreur);
-		if($codeErreur===-1){
+		if($codeErreur===-1){ //Si stocks insufisants
 			$erreur = "Stocks insuffisants";
 			$controller='modeles';
 			$view='error';
 			$pagetitle='erreur';
 			require File::build_path(array("view","view.php"));
+		} else{ //Si stocks suffisents
+			foreach ($_SESSION['panier'] as $code =>$quantite) { //Attention, il ne faut decrementer que si TOUT les produits sont en stock
+				//Decrementer les compeurs des produits achetes
+				ModelModeles::decrementStocks($code, $quantite);
+				//Mettre la commande dans la table p_commander
+				ModelModeles::sauverCommande($_SESSION['client']->get('codeClient'), $code, $quantite);
+			}
 		}
-		//Decrementer les compeurs des produits achetes
-		//Mettre la commande dans la table p_commander
-		//Dire au client que l'achat a ete effectue
 		//Vider le panier
-		//require File::build_path(array("view","view.php"));
+		$_SESSION['panier'] = array();
+		//Dire au client que l'achat a ete effectue
+		$controller='panier';
+		$view='paye';
+		$pagetitle='commande effectue';
+		require File::build_path(array("view","view.php"));
 	}
 
 }
