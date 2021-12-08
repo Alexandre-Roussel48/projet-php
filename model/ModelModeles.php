@@ -128,6 +128,20 @@ class ModelModeles {
         );
         $req_prep->execute($values);
     }
+
+
+    public static function modeleDispo($codeProduit, $demande){
+        $sql = "SELECT stock FROM p_produits WHERE codeProduit = :codeProduit;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "codeProduit" => $codeProduit
+        );
+        $req_prep->execute($values);
+        $tab_qtt = $req_prep->fetchAll();
+        return (int)$tab_qtt[0][0]>$demande;
+
+    }
 }
 ?>
 

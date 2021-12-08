@@ -130,17 +130,32 @@ class ControllerModeles {
 
 		$controller='panier';
 		$view='payement';
-		$pagetitle='Liste des modèles';
+		$pagetitle='Valider commande';
 		require File::build_path(array("view","view.php"));
 		
 	}
 
 	public static function paye(){
 		//Verifier que les produits sont toujours en stock
+		$codeErreur = 0;
+		foreach ($_SESSION['panier'] as $code =>$quantite) {
+			if(!ModelModeles::modeleDispo($code, $quantite)){
+				$codeErreur-=1;
+			}
+		}
+		var_dump($codeErreur);
+		if($codeErreur===-1){
+			$erreur = "Stocks insuffisants";
+			$controller='modeles';
+			$view='error';
+			$pagetitle='erreur';
+			require File::build_path(array("view","view.php"));
+		}
 		//Decrementer les compeurs des produits achetes
 		//Mettre la commande dans la table p_commander
 		//Dire au client que l'achat a ete effectue
 		//Vider le panier
+		//require File::build_path(array("view","view.php"));
 	}
 
 }
