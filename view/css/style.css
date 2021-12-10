@@ -162,7 +162,6 @@ fieldset > p {
 }
 
 input[type=text], input[type=password] {
-    background-color: var(--button-color-bg);
     border: 1px solid var(--border-color);
     padding: 10px 200px;
     font-size: 20px;
