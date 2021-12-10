@@ -42,7 +42,6 @@ class ControllerModeles {
 
 	public static function deleteModele(){
 		if (isset($_SESSION['admin']) && isset($_GET['codeModele'])) {
-			var_dump($_GET['codeModele']);
 			ModelModeles::deleteModele($_GET['codeModele']);
 		}
 		//Dans tout les cas, l'utilisateur est redirigé vers l'accueil
@@ -75,35 +74,35 @@ class ControllerModeles {
 
 	public static function ajouterArticle() {
 		
-		$code = $_GET['codeProduit'];
+		if (isset($_GET['codeProduit'])) {
+			$code = $_GET['codeProduit'];
 
-		if(!isset($_SESSION['panier'][$code])) { //Si le produit n'existe pas, on le met dans le panier
-			$_SESSION['panier'][$code] = 1;
-		} else {
-			$_SESSION['panier'][$code] += 1;
+			if(!isset($_SESSION['panier'][$code])) { //Si le produit n'existe pas, on le met dans le panier
+				$_SESSION['panier'][$code] = 1;
+			} else {
+				$_SESSION['panier'][$code] += 1;
+			}
 		}
 
-		ControllerModeles::readAll();
+		ControllerModeles::voirPanier();
 		
     }
 
     public static function supprimerArticle() {
 
+    	if (isset($_GET['codeProduit'])) {
         	$code = $_GET['codeProduit'];
 
         	if (isset($_SESSION['panier'][$code])) {
-
         		if ($_SESSION['panier'][$code]==1) {
         			unset($_SESSION['panier'][$code]);
         		} else {
         			$_SESSION['panier'][$code] -= 1;
         		}
-
-        		ControllerModeles::voirPanier();
-
-        	} else {
-        		ControllerModeles::voirPanier();
         	}
+    	}
+
+        ControllerModeles::voirPanier();
     }
 
 	public static function voirPanier() {
@@ -123,16 +122,18 @@ class ControllerModeles {
 	}
 
 	public static function validerCommande(){
-		$prixTotal = 0;
 		
-		foreach ($_SESSION['panier'] as $code =>$quantite) {
-			$prixTotal += ModelModeles::getProduitCode($code)->get('prix')*$quantite; 
-		}
+		if (isset($_GET['montantGlobal'])) {
 
-		$controller='panier';
-		$view='payement';
-		$pagetitle='Valider commande';
-		require File::build_path(array("view","view.php"));
+			$prixTotal = $_GET['montantGlobal'];
+
+			$controller='panier';
+			$view='payement';
+			$pagetitle='Valider commande';
+			require File::build_path(array("view","view.php"));
+		}
+		
+		
 		
 	}
 

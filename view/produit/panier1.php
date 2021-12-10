@@ -36,11 +36,15 @@
                 echo "<td>".$tailleHtml."</td>";
                 echo "<td>".$prixHtml."</td>";
                 echo "<td>".$quantité."</td>";
-                echo "<td><a href=\"index.php?controller=modeles&action=supprimerArticle&codeProduit=".rawurlencode($code)."\"> Supprimer</a></td></tr>";
+                echo "<td>
+                <p><a href=\"index.php?controller=modeles&action=ajouterArticle&codeProduit=".rawurlencode($code)."\"> Ajouter</a></p>
+                <p><a href=\"index.php?controller=modeles&action=supprimerArticle&codeProduit=".rawurlencode($code)."\"> Supprimer</a></p>
+                </td></tr>";
+
             }
             echo "<tr><td colspan=\"6\">
                             </td></tr>";
-            echo "<tr><td colspan=\"4\"><a href='index.php?controller=modeles&action=validerCommande'>Valider le panier</a></td>
+            echo "<tr><td colspan=\"4\"><a href='index.php?controller=modeles&action=validerCommande&montantGlobal=".rawurlencode($MontantGlobal)."'>Valider le panier</a></td>
                           <td colspan=\"2\">
                           Total : ".$MontantGlobal."</td></tr>";
         }

@@ -4,31 +4,6 @@ require_once File::build_path(array("controller","ControllerModeles.php"));
 
 class ControllerProduits {
 
-    public static function supprimerArticle($nomProduit) {
-        //Si le panier existe
-        if (ControllerProduits::creationPanier()) {
-            //on passe par un panier temporaire pour eviter les null moches qui traine
-            $tmp = array();
-            $tmp['nomProduit'] = array();
-            $tmp['qteProduit'] = array();
-            $tmp['prixProduit'] = array();
-
-            for ($i = 0; $i < count($_SESSION['panier']['nomProduit']); $i++) {
-                if ($_SESSION['panier']['libelleProduit'][$i] !== $nomProduit) {
-                    array_push($tmp['nomProduit'], $_SESSION['panier']['nomProduit'][$i]);
-                    array_push($tmp['qteProduit'], $_SESSION['panier']['qteProduit'][$i]);
-                    array_push($tmp['prixProduit'], $_SESSION['panier']['prixProduit'][$i]);
-                }
-
-            }
-            //On remplace le panier en session par notre panier temporaire à jour
-            $_SESSION['panier'] = $tmp;
-            //On efface notre panier temporaire
-            unset($tmp);
-        } else
-            echo "Pb suppArticle.";
-    }
-
     public static function modifierQTeArticle($nomProduit, $qteProduit) {
         //Si le panier existe
         if (ControllerProduits::creationPanier()) {
