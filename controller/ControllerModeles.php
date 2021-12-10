@@ -1,5 +1,6 @@
 <?php
 require_once File::build_path(array("model","ModelModeles.php"));
+require_once File::build_path(array("model","ModelClients.php"));
 
 class ControllerModeles {
 	public static function readAll() {
@@ -136,34 +137,38 @@ class ControllerModeles {
 	}
 
 	public static function paye(){
-		//Verifier que les produits sont toujours en stock
-		$codeErreur = 0;
-		foreach ($_SESSION['panier'] as $code =>$quantite) {
-			if(!ModelModeles::modeleDispo($code, $quantite)){
-				$codeErreur-=1;
+		if(isset($_SESSION["client"])){
+			//Verifier que les produits sont toujours en stock
+			$codeErreur = 0;
+			foreach ($_SESSION['panier'] as $code =>$quantite) {
+				if(!ModelModeles::modeleDispo($code, $quantite)){
+					$codeErreur-=1;
+				}
 			}
-		}
-		if($codeErreur===-1){ //Si stocks insufisants
-			$erreur = "Stocks insuffisants";
-			$controller='modeles';
-			$view='error';
-			$pagetitle='erreur';
+			if($codeErreur===-1){ //Si stocks insufisants
+				$erreur = "Stocks insuffisants";
+				$controller='modeles';
+				$view='error';
+				$pagetitle='erreur';
+				require File::build_path(array("view","view.php"));
+			} else{ //Si stocks suffisents
+				foreach ($_SESSION['panier'] as $code =>$quantite) { //Attention, il ne faut decrementer que si TOUT les produits sont en stock
+					//Decrementer les compeurs des produits achetes
+					ModelModeles::decrementStocks($code, $quantite);
+					//Mettre la commande dans la table p_commander
+					ModelModeles::sauverCommande($_SESSION['client']->get('codeClient'), $code, $quantite);
+				}
+			}
+			//Vider le panier
+			$_SESSION['panier'] = array();
+			//Dire au client que l'achat a ete effectue
+			$controller='panier';
+			$view='paye';
+			$pagetitle='commande effectue';
 			require File::build_path(array("view","view.php"));
-		} else{ //Si stocks suffisents
-			foreach ($_SESSION['panier'] as $code =>$quantite) { //Attention, il ne faut decrementer que si TOUT les produits sont en stock
-				//Decrementer les compeurs des produits achetes
-				ModelModeles::decrementStocks($code, $quantite);
-				//Mettre la commande dans la table p_commander
-				ModelModeles::sauverCommande($_SESSION['client']->get('codeClient'), $code, $quantite);
-			}
+		} else {
+			ControllerClients::login();
 		}
-		//Vider le panier
-		$_SESSION['panier'] = array();
-		//Dire au client que l'achat a ete effectue
-		$controller='panier';
-		$view='paye';
-		$pagetitle='commande effectue';
-		require File::build_path(array("view","view.php"));
 	}
 
 }
