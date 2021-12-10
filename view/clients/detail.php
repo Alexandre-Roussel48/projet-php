@@ -30,8 +30,9 @@
         
         if($peutModifier){
             echo '<a href="index.php?controller=clients&action=update" class="bouton">Modifier profil</a>';
+            echo '<a href="index.php?controller=produits&action=history" class="bouton">Voir mon historique d\'achat</a>';
         }
-        echo '<a href="index.php?controller=produits&action=history" class="bouton">Voir historique d\'achat</a>';
+        
 
     ?>
 </fieldset>

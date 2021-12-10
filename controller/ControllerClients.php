@@ -27,13 +27,16 @@ class ControllerClients {
 			$pagetitle='Erreur';
 			require File::build_path(array("view","view.php"));
 		} else {
-			$controller='clients';
-			$view='detail';
-			$pagetitle='Détail de client';
-       		$peutModifier=isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client'];
-			require File::build_path(array("view","view.php"));
+			$peutModifier=isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client'];
+			if ($peutModifier || isset($_SESSION['admin'])){
+				$controller='clients';
+				$view='detail';
+				$pagetitle='Détail de client';
+				require File::build_path(array("view","view.php"));
+			} else {
+				ControllerModeles::readAll();
+			}
 		}
-		
 	}
 
 	public static function create() {
