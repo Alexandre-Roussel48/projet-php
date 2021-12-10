@@ -231,7 +231,7 @@ class ControllerClients {
 	}
 
 	public static function deleteUser(){
-		if (isset($_SESSION['client'])) {
+		if (isset($_SESSION['admin']) && isset($_GET['client']) && $_GET['client']!==$_SESSION['client']) {
 			ModelClients::deleteClient($_GET['client']);
 		}
 		ControllerClients::readAll();
