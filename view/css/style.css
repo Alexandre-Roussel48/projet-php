@@ -168,7 +168,7 @@ input[type=text], input[type=password] {
     font-size: 20px;
 }
 
-input[type=submit] {
+input[type=submit], a.bouton{
     background-color: var(--button-color-bg);
     border: 1px solid var(--border-color);
     color: var(--button-color);

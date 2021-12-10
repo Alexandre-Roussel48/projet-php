@@ -29,11 +29,9 @@
             echo "<p>Téléphone : <em>non renseigné</em></p></fieldset>";
         
         if($peutModifier){
-                echo '<form method="get" style="text-align: center; "action="index.php">';
-                echo '<input type="hidden" name="controller" value="clients">';
-                echo '<input type="hidden" name="action" value="update">';
-                echo '<input type="submit" name="update" id="update" value="Modifier profil">';
-                echo '</form>';
+            echo '<a href="index.php?controller=clients&action=update" class="bouton">Modifier profil</a>';
         }
+        echo '<a href="index.php?controller=produits&action=history" class="bouton">Voir historique d\'achat</a>';
+
     ?>
 </fieldset>
