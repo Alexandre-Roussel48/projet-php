@@ -132,11 +132,20 @@ a{
 /*============FORMULAIRE============*/
 
 /*Met le fond en gris et arrondit les coins*/
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 fieldset{
     background-color: var(--fieldset-color-bg);
     border: 2px solid var(--border-color);
     border-radius:8px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
 }
 
 fieldset > * {
@@ -148,9 +157,27 @@ fieldset > legend{
     text-align: center;
 }
 
-fieldset > p {
-    font-size: 24px;
-    text-align: center;
+fieldset > label {
+    text-align: right;
+    margin-top: 20px;
+}
+
+fieldset > label {
+    text-align: right;
+    margin-top: 20px;
+}
+
+fieldset > label > input {
+    align-items: center;
+}
+
+button {
+    max-width: fit-content;
+    align-self: center;
+    border: var(--border-color);
+    border: 1px solid var(--border-color);
+    border-radius:8px;
+    cursor: pointer;
 }
 
 #createAccount {

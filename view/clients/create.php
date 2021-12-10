@@ -21,60 +21,67 @@
             }
         ?>
         <h1>S'INSCRIRE</h1>
-        <fieldset>
+        <fieldset class="inscription">
             <legend>Informations obligatoires</legend>
-            <p>
-                <label for="nom">Nom</label> :
-                <input type="text" placeholder="Gaston" name="nom" 
-                <?php
-                    if(isset($nom)) echo 'value="'.$nom.'"';
-                ?>required/>
-            </p>
-            <p>
-                <label for="prenom">Prénom</label> :
-                <input type="text" placeholder="Lagaffe" name="prenom" 
-                <?php
-                    if(isset($prenom)) echo 'value="'.$prenom.'"';
-                ?>required/>
-            </p>
-            <p>
-                <label for="mail">Adresse email</label> :
-                <input type="text" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="mail" 
-                <?php
-                    if(isset($mail)) echo 'value="'.$mail.'"';
-                ?>required/>
-            </p>
-            <p>
-                <label for="mdp">Mot de passe</label> :
-                <input type="password" name="mdp" 
-                <?php
-                    if(isset($mdp)) echo 'value="'.$mdp.'"';
-                ?>required/>
-            </p>
-            <p>
-                <label for="mdpVerif">Confirmation du mot de passe</label> :
-                <input type="password" name="mdpVerif" 
-                <?php
-                    if(isset($mdpVerif)) echo 'value="'.$mdpVerif.'"';
-                ?>required/>
-            </p>
+            <label for="nom">
+                Nom :
+                <input type="text" placeholder="Gaston" name="nom"
+                   <?php
+                       if(isset($nom)) echo 'value="'.$nom.'"';
+                   ?>required/>
+            </label>
+
+            <label for="prenom">
+                Prénom :
+                <input type="text" placeholder="Lagaffe" name="prenom"
+                   <?php
+                       if(isset($prenom)) echo 'value="'.$prenom.'"';
+                   ?>required/>
+            </label>
+
+            <label for="mail">
+                Adresse email :
+                <input type="text" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="mail"
+                   <?php
+                        if(isset($mail)) echo 'value="'.$mail.'"';
+                   ?>required/>
+            </label>
+
+            <label for="mdp">
+                Mot de passe :
+                <input type="password" name="mdp"
+                   <?php
+                        if(isset($mdp)) echo 'value="'.$mdp.'"';
+                   ?>required/>
+            </label>
+
+            <label for="mdpVerif">
+                Confirmation du mot de passe :
+                <input type="password" name="mdpVerif"
+                   <?php
+                        if(isset($mdpVerif)) echo 'value="'.$mdpVerif.'"';
+                   ?>required/>
+            </label>
         </fieldset>
-        <fieldset>
+
+        <fieldset class="inscription">
             <legend>Informations complémentaires</legend>
-            <p>
-                <label for="adresse">Adresse</label> :
-                <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse" 
-                <?php
-                    if(isset($adresse)) echo 'value="'.$adresse.'"';
-                ?>/>
-            </p>
-            <p>
-                <label for="telephone">Numéro de téléphone</label> :
-                <input type="text" placeholder="0123456789" name="telephone" 
-                <?php
-                    if(isset($telephone)) echo 'value="'.$telephone.'"';
-                ?>/>
-            </p>
+            <label for="adresse">
+                Adresse :
+                <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse"
+                    <?php
+                        if(isset($adresse)) echo 'value="'.$adresse.'"';
+                    ?>/>
+            </label>
+
+            <label for="telephone">
+                Numéro de téléphone :
+                <input type="text" placeholder="0123456789" name="telephone"
+                    <?php
+                        if(isset($telephone)) echo 'value="'.$telephone.'"';
+                    ?>/>
+            </label>
+
         </fieldset>
 
         <?php
@@ -92,9 +99,7 @@
             }
         ?>
 
-        <p>
-            <input type="submit" value="S'inscrire" />
-        </p>
+        <button class="butoon" type="submit">S'inscrire</button>
     </fieldset>
 </form>
 
