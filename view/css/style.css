@@ -32,7 +32,7 @@ nav .normal a {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: var(--header-link-color);
+    color: var(--header-color);
     font-size: 25px;
     border-radius: 15px;
     flex-grow: 1;
@@ -272,18 +272,21 @@ fieldset > label > input {
 button {
     max-width: fit-content;
     align-self: center;
-    border: var(--border-color);
     border: 1px solid var(--border-color);
+    margin: 10px;
     border-radius: 8px;
     cursor: pointer;
 }
 
-#createAccount {
+.createAccount a{
+    display: flex;
+    justify-content: center;
     border: 1px solid var(--border-color);
-    padding: 10px 20px;
-    text-decoration: none;
+    padding: 10px 0;
+    /*width: 160px;*/
     background-color: var(--button-color-bg);
     color: var(--button-color);
+    text-decoration: none;
 }
 
 input[type=text], input[type=password] {
