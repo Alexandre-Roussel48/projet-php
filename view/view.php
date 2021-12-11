@@ -20,7 +20,6 @@
     </head>
 
     <body>
-
         <header>
             <nav>
                 <div><a href="index.php?controller=modeles&action=readAll">Tous les modèles</a></div>
@@ -48,10 +47,7 @@
             require_once File::build_path(array("view", $controller, "$view.php"));
             ?>
         </main>
-
         <footer>
-
-
                 <div>
                     <form method="post" action="#">
                         Choix du thème :
@@ -59,16 +55,14 @@
                         <input type="submit" name="theme" id="theme" value="Clair" />
                     </form>  
                 </div>
-                <div>  
+                <p>  
                     Site d'e-commerce réalisé par 
                     <a href="https://github.com/Gatien-Depeyre">Gatien</a>, 
                     <a href="https://github.com/melanie-fressard">Mélanie</a>, 
                     <a href="https://github.com/BastienGavioli">Bastien</a> et 
                     <a href="https://github.com/Alexandre-Roussel48">Alexandre</a> !
-                </div>
+                </p>
         </footer>
-
     </body>
-    
 </html>
 
