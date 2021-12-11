@@ -17,6 +17,9 @@ class ModelProduits {
     }
 
     public function __construct($cp = NULL, $mo = NULL, $c = NULL, $t = NULL, $st = NULL) {
+        if(!is_null($cp)){
+            $this->codeProduit = $cp;
+        }
         if (!is_null($mo) && !is_null($c) && !is_null($t) && !is_null($st)) {
             $this->modele = $mo;
             $this->couleur = $c;
@@ -57,8 +60,27 @@ class ModelProduits {
     }
 
 
-    public static function save(){
+    
 
+    public function save(){
+        if(ModelProduits::getProduit($this->codeProduit)===false){ //On peut recevoir soit false soit un objet
+
+            $sql = "INSERT INTO p_produits (modele, couleur, taille, stock) VALUES (:modele, :couleur, :taille, :stock);";
+            $req_prep = Model::getPDO()->prepare($sql);
+
+            $values = array(
+                "modele" => $this->modele,
+                "couleur" => $this->couleur,
+                "taille" => $this->taille,
+                "stock" => $this->stock
+            );
+            var_dump($values);
+            $req_prep->execute($values);
+            return true;
+        }
+        else{//Si le model n'a pas été créé return false
+            return false;
+        }
     }
 }
 ?>

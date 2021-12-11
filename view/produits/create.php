@@ -1,4 +1,7 @@
 <form method="get" action="index.php">
+
+<input type='hidden' name='controller' value='produits'>
+<input type='hidden' name='action' value='created'>
     <fieldset>
         <legend>Formulaire de création de vélo :</legend>
         <p>
@@ -9,8 +12,8 @@
             <input type="text" placeholder="bleue" name="couleur" id="couleur_id" required/>
 
                 <label for="taille_id">Taille :</label>
-                <select name="taile" id="taille_id" required>
-                    <option selected>Choisissez la taille</option>
+                <select name="taille" id="taille_id" required>
+                    <option selected value="0">Choisissez la taille</option>
                     <option value="20">20"</option>
                     <option value="24">24"</option>
                     <option value="26">26"</option>

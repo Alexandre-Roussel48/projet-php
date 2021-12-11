@@ -1,6 +1,7 @@
 <?php
 require_once File::build_path(array("model","ModelProduits.php"));
 require_once File::build_path(array("controller","ControllerModeles.php"));
+require_once File::build_path(array("model","ModelModeles.php"));
 
 class ControllerProduits {
 
@@ -63,6 +64,7 @@ class ControllerProduits {
 
     public static function create(){
 		if (isset($_SESSION['admin'])) {
+            $tab_mod = ModeleModeles::getAllModeles();
 			$controller='produits';
 			$view='create';
 			$pagetitle='Créer un produit';
@@ -76,7 +78,7 @@ class ControllerProduits {
 		}
     }
 
-
+/*
     public static function read(){
         if(isset($_GET["codeProduit"])){
             $controller='modeles';
@@ -84,18 +86,25 @@ class ControllerProduits {
 			$pagetitle='Détail de modèle';
 			require File::build_path(array("view","view.php"));
         } else {
-            $erreur = "Vous n'avez pas remplis le numéro du produit"
+            $erreur = "Vous n'avez pas remplis le numéro du produit";
             $controller='';
 			$view='error';
 			$pagetitle='error';
 			require File::build_path(array("view","view.php"));
         }
     }
-
+*/
     public static function created(){
         if(isset($_GET["modele"]) && isset($_GET["couleur"]) && isset($_GET["taille"]) && isset($_GET["stock"]) && isset($_SESSION['admin'])){
-            ModeleProduits::save($_GET["modele"], $_GET["couleur"], $_GET["taille"], isset($_GET["stock"]);
-
+            $produit = new ModelProduits(NULL, $_GET["modele"], $_GET["couleur"], $_GET["taille"], $_GET["stock"]);
+            $produit->save();
+            ControllerModeles::read();
+        } else{
+            $erreur = "Necessite les droits admins";
+            $controller='';
+			$view='error';
+			$pagetitle='error';
+			require File::build_path(array("view","view.php"));
         }
     }
 }
