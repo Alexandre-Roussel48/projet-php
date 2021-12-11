@@ -3,7 +3,7 @@ require_once File::build_path(array("controller","ControllerModeles.php"));
 require_once File::build_path(array("controller", "ControllerClients.php"));
 require_once File::build_path(array("controller", "ControllerProduits.php"));
 
-session_start();
+session_start(array("cookie_domain" => "webinfo.iutmontp.univ-montp2.fr"));
 //Verifie si le controller est remplis et que la classe associé existe
 if(isset($_GET['controller']) && class_exists('Controller'.$_GET['controller'])) {
 	$controller = $_GET['controller'];
