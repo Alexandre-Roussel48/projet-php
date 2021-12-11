@@ -51,7 +51,7 @@ class ControllerProduits {
         if(isset($_SESSION['client'])){
             $jointures = ModelProduits::history($_SESSION['client']->get("codeClient"));
         
-            $controller='produit';
+            $controller='produits';
             $view='history';
             $pagetitle='Historique';
             require File::build_path(array("view","view.php"));
