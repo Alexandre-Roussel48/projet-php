@@ -19,8 +19,12 @@ class ControllerProduits {
             } else
                 ControllerProduits::supprimerArticle($nomProduit);
         } else
-            echo "Pb modif de qtArticle.";
-    }
+            $erreur = "Pb modif de qtArticle.";
+            $controller = "";
+            $action = "error";
+            $pagetitle = "erreur";
+            require File::build_path(array("view","view.php"));
+        }
 
     public static function MontantGlobal() { //aditionne les prix de tous les articles present dans le panier et prend en compte leur qte
         $total = 0;
