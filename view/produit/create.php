@@ -9,7 +9,7 @@
             <input type="text" placeholder="bleue" name="couleur" id="couleur_id" required/>
 
                 <label for="taille_id">Taille :</label>
-                <select id="taille_id" required>
+                <select name="taile" id="taille_id" required>
                     <option selected>Choisissez la taille</option>
                     <option value="20">20"</option>
                     <option value="24">24"</option>

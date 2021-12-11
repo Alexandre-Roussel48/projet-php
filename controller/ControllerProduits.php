@@ -60,5 +60,43 @@ class ControllerProduits {
                 require File::build_path(array("view","view.php"));
         }  
     }
+
+    public static function create(){
+		if (isset($_SESSION['admin'])) {
+			$controller='produits';
+			$view='create';
+			$pagetitle='Créer un produit';
+			require File::build_path(array("view","view.php"));	
+		} else {
+            $erreur = "Vous n'avez pas les permissions pour mettre un produit dans la bd";
+            $controller='';
+			$view='error';
+			$pagetitle='error';
+			require File::build_path(array("view","view.php"));	
+		}
+    }
+
+
+    public static function read(){
+        if(isset($_GET["codeProduit"])){
+            $controller='modeles';
+			$view='detail';
+			$pagetitle='Détail de modèle';
+			require File::build_path(array("view","view.php"));
+        } else {
+            $erreur = "Vous n'avez pas remplis le numéro du produit"
+            $controller='';
+			$view='error';
+			$pagetitle='error';
+			require File::build_path(array("view","view.php"));
+        }
+    }
+
+    public static function created(){
+        if(isset($_GET["modele"]) && isset($_GET["couleur"]) && isset($_GET["taille"]) && isset($_GET["stock"]) && isset($_SESSION['admin'])){
+            ModeleProduits::save($_GET["modele"], $_GET["couleur"], $_GET["taille"], isset($_GET["stock"]);
+
+        }
+    }
 }
 ?>

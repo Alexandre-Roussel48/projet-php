@@ -50,7 +50,7 @@ class ControllerModeles {
 	}
 
 	public static function created() {
-		if(isset($_GET['modele']) && isset($_GET['marque']) && isset($_GET['prix']) && is_numeric($_GET['prix'])){
+		if(isset($_GET['modele']) && isset($_GET['marque']) && isset($_GET['prix']) && is_numeric($_GET['prix'] && isset($_SESSION['admin'])){
 			$modele = $_GET['modele'];
 			$marque = $_GET['marque'];
 			$prix = $_GET['prix'];

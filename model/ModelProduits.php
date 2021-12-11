@@ -55,6 +55,11 @@ class ModelProduits {
             return false;
         return $tab_jointures;
     }
+
+
+    public static function save(){
+
+    }
 }
 ?>
 
