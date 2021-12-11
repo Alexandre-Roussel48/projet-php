@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title><?php echo $pagetitle; ?></title>
@@ -22,20 +21,24 @@
     <body>
         <header>
             <nav>
-                <div><a href="index.php?controller=modeles&action=readAll">Tous les modèles</a></div>
-                <?php
-                if(isset($_SESSION['nom'])) {
-                    echo '<div><a href="index.php?controller=clients&action=login">Se déconnecter</a></div>';
-                    echo '<div><a href="index.php?controller=clients&action=read&client='.$_SESSION['client']->get('codeClient').'">Mon profil</a></div>';
-                } else {
-                    echo '<div><a href="index.php?controller=clients&action=login">Se connecter</a></div>';
-                    echo '<div><a href="index.php?controller=clients&action=create">S\'inscrire</a></div>';
-                }
-                if (isset($_SESSION['admin'])) {
-                    echo '<div><a href="index.php?controller=clients&action=admin">Page admin</a></div>';
-                }
-                echo '<div><a href="index.php?controller=modeles&action=voirPanier">Mon panier</a></div>';
-                ?>
+                <label id="burger" for="toggle">☰</label>
+                <input type="checkbox" id="toggle">
+                <div class="normal"> 
+                     <a href="index.php?controller=modeles&action=readAll">Tous les modèles</a>
+                    <?php
+                    if(isset($_SESSION['nom'])) {
+                        echo '<a href="index.php?controller=clients&action=login">Se déconnecter</a>';
+                        echo '<a href="index.php?controller=clients&action=read&client='.$_SESSION['client']->get('codeClient').'">Mon profil</a>';
+                    } else {
+                        echo '<a href="index.php?controller=clients&action=login">Se connecter</a>';
+                        echo '<a href="index.php?controller=clients&action=create">S\'inscrire</a>';
+                    }
+                    if (isset($_SESSION['admin'])) {
+                        echo '<a href="index.php?controller=clients&action=admin">Page admin</a>';
+                    }
+                    echo '<a href="index.php?controller=modeles&action=voirPanier">Mon panier</a>';
+                    ?>
+                </div>
             </nav>
         </header>
 
@@ -65,4 +68,3 @@
         </footer>
     </body>
 </html>
-
