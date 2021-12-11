@@ -16,7 +16,8 @@ class ControllerModeles {
 		$m = ModelModeles::getModele($modele);
 		$tab_p = ModelModeles::getProduit($modele);
 		if ($m===false) {
-			$controller='modeles';
+			$erreur = "Produit non spécifié";
+			$controller='';
 			$view='error';
 			$pagetitle='Erreur';
 			require File::build_path(array("view","view.php"));
@@ -148,7 +149,7 @@ class ControllerModeles {
 			}
 			if($codeErreur===-1){ //Si stocks insufisants
 				$erreur = "Stocks insuffisants";
-				$controller='modeles';
+				$controller='';
 				$view='error';
 				$pagetitle='erreur';
 				require File::build_path(array("view","view.php"));
