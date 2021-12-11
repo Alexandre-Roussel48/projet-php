@@ -25,7 +25,7 @@
             <legend>Informations obligatoires</legend>
             <label for="nom">
                 Nom :
-                <input type="text" placeholder="Gaston" name="nom"
+                <input type="text" placeholder="Gaston" name="nom" id="nom"
                    <?php
                        if(isset($nom)) echo 'value="'.$nom.'"';
                    ?>required/>
@@ -33,7 +33,7 @@
 
             <label for="prenom">
                 Prénom :
-                <input type="text" placeholder="Lagaffe" name="prenom"
+                <input type="text" placeholder="Lagaffe" name="prenom" id="prenom"
                    <?php
                        if(isset($prenom)) echo 'value="'.$prenom.'"';
                    ?>required/>
@@ -41,7 +41,7 @@
 
             <label for="mail">
                 Adresse email :
-                <input type="text" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="mail"
+                <input type="text" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="mail" id="mail"
                    <?php
                         if(isset($mail)) echo 'value="'.$mail.'"';
                    ?>required/>
@@ -49,7 +49,7 @@
 
             <label for="mdp">
                 Mot de passe :
-                <input type="password" name="mdp"
+                <input type="password" name="mdp" id="mdp"
                    <?php
                         if(isset($mdp)) echo 'value="'.$mdp.'"';
                    ?>required/>
@@ -57,7 +57,7 @@
 
             <label for="mdpVerif">
                 Confirmation du mot de passe :
-                <input type="password" name="mdpVerif"
+                <input type="password" name="mdpVerif" id="mdpVerif"
                    <?php
                         if(isset($mdpVerif)) echo 'value="'.$mdpVerif.'"';
                    ?>required/>
@@ -68,7 +68,7 @@
             <legend>Informations complémentaires</legend>
             <label for="adresse">
                 Adresse :
-                <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse"
+                <input type="text" placeholder="1 rue du sport 34000 Montpellier" name="adresse" id="adresse"
                     <?php
                         if(isset($adresse)) echo 'value="'.$adresse.'"';
                     ?>/>
@@ -76,7 +76,7 @@
 
             <label for="telephone">
                 Numéro de téléphone :
-                <input type="text" placeholder="0123456789" name="telephone"
+                <input type="text" placeholder="0123456789" name="telephone" id="telephone"
                     <?php
                         if(isset($telephone)) echo 'value="'.$telephone.'"';
                     ?>/>
