@@ -1,11 +1,12 @@
 :root{      /*Définit les couleurs du css*/
     --header-color-bg: #373737;
-    --header-link-color: #CCCCFF;
-    --link-color: #CCCCFF;
-    --body-color-bg:#303030;
+    --header-color: #ccccff;
+    --body-color-bg: #303030;
+    --titles-color: #ccccff;
     --text-color: white;
+    --link-color: #3333a0;
     --fieldset-text-color: white;
-    --fieldset-color-bg:  rgba(62, 62, 62, 0.22);
+    --fieldset-color-bg: rgba(62, 62, 62, 0.22);
     --border-color: white;
     --button-color: #373737;
     --button-color-bg: white;

@@ -1,9 +1,10 @@
 :root{      /*Définit les couleurs du css*/
     --header-color-bg: #373737;
-    --header-link-color: #CCCCFF;
-    --link-color: #3333a0;
+    --header-color: #ccccff;
     --body-color-bg: white;
+    --titles-color: #ccccff;
     --text-color: black;
+    --link-color: #3333a0;
     --fieldset-text-color: black;
     --fieldset-color-bg: rgba(62, 62, 62, 0.22);
     --border-color: black;

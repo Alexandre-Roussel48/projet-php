@@ -42,7 +42,7 @@ nav .normal a {
  
 nav a:hover {
     flex-grow: 1;
-    background: var(--header-link-color);
+    background: var(--header-color);
     transition:400ms;
     font-weight: bolder;
     color: var(--header-color-bg);
@@ -75,7 +75,7 @@ nav a:hover {
         align-items: center;
         margin: 0 auto;
         font-size: 40px;
-        color: var(--header-link-color);
+        color: var(--header-color);
         cursor: pointer;
     }
 
@@ -96,7 +96,7 @@ main, footer {
 
 h1{
     text-align: center;
-    color: var(--link-color);
+    color: var(--titles-color);
 }
 
 h3{
@@ -156,7 +156,7 @@ a{
 }
 
 .modelesContainer p{
-    color: var(--button-color);
+    color: var(--link-color);
 }
 
 @media all and (min-width: 1032px) {
@@ -272,9 +272,9 @@ fieldset > label > input {
 button {
     max-width: fit-content;
     align-self: center;
-     border: var(--border-color);
+    border: var(--border-color);
     border: 1px solid var(--border-color);
-    border-radius:8px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
