@@ -12,7 +12,9 @@ if(isset($_GET['controller']) && class_exists('Controller'.$_GET['controller']))
 	if(isset($_GET['action']) && method_exists('Controller'.$controller, $_GET['action'])){
 		$action = $_GET['action'];
 	} else{
-		$action = "readAll";
+		$erreur = "action impossible";
+		$controller = "";
+		$action = "error";
 	}
 }
 else {
