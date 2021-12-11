@@ -1,4 +1,3 @@
-
         <?php
         if (empty($_SESSION['panier'])) {
             echo "<p>Votre panier est vide.</p>";
@@ -45,6 +44,6 @@
             echo "<tr><td colspan=\"4\"><a href='index.php?controller=modeles&action=validerCommande&montantGlobal=".rawurlencode($MontantGlobal)."'>Valider le panier</a></td>
                           <td colspan=\"2\">
                           Total : ".$MontantGlobal."</td></tr>";
+            echo "</table>";
         }
         ?>
-    </table>

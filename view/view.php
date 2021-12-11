@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
+
     <head>
         <meta charset="UTF-8">
         <title><?php echo $pagetitle; ?></title>
@@ -54,8 +55,8 @@
                 <div>
                     <form method="post" action="#">
                         Choix du thème :
-                        <input type="submit" name="theme" id="theme" value="Sombre" />
-                        <input type="submit" name="theme" id="theme" value="Clair" />
+                        <input type="submit" name="theme" id="theme1" value="Sombre" />
+                        <input type="submit" name="theme" id="theme2" value="Clair" />
                     </form>  
                 </div>
                 <p>  
