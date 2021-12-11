@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
     <head>
         <meta charset="UTF-8">
@@ -55,8 +55,8 @@
                 <div>
                     <form method="post" action="#">
                         Choix du thème :
-                        <input type="submit" name="theme" id="theme1" value="Sombre" />
-                        <input type="submit" name="theme" id="theme2" value="Clair" />
+                        <input type="submit" name="theme" id="theme" value="Sombre" />
+                        <input type="submit" name="theme" id="theme" value="Clair" />
                     </form>  
                 </div>
                 <p>  
