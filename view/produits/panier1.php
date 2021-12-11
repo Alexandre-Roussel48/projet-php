@@ -1,6 +1,4 @@
-<!DOCTYPE html>
 
-<body>
         <?php
         if (empty($_SESSION['panier'])) {
             echo "<p>Votre panier est vide.</p>";
@@ -50,5 +48,3 @@
         }
         ?>
     </table>
-</body>
-</html>
