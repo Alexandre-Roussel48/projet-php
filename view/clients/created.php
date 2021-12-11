@@ -5,12 +5,12 @@
     <input type='hidden' name='action' value='verifNonce'>
 
     <p><label for="mail">Adresse email</label></p>
-    <p><input type="text" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="mail">
+    <p><input type="text" id="mail" placeholder="gaston.lagaffe@tutanota.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="mail">
       
 
     <p><label for="nonce">Code</label></p>
-    <p><input type="text" placeholder="180975c06c2bfea3cbe42f1141d59a13" name="nonce">
+    <p><input type="text" id="nonce" placeholder="180975c06c2bfea3cbe42f1141d59a13" name="nonce">
       
 
-    <p><input type="submit" text="envoyer"></p>
+    <p><input type="submit" value="envoyer"></p>
 </form>
