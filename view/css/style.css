@@ -306,20 +306,37 @@ input[type=submit], a.bouton{
 
 /*===========PIED DE PAGE===========*/
 
-footer{
+/*footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 15px;
     padding: 9px 10px;
     border: 1px solid var(--border-color);
-    color: var(--text-color);
+    
     text-align: right;
+}*/
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+    border: 1px solid black;
+    color: var(--text-color);
 }
 
-footer input[type=submit]{
-    margin-bottom: 2px;
+footer button{
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 5px;
     padding: 5px 10px;
+}
+
+.footer form {
+    flex-direction: row;
+    align-items: center;
 }
 
 #dark{
@@ -331,6 +348,7 @@ footer input[type=submit]{
     background-color: white;
     color: black;
 }
+
 footer p{
     align-items: center;
 }
