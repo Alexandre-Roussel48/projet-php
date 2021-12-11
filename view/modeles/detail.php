@@ -25,8 +25,8 @@
                 $stock = $p->get('stock');
                 $taille = $p->get('taille');
                 $couleur = $p->get('couleur');
-                echo "<li> Quantité restante : {$stock}. Taille : {$taille} pouces. Couleur : {$couleur}. ";
-                echo "<p><a href=\"index.php?controller=modeles&action=ajouterArticle&codeProduit=$codeProduitUrl\">Ajouter au panier</a></li></p>";
+                echo "<li> Quantité restante : {$stock}. Taille : {$taille} pouces. Couleur : {$couleur}. </li>";
+                echo '<div style="margin: 10px"><a href="index.php?controller=modeles&action=ajouterArticle&codeProduit=$codeProduitUrl">Ajouter au panier</a></div>';
             }
         } else{
                 //Si il n'y a pas de produits
