@@ -55,8 +55,8 @@
                 <div>
                     <form method="post" action="#">
                         Choix du thème :
-                        <input type="submit" name="theme" id="theme" value="Sombre" />
-                        <input type="submit" name="theme" id="theme" value="Clair" />
+                        <input type="submit" name="theme" id="dark" value="Sombre" />
+                        <input type="submit" name="theme" id="light" value="Clair" />
                     </form>  
                 </div>
                 <p>  
