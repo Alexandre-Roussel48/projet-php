@@ -59,24 +59,59 @@ class ModelProduits {
         return $tab_jointures;
     }
 
+    public function chercherIdentique(){
+        $sql = "SELECT * FROM p_produits WHERE modele=:modele AND couleur=:couleur AND taille=:taille;";
+        $req_prep = Model::getPDO()->prepare($sql);
+        
+        $values = array(
+            'modele' => $this->modele,
+            'couleur' => $this->couleur,
+            'taille' => $this->taille
+        );
+        $req_prep->execute($values);
 
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Modelproduits');
+        $tab_jointures = $req_prep->fetchAll();
+
+        if (empty($tab_jointures))
+            return false;
+        return $tab_jointures[0];
+    }
+
+    public static function ajouterStocks($codeProduit, $quantite){
+
+        $sql = "UPDATE p_produits SET stock =stock+:quantite WHERE codeProduit=:codeProduit;";
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "codeProduit" => $codeProduit,
+            "quantite"=>$quantite
+        );
+        //var_dump($values);
+        $req_prep->execute($values);
+    }
     
 
     public function save(){
         if(ModelProduits::getProduit($this->codeProduit)===false){ //On peut recevoir soit false soit un objet
+            //Verification qu'il n'existe pas déjà un produit avec les même carac
+            if(($prodIndentique = $this->chercherIdentique())!==false){
+               ModelProduits::ajouterStocks($prodIndentique->codeProduit, $this->stock);
+            } else{ //On insere normalement le produit
 
-            $sql = "INSERT INTO p_produits (modele, couleur, taille, stock) VALUES (:modele, :couleur, :taille, :stock);";
-            $req_prep = Model::getPDO()->prepare($sql);
+                $sql = "INSERT INTO p_produits (modele, couleur, taille, stock) VALUES (:modele, :couleur, :taille, :stock);";
+                $req_prep = Model::getPDO()->prepare($sql);
 
-            $values = array(
-                "modele" => $this->modele,
-                "couleur" => $this->couleur,
-                "taille" => $this->taille,
-                "stock" => $this->stock
-            );
-            var_dump($values);
-            $req_prep->execute($values);
-            return true;
+                $values = array(
+                    "modele" => $this->modele,
+                    "couleur" => $this->couleur,
+                    "taille" => $this->taille,
+                    "stock" => $this->stock
+                );
+                
+                $req_prep->execute($values);
+                return true;
+            }
         }
         else{//Si le model n'a pas été créé return false
             return false;

@@ -143,14 +143,7 @@ class ModelModeles {
     }
 
     public static function decrementStocks($codeProduit, $quantite){
-        $sql = "UPDATE p_produits SET stock = stock-:quantite WHERE codeProduit=:codeProduit;";
-        $req_prep = Model::getPDO()->prepare($sql);
-
-        $values = array(
-            "codeProduit" => $codeProduit,
-            "quantite"=>$quantite
-        );
-        $req_prep->execute($values);
+        ModelProduits::ajouterStock($codeProduit, -$quantite);
     }
 
     public static function sauverCommande($codeClient, $codeProduit, $quantite){
