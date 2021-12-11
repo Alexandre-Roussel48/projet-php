@@ -64,7 +64,7 @@ class ControllerProduits {
 
     public static function create(){
 		if (isset($_SESSION['admin'])) {
-            $tab_mod = ModeleModeles::getAllModeles();
+            $tab_mod = ModelModeles::getAllModeles();
 			$controller='produits';
 			$view='create';
 			$pagetitle='Créer un produit';
@@ -95,6 +95,11 @@ class ControllerProduits {
     }
 */
     public static function created(){
+        var_dump(isset($_GET["modele"]));
+        var_dump(isset($_GET["couleur"]));
+        var_dump(isset($_GET["taille"]));
+        var_dump(isset($_GET["stock"]));
+        var_dump(isset($_SESSION['admin']));
         if(isset($_GET["modele"]) && isset($_GET["couleur"]) && isset($_GET["taille"]) && isset($_GET["stock"]) && isset($_SESSION['admin'])){
             $produit = new ModelProduits(NULL, $_GET["modele"], $_GET["couleur"], $_GET["taille"], $_GET["stock"]);
             $produit->save();

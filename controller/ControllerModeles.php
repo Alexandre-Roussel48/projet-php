@@ -115,7 +115,7 @@ class ControllerModeles {
 			$tab[$code] = ModelModeles::getProduitCode($code);
 		}
 
-		$controller='produit';
+		$controller='produits';
 		$view='panier1';
 		$pagetitle='Panier';
 		require File::build_path(array("view","view.php"));
