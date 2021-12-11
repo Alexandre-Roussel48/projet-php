@@ -31,8 +31,9 @@
         <button type="submit">Connexion</button>
 
     <fieldset>
-        <h3>Vous n'avez pas de compte ?</h3>
+        <h3>Vous n'avez pas de compte ou un compte non activé?</h3>
         <p><a href="index.php?controller=clients&action=create" id="createAccount">Créer un compte</a></p>
+        <p><a href="index.php?controller=clients&amp;action=verifNonce" id="createAccount">Activer son compte</a></p>
         <?php
             if($_GET['action']=="verification") {
                 echo '<p style="color:red;">Votre email ou votre mot de passe est incorrect.</p>';
