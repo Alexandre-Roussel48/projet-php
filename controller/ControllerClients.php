@@ -13,29 +13,53 @@ class ControllerClients {
 			$pagetitle='Liste des clients';	
 			require File::build_path(array("view","view.php"));
 		} else {
-			ControllerModeles::readAll();
+			$erreur = "Necessite les droits administrateur";
+			$controller='';
+			$view='error';
+			$pagetitle='Liste des clients';	
+			require File::build_path(array("view","view.php"));
 		}
 	}
 
 	//utilisée
 	public static function read() {
-		$client = $_GET['client'];
-		$c = Modelclients::getClient($client);
-		if ($c===false) {
-			$controller='clients';
-			$view='error';
-			$pagetitle='Erreur';
-			require File::build_path(array("view","view.php"));
-		} else {
-			$peutModifier=isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$_GET['client'];
+		if(isset($_SESSION["client"])){ //Gere les clients non connectés
+			$client = $_GET['client'];
+
+			//Gere si le client n'est pas admin ni le possesseur du compte demandé
+			//$peutModifier sera utilisé dans la vue
+			$peutModifier=isset($_GET['client']) && $_SESSION['client']->get('codeClient')===$client;
 			if ($peutModifier || isset($_SESSION['admin'])){
-				$controller='clients';
-				$view='detail';
-				$pagetitle='Détail de client';
+				
+				$c = Modelclients::getClient($client);
+				if ($c===false) { //Gere l'absence du client demandé dans la bd
+					$erreur = "Ce client n'existe pas";
+					$controller='';
+					$view='error';
+					$pagetitle='client inexistant';
+					require File::build_path(array("view","view.php"));
+				} else{ //On execute la demande
+					$controller='clients';
+					$view='detail';
+					$pagetitle='Détail de client';
+					require File::build_path(array("view","view.php"));
+				}
+			} else { //Si le client n'a pas les droits pour voir la page
+				$erreur = "Necessite les droits admins ou etre connecte sous ce compte";
+				$controller='';
+				$view='error';
+				$pagetitle='erreur acces';
 				require File::build_path(array("view","view.php"));
-			} else {
-				ControllerModeles::readAll();
+
 			}
+		
+		}
+		else{
+			$erreur = "Necessite d'etre connecté";
+			$controller='';
+			$view='error';
+			$pagetitle='Voir profil';	
+			require File::build_path(array("view","view.php"));
 		}
 	}
 
