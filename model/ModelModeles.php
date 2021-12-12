@@ -1,5 +1,6 @@
 <?php
 require_once File::build_path(array("model","Model.php"));
+require_once File::build_path(array("model","ModelProduits.php"));
 class ModelModeles {
    
     private $modele;
@@ -139,11 +140,11 @@ class ModelModeles {
         );
         $req_prep->execute($values);
         $tab_qtt = $req_prep->fetchAll();
-        return (int)$tab_qtt[0][0]>$demande;
+        return (int)$tab_qtt[0][0]>=$demande;
     }
 
     public static function decrementStocks($codeProduit, $quantite){
-        ModelProduits::ajouterStock($codeProduit, -$quantite);
+        ModelProduits::ajouterStocks($codeProduit, -$quantite);
     }
 
     public static function sauverCommande($codeClient, $codeProduit, $quantite){
