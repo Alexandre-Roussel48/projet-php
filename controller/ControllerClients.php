@@ -212,15 +212,23 @@ class ControllerClients {
 	}
 
 	public static function update(){
-		$controller='clients';
-		$view='update';
-		$pagetitle='Modifier profil';
-		require File::build_path(array("view","view.php"));
+		if(isset($_SESSION['client'])){
+			$controller='clients';
+			$view='update';
+			$pagetitle='Modifier profil';
+			require File::build_path(array("view","view.php"));
+		} else{
+			$erreur = "Vous devez être connecté pour faire cette action";
+			$controller='';
+			$view='error';
+			$pagetitle='Modifier profil';
+			require File::build_path(array("view","view.php"));
+		}
 	}
 
 	public static function updated(){
-		if(isset($_GET['nom']) && isset($_GET['prenom'])
-			&& isset($_GET['adresse']) && isset($_GET['telephone'])){
+		if(isset($_GET['nom']) && isset($_GET['prenom']) && isset($_SESSION['client'])
+		 && isset($_GET['adresse']) && isset($_GET['telephone'])){
 			ModelClients::update($_GET['nom'], $_GET['prenom'], $_GET['adresse'], $_GET['telephone']);
 			$controller='clients';
 			$view='detail';
