@@ -52,11 +52,11 @@
             ?>
         </main>
         <footer>
-                <div>
-                    <form method="post" action="#">
-                        Choix du thème :
-                        <input type="submit" name="theme" id="dark" value="Sombre" />
-                        <input type="submit" name="theme" id="light" value="Clair" />
+                <div class="footer">
+                    Choix du thème :
+                    <form method="post" action="#" >
+                        <button type="submit" name="theme" id="dark" value="Sombre">Sombre</button> 
+                        <button type="submit" name="theme" id="light" value="Clair">Clair</button>  
                     </form>  
                 </div>
                 <p>  

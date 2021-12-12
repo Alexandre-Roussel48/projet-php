@@ -160,14 +160,15 @@ class ControllerModeles {
 					//Mettre la commande dans la table p_commander
 					ModelModeles::sauverCommande($_SESSION['client']->get('codeClient'), $code, $quantite);
 				}
+				
+				//Vider le panier
+				$_SESSION['panier'] = array();
+				//Dire au client que l'achat a ete effectue
+				$controller='panier';
+				$view='paye';
+				$pagetitle='commande effectue';
+				require File::build_path(array("view","view.php"));
 			}
-			//Vider le panier
-			$_SESSION['panier'] = array();
-			//Dire au client que l'achat a ete effectue
-			$controller='panier';
-			$view='paye';
-			$pagetitle='commande effectue';
-			require File::build_path(array("view","view.php"));
 		} else {
 			ControllerClients::login();
 		}
