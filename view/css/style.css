@@ -66,6 +66,7 @@ nav a:hover {
  
     nav .normal a {
         width: 50%;
+        text-align: center;
     }
  
     #burger {
@@ -237,13 +238,13 @@ form {
 }
 
 fieldset{
-    background-color: var(--fieldset-color-bg);
-    border: 2px solid var(--border-color);
-    border-radius:8px;
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-self: center;
+    border: 2px solid var(--border-color);
+    border-radius:8px;
+    margin-bottom: 20px;
+    background-color: var(--fieldset-color-bg);
 }
 
 fieldset > * {
@@ -274,6 +275,7 @@ button {
     align-self: center;
     border: 1px solid var(--border-color);
     margin: 10px;
+    padding: 1% 5%;
     border-radius: 8px;
     background-color: var(--button-color-bg);
     color: var(--button-color);
@@ -285,7 +287,6 @@ button {
     justify-content: center;
     border: 1px solid var(--border-color);
     padding: 10px 0;
-    /*width: 160px;*/
     background-color: var(--button-color-bg);
     color: var(--button-color);
     text-decoration: none;
@@ -293,7 +294,7 @@ button {
 
 input[type=text], input[type=password] {
     border: 1px solid var(--border-color);
-    padding: 10px 200px;
+    padding: 10px 150px;
     font-size: 20px;
 }
 
@@ -306,6 +307,24 @@ input[type=submit], a.bouton{
     border-radius: 10px;
 }
 
+@media all and (max-width: 740px) {
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid var(--border-color);
+        border-radius:8px;
+        margin-bottom: 20px;
+        background-color: var(--fieldset-color-bg); 
+    }
+
+    input[type=text], input[type=password] {
+        border: 1px solid var(--border-color);
+        padding: 10px 0;
+        font-size: 20px;
+    }
+
+}
 /*===========PIED DE PAGE===========*/
 
 footer{
