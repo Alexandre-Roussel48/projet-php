@@ -156,7 +156,7 @@ a{
 }
 
 .modelesContainer p{
-    color: var(--link-color);
+    color: var(--body-color-bg);
 }
 
 @media all and (min-width: 1032px) {
@@ -275,6 +275,8 @@ button {
     border: 1px solid var(--border-color);
     margin: 10px;
     border-radius: 8px;
+    background-color: var(--button-color-bg);
+    color: var(--button-color);
     cursor: pointer;
 }
 
@@ -305,17 +307,6 @@ input[type=submit], a.bouton{
 }
 
 /*===========PIED DE PAGE===========*/
-
-/*footer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 15px;
-    padding: 9px 10px;
-    border: 1px solid var(--border-color);
-    
-    text-align: right;
-}*/
 
 footer{
     display: flex;
